@@ -62,8 +62,14 @@ public class Login extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                startActivity(new Intent(Login.this, Home.class));
-                                progressDialog.dismiss();;
+                                if(Email.equals("manishkumar787898@gmail.com")){
+                                    startActivity(new Intent(Login.this, HomeAdministration.class));
+                                    progressDialog.dismiss();
+                                }
+                                else{
+                                    startActivity(new Intent(Login.this, Home.class));
+                                    progressDialog.dismiss();
+                                }
                             }
                             else{
                                 progressDialog.dismiss();
