@@ -62,13 +62,14 @@ public class Login extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
-                                if(Email.equals("manishkumar787898@gmail.com")){
+                                progressDialog.dismiss();
+                                if(Email.equals("krishankg2001@gmail.com") && Pass.equals("123456")){
+                                    Toast.makeText(Login.this, "Welcome to administration page.", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(Login.this, HomeAdministration.class));
-                                    progressDialog.dismiss();
                                 }
                                 else{
+                                    Toast.makeText(Login.this, "Welcome to student page", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(Login.this, Home.class));
-                                    progressDialog.dismiss();
                                 }
                             }
                             else{

@@ -42,6 +42,7 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/add_book"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Book"
@@ -56,6 +57,7 @@
             android:layout_marginEnd="@dimen/_10sdp"/>
 
         <TextView
+            android:id="@+id/issue_book"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Issue Book"
@@ -71,6 +73,7 @@
             android:layout_marginEnd="@dimen/_10sdp"/>
 
         <TextView
+            android:id="@+id/show_books"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
