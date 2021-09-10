@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.iiitlucknowlibrary">
-    
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -11,9 +11,12 @@
         android:roundIcon="@drawable/book"
         android:supportsRtl="true"
         android:theme="@style/Theme.IIITLucknowLibrary">
-        <activity android:name=".Registration"/>
-        <activity android:name=".Home"/>
-        <activity android:name=".Login"/>
+        <activity
+            android:name=".HomeAdministration"
+            android:exported="true" />
+        <activity android:name=".Registration" />
+        <activity android:name=".Home" />
+        <activity android:name=".Login" />
         <activity
             android:name=".SplashScreen"
             android:exported="true">
