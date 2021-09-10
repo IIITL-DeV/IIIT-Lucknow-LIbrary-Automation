@@ -15,6 +15,7 @@
         android:gravity="center">
 
         <TextView
+            android:id="@+id/text4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="IIITL Library"
@@ -23,8 +24,19 @@
             android:textColor="@color/white"
             android:gravity="left"
             android:layout_marginLeft="@dimen/_10sdp"/>
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="5dp"
+            android:queryHint="Search Here"
+            android:iconifiedByDefault="false"
+            android:layout_toRightOf="@+id/text4"
+            android:background="@color/white"
+            tools:ignore="ExtraText">
+           </SearchView>
 
-        <ImageView
+    <ImageView
             android:id="@+id/Logout"
             android:layout_width="@dimen/_22sdp"
             android:layout_height="@dimen/_22sdp"
@@ -33,19 +45,7 @@
 
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_below="@+id/toolbar">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Home Activity"
-            android:textSize="@dimen/_25sdp"
-            android:gravity="center"/>
-    </LinearLayout>
+
 
 
 
