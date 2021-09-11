@@ -4,7 +4,7 @@ public class Book {
     String name;
     String author;
     String quantity;
-    String satus;
+    String status;
     String imageUri;
 
     public Book() {
@@ -14,7 +14,7 @@ public class Book {
         this.author = author;
         this.name = name;
         this.quantity = quantity;
-        this.satus = status;
+        this.status = status;
         this.imageUri = imageUri;
 
     }
@@ -43,12 +43,12 @@ public class Book {
         this.quantity = quantity;
     }
 
-    public String getSatus() {
-        return satus;
+    public String getStatus() {
+        return status;
     }
 
-    public void setSatus(String satus) {
-        this.satus = satus;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getImageUri() {
