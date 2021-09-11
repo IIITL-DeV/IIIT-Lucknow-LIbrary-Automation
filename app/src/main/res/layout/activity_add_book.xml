@@ -27,8 +27,8 @@
 
         <ImageView
             android:id="@+id/Logout"
-            android:layout_width="@dimen/_22sdp"
-            android:layout_height="@dimen/_22sdp"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
             android:background="@drawable/logout"
             android:layout_marginEnd="@dimen/_10sdp"
             android:contentDescription="exit button" />
@@ -38,104 +38,104 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:gravity="center"
-        android:orientation="vertical"
-        android:layout_centerInParent="true">
+        android:orientation="vertical">
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add a book detail"
-            android:gravity="center"
-            android:textSize="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_25sdp"
             android:fontFamily="@font/spartan_bold"
-            android:textStyle="bold"
-            android:layout_marginBottom="@dimen/_25sdp"/>
+            android:gravity="center"
+            android:text="Add book details"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/book_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:src="@drawable/book"
-            app:civ_border_width="2dp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:src="@drawable/addphoto"
             app:civ_border_color="#FF000000"
-            android:layout_marginBottom="@dimen/_15sdp"/>
+            app:civ_border_width="2dp" />
 
 
         <EditText
             android:id="@+id/add_book_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Book Name"
-            android:fontFamily="@font/spartan_regular"
-            android:background="@drawable/edit_text_shape"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:padding="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"/>
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Book Name"
+            android:padding="@dimen/_10sdp" />
 
         <EditText
             android:id="@+id/add_book_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Book Category"
-            android:fontFamily="@font/spartan_regular"
-            android:background="@drawable/edit_text_shape"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:inputType="textEmailAddress"
+            android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_10sdp"
-            android:padding="@dimen/_10sdp"/>
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Book Category"
+            android:inputType="textEmailAddress"
+            android:padding="@dimen/_10sdp" />
 
         <EditText
             android:id="@+id/add_book_author"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Author"
-            android:fontFamily="@font/spartan_regular"
-            android:background="@drawable/edit_text_shape"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Author"
             android:inputType="textPassword"
-            android:padding="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"/>
+            android:padding="@dimen/_10sdp" />
 
         <EditText
             android:id="@+id/add_book_quantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Quantity"
-            android:fontFamily="@font/spartan_regular"
-            android:background="@drawable/edit_text_shape"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Quantity"
             android:inputType="textPassword"
-            android:padding="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"/>
+            android:padding="@dimen/_10sdp" />
 
         <TextView
             android:id="@+id/txt_add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add"
-            android:textColor="@color/white"
-            android:gravity="center"
-            android:textSize="@dimen/_20sdp"
-            android:background="@drawable/signin_shape"
-            android:padding="@dimen/_6sdp"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"/>
+            android:background="@drawable/signin_shape"
+            android:gravity="center"
+            android:padding="@dimen/_6sdp"
+            android:text="Add"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20sdp" />
     </LinearLayout>
 
 </RelativeLayout>
