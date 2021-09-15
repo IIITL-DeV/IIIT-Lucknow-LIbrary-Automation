@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IssueBook">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:orientation="horizontal"
+        android:background="@color/purple_500"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="IIITL Library"
+            android:textSize="@dimen/_15sdp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:gravity="start"
+            android:layout_marginStart="@dimen/_10sdp"/>
+
+
+        <ImageView
+            android:id="@+id/Logout"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:background="@drawable/logout"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:contentDescription="exit button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:fontFamily="@font/spartan_bold"
+            android:gravity="center"
+            android:text="Issue a Book"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/issue_book_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:src="@drawable/book"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="2dp" />
+
+
+        <EditText
+            android:id="@+id/issue_book_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Book Name"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/issue_book_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Book Category"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/issue_book_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Author"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/issue_book_student_enrollment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Enrollment No"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/issue_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Issue Date"
+            android:inputType="date"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/return_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Return Date"
+            android:inputType="date"
+            android:padding="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/issue_book_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/signin_shape"
+            android:gravity="center"
+            android:padding="@dimen/_6sdp"
+            android:text="Issue"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20sdp" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

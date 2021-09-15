@@ -48,7 +48,7 @@ public class HomeAdministration extends AppCompatActivity {
         issue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(HomeAdministration.this, IssueBook.class));
             }
         });
 

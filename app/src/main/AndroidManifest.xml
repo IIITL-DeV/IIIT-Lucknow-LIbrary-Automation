@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IIITLucknowLibrary">
         <activity
+            android:name=".IssueBook"
+            android:exported="true" />
+        <activity
             android:name=".AddBook"
             android:exported="true" />
         <activity
