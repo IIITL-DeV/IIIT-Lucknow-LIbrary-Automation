@@ -49,7 +49,7 @@ public class Login extends AppCompatActivity {
                 if(TextUtils.isEmpty(Email) || TextUtils.isEmpty(Pass)){
                     progressDialog.dismiss();
                     Toast.makeText(Login.this, "Enter valid data", Toast.LENGTH_SHORT).show();
-                }else if(!Email.matches(emailPattern)){
+                }else if(!Email.endsWith("@gmail.com")){
                     progressDialog.dismiss();
                     email.setError("Invalid Email");
                     Toast.makeText(Login.this, "Invalid Email", Toast.LENGTH_SHORT).show();
@@ -63,7 +63,7 @@ public class Login extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 progressDialog.dismiss();
-                                if(Email.equals("manishkumar787898@gmail.com")){
+                                if(Email.equals("admin@gmail.com")){
                                     Toast.makeText(Login.this, "Welcome to administration page.", Toast.LENGTH_SHORT).show();
                                     startActivity(new Intent(Login.this, HomeAdministration.class));
                                 }

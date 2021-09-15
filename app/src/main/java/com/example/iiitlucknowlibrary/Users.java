@@ -4,16 +4,18 @@ public class Users {
     String uid;
     String name;
     String email;
+    String enrolment;
     String imageUri;
     String status;
 
     public Users() {
     }
 
-    public Users(String uid, String name, String email) {
+    public Users(String uid, String name, String email, String enrolment) {
         this.uid = uid;
         this.name = name;
         this.email = email;
+        this.enrolment = enrolment;
         this.imageUri = imageUri;
         this.status = status;
     }
@@ -40,6 +42,14 @@ public class Users {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getEnrolment() {
+        return enrolment;
+    }
+
+    public void setEnrolment(String enrolment) {
+        this.enrolment = enrolment;
     }
 
 }

@@ -57,6 +57,20 @@
             android:autofillHints="yes" />
 
         <EditText
+            android:id="@+id/reg_enrolment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enrolment Number"
+            android:fontFamily="@font/spartan_regular"
+            android:background="@drawable/edit_text_shape"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"/>
+
+        <EditText
             android:id="@+id/reg_pass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

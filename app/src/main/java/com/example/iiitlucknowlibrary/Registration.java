@@ -23,7 +23,7 @@ import com.google.firebase.storage.StorageReference;
 
 public class Registration extends AppCompatActivity {
     TextView txt_signin, txt_registration;
-    EditText reg_name, reg_email, reg_pass, reg_re_pass;
+    EditText reg_name, reg_email, reg_enrolment, reg_pass, reg_re_pass;
 
     FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
@@ -42,6 +42,7 @@ public class Registration extends AppCompatActivity {
 
         reg_name = findViewById(R.id.reg_name);
         reg_email = findViewById(R.id.reg_email);
+        reg_enrolment = findViewById(R.id.reg_enrolment);
         reg_pass = findViewById(R.id.reg_pass);
         reg_re_pass = findViewById(R.id.reg_re_pass);
 
@@ -68,14 +69,14 @@ public class Registration extends AppCompatActivity {
                 progressDialog.show();
                 String name = reg_name.getText().toString();
                 String email = reg_email.getText().toString();
+                String enrolment = reg_enrolment.getText().toString();
                 String pass = reg_pass.getText().toString();
                 String confirm_pass = reg_re_pass.getText().toString();
-                String status = "Hey I am using this chat app";
 
                 if(TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(confirm_pass)){
                     progressDialog.dismiss();
                     Toast.makeText(Registration.this, "Please enter a valid input", Toast.LENGTH_SHORT).show();
-                }else if(!email.matches(emailPattern)){
+                }else if(!email.endsWith("@gmail.com")){
                     progressDialog.dismiss();
                     reg_email.setError("Invalid Email");
                     Toast.makeText(Registration.this, "Invalid Email", Toast.LENGTH_SHORT).show();
@@ -93,9 +94,7 @@ public class Registration extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 DatabaseReference databaseReference = firebaseDatabase.getReference().child("user").child(mAuth.getUid());
-                                StorageReference storageReference = firebaseStorage.getReference().child("upload").child(mAuth.getUid());
-
-                                Users users = new Users(mAuth.getUid(), name, email);
+                                Users users = new Users(mAuth.getUid(), name, email, enrolment);
                                 databaseReference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull  Task<Void> task) {

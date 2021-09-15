@@ -26,7 +26,7 @@ import com.google.firebase.storage.UploadTask;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AddBook extends AppCompatActivity {
-    EditText addBookName, addBookCategory, addBookAuthor, addBookQuantity;
+    EditText addBookID, addBookName, addBookCategory, addBookAuthor, addBookQuantity;
     TextView add;
     FirebaseDatabase firebaseDatabase;
     FirebaseStorage firebaseStorage;
@@ -38,6 +38,7 @@ public class AddBook extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_book);
 
+        addBookID = findViewById(R.id.add_book_id);
         addBookName = findViewById(R.id.add_book_name);
         addBookAuthor = findViewById(R.id.add_book_author);
         addBookCategory = findViewById(R.id.add_book_category);
@@ -66,11 +67,12 @@ public class AddBook extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressDialog.show();
+                String BookID = addBookID.getText().toString();
                 String Name = addBookName.getText().toString();
                 String Category = addBookCategory.getText().toString();
                 String Author = addBookAuthor.getText().toString();
                 String Quantity = addBookQuantity.getText().toString();
-                if(TextUtils.isEmpty(Name) || TextUtils.isEmpty(Category) || TextUtils.isEmpty(Author) || TextUtils.isEmpty(Quantity)){
+                if(TextUtils.isEmpty(BookID) || TextUtils.isEmpty(Name) || TextUtils.isEmpty(Category) || TextUtils.isEmpty(Author) || TextUtils.isEmpty(Quantity)){
                     progressDialog.dismiss();
                     Toast.makeText(AddBook.this, "Please enter a valid input", Toast.LENGTH_SHORT).show();
                 }else if((Integer.parseInt(Quantity)<1)){
@@ -78,7 +80,7 @@ public class AddBook extends AppCompatActivity {
                     addBookQuantity.setError("Invalid Quantity");
                     Toast.makeText(AddBook.this, "Invalid Quantity", Toast.LENGTH_SHORT).show();
                 }else{
-                    DatabaseReference databaseReference = firebaseDatabase.getReference().child("Books").child(Category).child(Name);
+                    DatabaseReference databaseReference = firebaseDatabase.getReference().child("Books").child(BookID);
                     StorageReference storageReference = firebaseStorage.getReference().child("BookImages").child(Category).child(Name);
                     //Book book = new Book(Name, Author, Quantity, "Available");
                     if(imageUri!=null){
@@ -90,7 +92,7 @@ public class AddBook extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(Uri uri) {
                                             image_uri = uri.toString();
-                                            Book book = new Book(Name, Author, Quantity, "Available", image_uri);
+                                            Book book = new Book(BookID, Name, Author, Category, Quantity, "Available", image_uri);
                                             databaseReference.setValue(book).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
@@ -116,7 +118,7 @@ public class AddBook extends AppCompatActivity {
                     }
                     else{
                         image_uri = "https://firebasestorage.googleapis.com/v0/b/library-automation-9abd2.appspot.com/o/book.jpg?alt=media&token=c153d25f-22a6-48b7-b269-0948dd07ec74";
-                        Book book = new Book(Name, Author, Quantity, "Available", image_uri);
+                        Book book = new Book(BookID, Name, Author, Category, Quantity, "Available", image_uri);
                         databaseReference.setValue(book).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
