@@ -1,35 +1,25 @@
 package com.example.iiitlucknowlibrary;
 
 public class IssueBookModel {
-    String author;
-    String name;
+    String id;
     String issueDate;
     String returnDate;
 
     public IssueBookModel() {
     }
 
-    public IssueBookModel(String author, String name, String issueDate, String returnDate) {
-        this.author = author;
-        this.name = name;
+    public IssueBookModel(String id, String issueDate, String returnDate) {
+        this.id=id;
         this.issueDate = issueDate;
         this.returnDate = returnDate;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getId() {
+        return id;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getIssueDate() {

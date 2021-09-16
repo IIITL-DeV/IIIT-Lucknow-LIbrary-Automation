@@ -20,7 +20,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 public class IssueBook extends AppCompatActivity {
-    EditText issueBookName, issueBookCategory, issueBookAuthor, issueStudentEmail,issueBookDate,returnBookDate;
+    EditText issueBookID, issueStudentEnrollment,issueBookDate,returnBookDate;
     TextView issue;
 
     FirebaseDatabase firebaseDatabase;
@@ -30,10 +30,8 @@ public class IssueBook extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_issue_book);
-        issueBookName=findViewById(R.id.issue_book_name);
-        issueBookCategory=findViewById(R.id.issue_book_category);
-        issueBookAuthor=findViewById(R.id.issue_book_author);
-        issueStudentEmail=findViewById(R.id.issue_book_student_enrollment);
+        issueBookID=findViewById(R.id.issue_book_id);
+        issueStudentEnrollment=findViewById(R.id.issue_book_student_enrollment);
         issueBookDate=findViewById(R.id.issue_date);
         returnBookDate=findViewById(R.id.return_date);
 
@@ -50,22 +48,20 @@ public class IssueBook extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressDialog.show();
-                String Name = issueBookName.getText().toString();
-                String Category = issueBookCategory.getText().toString();
-                String Author = issueBookAuthor.getText().toString();
-                String Enrollment = issueStudentEmail.getText().toString();
+                String issueID=issueBookID.getText().toString();
+                String Enrollment = issueStudentEnrollment.getText().toString();
                 String IssueDate = issueBookDate.getText().toString();
                 String ReturnDate = returnBookDate.getText().toString();
 
-                if(TextUtils.isEmpty(Name) || TextUtils.isEmpty(Category) || TextUtils.isEmpty(Author)
-                        || TextUtils.isEmpty(Enrollment) || TextUtils.isEmpty(IssueDate) || TextUtils.isEmpty(ReturnDate)){
+                if(TextUtils.isEmpty(issueID) || TextUtils.isEmpty(Enrollment) ||
+                        TextUtils.isEmpty(IssueDate) || TextUtils.isEmpty(ReturnDate)){
                     progressDialog.dismiss();
                     Toast.makeText(IssueBook.this, "Please enter a valid input", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    DatabaseReference databaseReference = firebaseDatabase.getReference().child("IssueBook").child(Enrollment).child(Category).child(Name);
-                    IssueBookModel issueBookModel=new IssueBookModel(Author,Name,IssueDate,ReturnDate);
-                    //IssueBookModel(String author, String name, String issueDate, String returnDate);
+                    DatabaseReference databaseReference = firebaseDatabase.getReference().child("IssueBook").child(Enrollment);
+                    IssueBookModel issueBookModel=new IssueBookModel(issueID,IssueDate,ReturnDate);
+                    //public IssueBookModel(String id, String issueDate, String returnDate)
                     databaseReference.setValue(issueBookModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
