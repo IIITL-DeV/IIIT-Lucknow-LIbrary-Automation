@@ -73,7 +73,7 @@
             android:background="@drawable/signin_shape"
             android:gravity="center"
             android:padding="@dimen/_6sdp"
-            android:text="Add"
+            android:text="Remove"
             android:textColor="@color/white"
             android:textSize="@dimen/_20sdp" />
     </LinearLayout>
