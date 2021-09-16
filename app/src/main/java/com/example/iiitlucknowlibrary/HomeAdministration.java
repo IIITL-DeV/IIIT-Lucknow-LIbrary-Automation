@@ -13,7 +13,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class HomeAdministration extends AppCompatActivity {
     private FirebaseAuth mAuth;
     ImageView logout;
-    TextView add, issue, show;
+    TextView add, issue, show, remove;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +24,7 @@ public class HomeAdministration extends AppCompatActivity {
         add = findViewById(R.id.add_book);
         issue = findViewById(R.id.issue_book);
         show = findViewById(R.id.show_books);
+        remove = findViewById(R.id.remove_book);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +57,13 @@ public class HomeAdministration extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeAdministration.this, RemoveABook.class));
             }
         });
     }
