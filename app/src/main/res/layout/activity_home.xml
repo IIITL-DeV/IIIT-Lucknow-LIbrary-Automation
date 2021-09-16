@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerlayout"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/navigation"
+        app:headerLayout="@layout/headerforsidemenu"
+        app:menu="@menu/sidemenu"
+        android:layout_gravity="start"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:orientation="horizontal"
-        android:background="@color/purple_500"
+        android:background="#2196F3"
         android:gravity="center">
 
         <TextView
@@ -20,7 +39,7 @@
             android:textSize="@dimen/_15sdp"
             android:layout_weight="1"
             android:textColor="@color/white"
-            android:gravity="start"
+            android:gravity="center"
             android:layout_marginStart="@dimen/_10sdp"/>
 
         <ImageView
@@ -51,3 +70,6 @@
 
 
 </RelativeLayout>
+    </ScrollView>
+
+</androidx.drawerlayout.widget.DrawerLayout>
