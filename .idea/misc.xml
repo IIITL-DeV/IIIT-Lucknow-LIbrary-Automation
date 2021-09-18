@@ -3,9 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/shape_item.xml" value="0.18611111111111112" />
         <entry key="app/src/main/res/layout/activity_add_book.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/activity_addd_book.xml" value="0.3229166666666667" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.23958333333333334" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.1590909090909091" />
         <entry key="app/src/main/res/layout/activity_home_administration.xml" value="0.3134057971014493" />
         <entry key="app/src/main/res/layout/activity_issue_book.xml" value="0.3016304347826087" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3134057971014493" />
@@ -14,6 +15,7 @@
         <entry key="app/src/main/res/layout/activity_splashscreen.xml" value="0.16041666666666668" />
         <entry key="app/src/main/res/layout/activity_update_book.xml" value="0.30480072463768115" />
         <entry key="app/src/main/res/layout/headerforsidemenu.xml" value="0.3161231884057971" />
+        <entry key="app/src/main/res/layout/item_books_row.xml" value="0.1" />
       </map>
     </option>
   </component>
