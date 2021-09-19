@@ -1,4 +1,4 @@
-package com.example.iiitlucknowlibrary;
+package com.example.iiitlucknowlibrary.administration;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.iiitlucknowlibrary.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
 public class IssueBook extends AppCompatActivity {
     EditText issueBookID, issueStudentEnrollment,issueBookDate,returnBookDate;

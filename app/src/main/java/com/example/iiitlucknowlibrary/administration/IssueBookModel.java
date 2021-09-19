@@ -1,4 +1,4 @@
-package com.example.iiitlucknowlibrary;
+package com.example.iiitlucknowlibrary.administration;
 
 public class IssueBookModel {
     String id;

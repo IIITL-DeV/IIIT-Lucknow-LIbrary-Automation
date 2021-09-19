@@ -30,20 +30,9 @@
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="IIITL Library"
+                    android:text="Book Categories"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_15sdp" />
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="bottom"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/spartan_bold"
-                    android:text="Books Category"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14sdp" />
+                    android:textSize="@dimen/_18sdp" />
 
                 <ImageView
                     android:id="@+id/Logout"

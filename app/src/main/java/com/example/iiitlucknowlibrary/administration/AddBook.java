@@ -1,4 +1,4 @@
-package com.example.iiitlucknowlibrary;
+package com.example.iiitlucknowlibrary.administration;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.iiitlucknowlibrary.Book;
+import com.example.iiitlucknowlibrary.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;

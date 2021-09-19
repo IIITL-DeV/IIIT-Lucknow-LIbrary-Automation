@@ -12,23 +12,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IIITLucknowLibrary">
         <activity
-            android:name=".UpdateBook"
+            android:name=".administration.UpdateBook"
             android:exported="true" />
         <activity
-            android:name=".RemoveABook"
+            android:name=".administration.RemoveABook"
             android:exported="true" />
         <activity
-            android:name=".IssueBook"
+            android:name=".administration.IssueBook"
             android:exported="true" />
         <activity
-            android:name=".AddBook"
+            android:name=".administration.AddBook"
             android:exported="true" />
         <activity
             android:name=".HomeAdministration"
             android:exported="true" />
-        <activity android:name=".Registration" />
+        <activity android:name=".Authentication.Registration" />
         <activity android:name=".Home" />
-        <activity android:name=".Login" />
+        <activity android:name=".Authentication.Login" />
         <activity
             android:name=".SplashScreen"
             android:exported="true">

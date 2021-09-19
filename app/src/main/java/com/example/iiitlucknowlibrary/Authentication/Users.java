@@ -1,4 +1,4 @@
-package com.example.iiitlucknowlibrary;
+package com.example.iiitlucknowlibrary.Authentication;
 
 public class Users {
     String uid;

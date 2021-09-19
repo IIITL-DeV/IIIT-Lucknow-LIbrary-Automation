@@ -8,6 +8,12 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.iiitlucknowlibrary.Authentication.Login;
+import com.example.iiitlucknowlibrary.Authentication.Registration;
+import com.example.iiitlucknowlibrary.administration.AddBook;
+import com.example.iiitlucknowlibrary.administration.IssueBook;
+import com.example.iiitlucknowlibrary.administration.RemoveABook;
+import com.example.iiitlucknowlibrary.administration.UpdateBook;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeAdministration extends AppCompatActivity {
@@ -57,7 +63,7 @@ public class HomeAdministration extends AppCompatActivity {
         show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(HomeAdministration.this, Home.class));
             }
         });
 

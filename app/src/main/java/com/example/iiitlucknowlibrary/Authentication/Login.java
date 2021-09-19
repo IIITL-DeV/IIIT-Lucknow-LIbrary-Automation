@@ -1,4 +1,4 @@
-package com.example.iiitlucknowlibrary;
+package com.example.iiitlucknowlibrary.Authentication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -12,6 +12,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.iiitlucknowlibrary.Home;
+import com.example.iiitlucknowlibrary.R;
+import com.example.iiitlucknowlibrary.HomeAdministration;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
