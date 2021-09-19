@@ -73,6 +73,12 @@ public class Home extends AppCompatActivity {
                 startActivity(new Intent(Home.this, Login.class));
             }
         });
+        if(mAuth.getCurrentUser()==null){
+            startActivity(new Intent(Home.this, Registration.class));
+        }
+        else if(mAuth.getCurrentUser().getEmail().equals("admin@gmail.com")){
+            startActivity(new Intent(Home.this, HomeAdministration.class));
+        }
 
         if(mAuth.getCurrentUser()==null){
             startActivity(new Intent(Home.this, Registration.class));
