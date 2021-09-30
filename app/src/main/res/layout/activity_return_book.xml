@@ -41,6 +41,71 @@
         android:gravity="center"
         android:orientation="vertical">
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:fontFamily="@font/spartan_bold"
+            android:gravity="center"
+            android:text="Return a Book"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/return_book_image"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:src="@drawable/book"
+            app:civ_border_color="#FFFFFF"
+            app:civ_border_width="2dp" />
+
+
+        <EditText
+            android:id="@+id/return_book_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Book ID"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/return_book_student_enrollment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Enrollment No"
+            android:padding="@dimen/_10sdp" />
+
+        <TextView
+            android:id="@+id/return_book_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/signin_shape"
+            android:gravity="center"
+            android:padding="@dimen/_6sdp"
+            android:text="Return"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_20sdp" />
+
+
     </LinearLayout>
 
 </RelativeLayout>
