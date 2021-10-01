@@ -15,11 +15,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context=".Home" android:orientation="vertical">
-
             <LinearLayout
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_60sdp"
+                android:layout_height="@dimen/_40sdp"
                 android:background="@color/purple_500"
                 android:gravity="center"
                 android:orientation="horizontal">
