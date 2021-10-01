@@ -116,6 +116,7 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"/>
+
     </LinearLayout>
 
     <LinearLayout
