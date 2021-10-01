@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,12 +20,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
-
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class Home extends AppCompatActivity {
-
     ImageView logout;
     DatabaseReference database;
     FirebaseAuth mAuth;
@@ -38,32 +40,49 @@ public class Home extends AppCompatActivity {
         database = FirebaseDatabase.getInstance().getReference("Books");
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        HashMap<String, ArrayList<Book>> book_map = new HashMap<String, ArrayList<Book>>();
         ArrayList<Book> list = new ArrayList<Book>();
         BookAdapter adapter = new BookAdapter(this,list);
         recyclerView.setAdapter(adapter);
+        Iterator it = book_map.keySet().iterator();
+        ArrayList<String> c_name = new ArrayList<String>();
+        ArrayList<Integer> quantity = new ArrayList<Integer>();
+
+//        while(it.hasNext()){
+//            String s = (String)it.next();
+//            ArrayList<Book> p = new ArrayList<Book>();
+//            p = book_map.get(s);
+//             c_name.add(s);
+//             quantity.add(p.size());
+//        }
 
         database.addValueEventListener(new ValueEventListener() {
-
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-
                     Book book;
                     book = dataSnapshot.getValue(Book.class);
-                    list.add(book);
+
+                    String s = book.getCategory();
+                    ArrayList<Book> temp = new ArrayList<Book>();
+                    if(book_map.containsKey(s)){
+                        temp = book_map.get(s);
+                        temp.add(book);
+                        book_map.put(s,temp);
+                    }else {
+                        temp.add(book);
+                        list.add(book);
+                        book_map.put(s, temp);
+                        temp=null;
+                    }
                 }
                 adapter.notifyDataSetChanged();
-
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
-
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,13 +97,5 @@ public class Home extends AppCompatActivity {
         else if(mAuth.getCurrentUser().getEmail().equals("admin@gmail.com")){
             startActivity(new Intent(Home.this, HomeAdministration.class));
         }
-
-        if(mAuth.getCurrentUser()==null){
-            startActivity(new Intent(Home.this, Registration.class));
-        }
-        else if(mAuth.getCurrentUser().getEmail().equals("admin@gmail.com")){
-            startActivity(new Intent(Home.this, HomeAdministration.class));
-        }
-
     }
 }
