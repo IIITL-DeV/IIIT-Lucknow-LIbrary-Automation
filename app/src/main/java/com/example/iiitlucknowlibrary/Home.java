@@ -1,17 +1,14 @@
 package com.example.iiitlucknowlibrary;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.iiitlucknowlibrary.Authentication.Login;
 import com.example.iiitlucknowlibrary.Authentication.Registration;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,7 +22,6 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-
 public class Home extends AppCompatActivity {
     ImageView logout;
     DatabaseReference database;
@@ -42,20 +38,8 @@ public class Home extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         HashMap<String, ArrayList<Book>> book_map = new HashMap<String, ArrayList<Book>>();
         ArrayList<Book> list = new ArrayList<Book>();
-        BookAdapter adapter = new BookAdapter(this,list);
+        BookAdapter adapter = new BookAdapter(this,list,book_map);
         recyclerView.setAdapter(adapter);
-        Iterator it = book_map.keySet().iterator();
-        ArrayList<String> c_name = new ArrayList<String>();
-        ArrayList<Integer> quantity = new ArrayList<Integer>();
-
-//        while(it.hasNext()){
-//            String s = (String)it.next();
-//            ArrayList<Book> p = new ArrayList<Book>();
-//            p = book_map.get(s);
-//             c_name.add(s);
-//             quantity.add(p.size());
-//        }
-
         database.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
@@ -63,7 +47,6 @@ public class Home extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                     Book book;
                     book = dataSnapshot.getValue(Book.class);
-
                     String s = book.getCategory();
                     ArrayList<Book> temp = new ArrayList<Book>();
                     if(book_map.containsKey(s)){
@@ -83,7 +66,6 @@ public class Home extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

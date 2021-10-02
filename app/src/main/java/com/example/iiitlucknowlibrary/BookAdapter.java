@@ -16,14 +16,18 @@ import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<Book> list;
-    public BookAdapter(Context context, ArrayList<Book> list) {
+    HashMap<String, ArrayList<Book>> book_map;
+    public BookAdapter(Context context, ArrayList<Book> list, HashMap<String, ArrayList<Book>> book_map) {
         this.context = context;
         this.list = list;
+        this.book_map = book_map;
     }
 
     @NonNull
@@ -38,7 +42,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
 
         final Book book = list.get(position);
         holder.book_category_name.setText(book.getCategory());
-        holder.book_quantity.setText("Status: "+  book.getQuantity() + " books available");
+        String s = book.getCategory();
+        ArrayList<Book> temp = book_map.get(s);
+        holder.book_quantity.setText("Status: "+  temp.size() + " books available");
        Picasso.get().load(book.getImageUri()).into(holder.book_category_image);
        holder.itemView.setOnClickListener(new View.OnClickListener() {
            @Override
