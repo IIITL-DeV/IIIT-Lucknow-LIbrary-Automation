@@ -2,6 +2,10 @@ package com.example.iiitlucknowlibrary;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +48,21 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
         holder.book_category_name.setText(book.getCategory());
         String s = book.getCategory();
         ArrayList<Book> temp = book_map.get(s);
-        holder.book_quantity.setText("Status: "+  temp.size() + " books available");
+        if(temp.size() == 0) {
+            SpannableStringBuilder builder = new SpannableStringBuilder();
+
+            String red = " No book available";
+            SpannableString redSpannable= new SpannableString(red);
+            redSpannable.setSpan(new ForegroundColorSpan(Color.RED), 0, red.length(), 0);
+            builder.append(redSpannable);
+            holder.book_quantity.setText("Status: " + red);
+        }
+        else if(temp.size() == 1) {
+            holder.book_quantity.setText("Status: "+temp.size()  + " book available");
+        }
+        else {
+            holder.book_quantity.setText("Status: "+temp.size() + " books available");
+        }
        Picasso.get().load(book.getImageUri()).into(holder.book_category_image);
        holder.itemView.setOnClickListener(new View.OnClickListener() {
            @Override
