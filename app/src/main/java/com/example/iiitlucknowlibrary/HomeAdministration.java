@@ -63,7 +63,7 @@ public class HomeAdministration extends AppCompatActivity {
         show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(HomeAdministration.this, Home.class));
+                startActivity(new Intent(HomeAdministration.this, Activity_cat_show_admin.class));
             }
         });
 
