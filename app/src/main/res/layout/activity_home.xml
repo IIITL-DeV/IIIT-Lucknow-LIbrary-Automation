@@ -38,7 +38,7 @@
                     android:layout_width="@dimen/_22sdp"
                     android:layout_height="@dimen/_22sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:background="@drawable/logout"
+                    android:background="@drawable/logout1"
                     android:clipToOutline="true"
                     android:contentDescription="Logout Button" />
             </LinearLayout>

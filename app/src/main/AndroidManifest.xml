@@ -16,6 +16,9 @@
             android:name=".BookList"
             android:exported="true" />
         <activity
+            android:name=".Activity_cat_show_admin"
+            android:exported="true" />
+        <activity
             android:name=".administration.UpdateBook"
             android:exported="true" />
         <activity
