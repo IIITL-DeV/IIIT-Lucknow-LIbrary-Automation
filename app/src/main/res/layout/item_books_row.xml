@@ -9,8 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="#434343">
+        android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/book_category_image"
@@ -28,13 +27,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Name"
-                android:textColor="@color/white"
+
                 android:textSize="@dimen/_15sdp" />
             <TextView
                 android:id="@+id/book_quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name"
                 android:layout_gravity="bottom"
                 android:textColor="@color/green"
                 android:textSize="@dimen/_10sdp" />

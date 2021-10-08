@@ -20,10 +20,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<Book> booklist;
-    public BookListAdapter(Context context, ArrayList<Book> booklist) {
+    ArrayList<Book> bookList;
+    public BookListAdapter(Context context, ArrayList<Book> book_list) {
         this.context = context;
-        this.booklist = booklist;
+        this.bookList = book_list;
     }
     @NonNull
     @Override
@@ -33,7 +33,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
     }
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        final Book book = booklist.get(position);
+        final Book book = bookList.get(position);
         holder.quantity.setText("Quantity: "+  book.getQuantity() );
         holder.author_name.setText("Author Name: "+ book.getAuthor());
         holder.book_status.setText("Status: "+  book.getStatus() );
@@ -42,7 +42,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
     }
     @Override
     public int getItemCount() {
-        return booklist.size();
+        return bookList.size();
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView quantity,book_id , book_status,author_name;

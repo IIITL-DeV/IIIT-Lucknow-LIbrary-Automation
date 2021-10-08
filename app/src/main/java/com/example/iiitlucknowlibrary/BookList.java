@@ -2,6 +2,7 @@ package com.example.iiitlucknowlibrary;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -33,10 +34,10 @@ public class BookList extends AppCompatActivity {
         RecyclerView recyclerView1 = findViewById(R.id.bookslistRecyclerView);
         database = FirebaseDatabase.getInstance().getReference("Books");
         recyclerView1.setHasFixedSize(true);
-        recyclerView1.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView1.setLayoutManager(new GridLayoutManager(this,2));
 
-        ArrayList<Book> booklist = new ArrayList<Book>();
-        BookListAdapter adapter1 = new BookListAdapter(this,booklist);
+        ArrayList<Book> book_list = new ArrayList<Book>();
+        BookListAdapter adapter1 = new BookListAdapter(this,book_list);
         recyclerView1.setAdapter(adapter1);
         database.addValueEventListener(new ValueEventListener() {
             @Override
@@ -45,7 +46,7 @@ public class BookList extends AppCompatActivity {
                     Book book  = snapshot1.getValue(Book.class);
                     String s = book.getCategory();
                     if(s.equalsIgnoreCase(string)) {
-                        booklist.add(book);
+                        book_list.add(book);
                     }
                 }
                 adapter1.notifyDataSetChanged();
