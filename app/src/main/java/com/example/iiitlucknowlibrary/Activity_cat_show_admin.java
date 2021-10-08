@@ -36,7 +36,7 @@ public class Activity_cat_show_admin extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         HashMap<String, ArrayList<Book>> book_map = new HashMap<String, ArrayList<Book>>();
         ArrayList<Book> list = new ArrayList<Book>();
-        BookAdapter adapter = new BookAdapter(this,list);
+        BookAdapter adapter = new BookAdapter(this,list, book_map);
         recyclerView.setAdapter(adapter);
         Iterator it = book_map.keySet().iterator();
         ArrayList<String> c_name = new ArrayList<String>();
