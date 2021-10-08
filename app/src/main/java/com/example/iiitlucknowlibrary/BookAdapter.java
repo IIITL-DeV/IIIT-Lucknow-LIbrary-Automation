@@ -2,6 +2,11 @@ package com.example.iiitlucknowlibrary;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,14 +34,12 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
         this.list = list;
         this.book_map = book_map;
     }
-
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.item_books_row,parent,false);
         return  new MyViewHolder(v);
     }
-
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
 
@@ -44,7 +47,26 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
         holder.book_category_name.setText(book.getCategory());
         String s = book.getCategory();
         ArrayList<Book> temp = book_map.get(s);
-        holder.book_quantity.setText("Status: "+  temp.size() + " books available");
+        String status= "Status: ";
+        SpannableStringBuilder builder;
+        builder = new SpannableStringBuilder();
+
+        SpannableString statusSpannable= new SpannableString(status);
+        statusSpannable.setSpan(new ForegroundColorSpan(Color.WHITE), 0, 7, 0);
+        builder.append(statusSpannable);
+        if(temp.size() == 0) {
+            String red = " No book available";
+            SpannableString redSpannable= new SpannableString(red);
+            redSpannable.setSpan(new ForegroundColorSpan(Color.RED), 0, red.length(), 0);
+            builder.append(redSpannable);
+            holder.book_quantity.setText(status + red);
+        }
+        else if(temp.size() == 1) {
+            holder.book_quantity.setText(status +temp.size()  + " book available");
+        }
+        else {
+            holder.book_quantity.setText(status +temp.size() + " books available");
+        }
        Picasso.get().load(book.getImageUri()).into(holder.book_category_image);
        holder.itemView.setOnClickListener(new View.OnClickListener() {
            @Override
