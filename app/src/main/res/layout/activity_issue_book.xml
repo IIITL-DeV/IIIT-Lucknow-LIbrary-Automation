@@ -23,15 +23,6 @@
             android:gravity="start"
             android:layout_marginStart="@dimen/_10sdp"/>
 
-
-        <ImageView
-            android:id="@+id/Logout"
-            android:layout_width="@dimen/_15sdp"
-            android:layout_height="@dimen/_15sdp"
-            android:background="@drawable/logout1"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:contentDescription="exit button" />
-
     </LinearLayout>
 
     <LinearLayout

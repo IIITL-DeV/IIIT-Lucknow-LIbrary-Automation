@@ -27,7 +27,7 @@ import java.util.Iterator;
 public class Activity_cat_show_admin extends AppCompatActivity {
     DatabaseReference database;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         RecyclerView recyclerView = findViewById(R.id.booksRecyclerView);
