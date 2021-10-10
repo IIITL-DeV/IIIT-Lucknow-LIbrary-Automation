@@ -55,19 +55,41 @@
                 android:id="@+id/issue_book"
                 android:layout_gravity="center"
                 android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_height="160dp"
                 card_view:cardCornerRadius="4dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_5sdp">
-
-                <TextView
-                    android:id="@+id/info_text1"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:background="@color/white"
+                card_view:cardBackgroundColor="@color/white">
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Issue Book"
-                    android:textSize="@dimen/_18sdp"
-                    android:gravity="center"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_gravity="center"
+                    android:background="@color/white">
+
+                    <ImageView
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="@dimen/_70sdp"
+                        android:background="@drawable/issue"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/info_text1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Issue Book"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_18sdp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -75,19 +97,39 @@
                 android:id="@+id/return_book"
                 android:layout_gravity="center"
                 android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_height="160dp"
                 card_view:cardCornerRadius="4dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_marginRight="@dimen/_10sdp">
+                android:layout_marginRight="@dimen/_10sdp"
+                card_view:cardBackgroundColor="@color/white">
 
-                <TextView
-                    android:id="@+id/info_text2"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Return Boook"
-                    android:textSize="@dimen/_18sdp"
-                    android:gravity="center"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_10sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="@dimen/_70sdp"
+                        android:background="@drawable/returnn"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"/>
+
+                    <TextView
+                        android:id="@+id/info_text2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Return Boook"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_18sdp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
@@ -104,19 +146,40 @@
                 android:id="@+id/add_book"
                 android:layout_gravity="center"
                 android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_height="160dp"
                 card_view:cardCornerRadius="4dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_5sdp">
+                android:layout_marginRight="@dimen/_5sdp"
+                card_view:cardBackgroundColor="@color/white">
 
-                <TextView
-                    android:id="@+id/info_text3"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Add Book"
-                    android:textSize="@dimen/_18sdp"
-                    android:gravity="center"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_10sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="@dimen/_70sdp"
+                        android:background="@drawable/addbook"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"/>
+
+                    <TextView
+                        android:id="@+id/info_text3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Add Book"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_18sdp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -124,19 +187,39 @@
                 android:id="@+id/remove_book"
                 android:layout_gravity="center"
                 android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_height="160dp"
                 card_view:cardCornerRadius="4dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_marginRight="@dimen/_10sdp">
+                android:layout_marginRight="@dimen/_10sdp"
+                card_view:cardBackgroundColor="@color/white">
 
-                <TextView
-                    android:id="@+id/info_text4"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Remove Book"
-                    android:textSize="@dimen/_18sdp"
-                    android:gravity="center"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_10sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="@dimen/_70sdp"
+                        android:background="@drawable/remove"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"/>
+
+                    <TextView
+                        android:id="@+id/info_text4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Remove Book"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_18sdp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
@@ -153,19 +236,39 @@
                 android:id="@+id/update_book"
                 android:layout_gravity="center"
                 android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_height="160dp"
                 card_view:cardCornerRadius="4dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_5sdp">
+                android:layout_marginRight="@dimen/_5sdp"
+                card_view:cardBackgroundColor="@color/white">
 
-                <TextView
-                    android:id="@+id/info_text5"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Update Book"
-                    android:textSize="@dimen/_18sdp"
-                    android:gravity="center"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_10sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="@dimen/_70sdp"
+                        android:background="@drawable/update"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"/>
+
+                    <TextView
+                        android:id="@+id/info_text5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Update Book"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_18sdp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
@@ -173,19 +276,39 @@
                 android:id="@+id/show_books"
                 android:layout_gravity="center"
                 android:layout_width="200dp"
-                android:layout_height="200dp"
+                android:layout_height="160dp"
                 card_view:cardCornerRadius="4dp"
                 android:layout_weight="1"
                 android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_marginRight="@dimen/_10sdp">
+                android:layout_marginRight="@dimen/_10sdp"
+                card_view:cardBackgroundColor="@color/white">
 
-                <TextView
-                    android:id="@+id/info_text6"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Show Books"
-                    android:textSize="@dimen/_18sdp"
-                    android:gravity="center"/>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/_10sdp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="@dimen/_70sdp"
+                        android:background="@drawable/show"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"/>
+
+                    <TextView
+                        android:id="@+id/info_text6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="Show Books"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_18sdp"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
