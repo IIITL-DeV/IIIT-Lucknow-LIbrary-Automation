@@ -6,14 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 
-import com.example.iiitlucknowlibrary.Authentication.Login;
-import com.example.iiitlucknowlibrary.Authentication.Registration;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.iiitlucknowlibrary.UserPortal.BookAdapter;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

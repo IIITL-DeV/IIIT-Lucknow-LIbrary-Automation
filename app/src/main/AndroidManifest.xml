@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.iiitlucknowlibrary">
+
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/book"
@@ -10,10 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IIITLucknowLibrary">
         <activity
+            android:name=".WishList"
+            android:exported="true" />
+        <activity
+            android:name=".MyBooks"
+            android:exported="true" />
+        <activity
             android:name=".administration.ReturnBook"
             android:exported="true" />
         <activity
-            android:name=".BookList"
+            android:name=".UserPortal.BookList"
             android:exported="true" />
         <activity
             android:name=".Activity_cat_show_admin"
@@ -34,7 +42,7 @@
             android:name=".HomeAdministration"
             android:exported="true" />
         <activity android:name=".Authentication.Registration" />
-        <activity android:name=".Home" />
+        <activity android:name=".UserPortal.Home" />
         <activity android:name=".Authentication.Login" />
         <activity
             android:name=".SplashScreen"
