@@ -60,7 +60,7 @@ public class IssueBook extends AppCompatActivity {
                 }
                 else{
                     DatabaseReference databaseReference = firebaseDatabase.getReference().child("IssueBook").child(Enrollment);
-                    IssueBookModel issueBookModel=new IssueBookModel(issueID,IssueDate,ReturnDate);
+                    IssueBookModel issueBookModel=new IssueBookModel(issueID,IssueDate,ReturnDate,Enrollment);
                     //public IssueBookModel(String id, String issueDate, String returnDate)
                     databaseReference.setValue(issueBookModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

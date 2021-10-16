@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.iiitlucknowlibrary.UserPortal.Home;
+
 public class SplashScreen extends AppCompatActivity {
 
     /** Duration of wait **/
@@ -21,7 +23,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(SplashScreen.this,Home.class);
+                Intent mainIntent = new Intent(SplashScreen.this, Home.class);
                 SplashScreen.this.startActivity(mainIntent);
                 SplashScreen.this.finish();
             }
