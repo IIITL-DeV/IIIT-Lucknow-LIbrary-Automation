@@ -8,25 +8,17 @@ public class IssueBookModel {
     public IssueBookModel() {
     }
 
-    public IssueBookModel(String id, String issueDate, String returnDate, String Enrollment) {
+    public IssueBookModel(String id, String issueDate, String returnDate ) {
         this.id=id;
         this.issueDate = issueDate;
         this.returnDate = returnDate;
-        this.Enrollment = Enrollment;
+        this.Enrollment=Enrollment;
     }
-
     public String getId() {
         return id;
     }
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getEnrollment() {
-        return Enrollment;
-    }
-    public void setEnrollment(String enrollment) {
-        Enrollment = enrollment;
     }
 
     public String getIssueDate() {
