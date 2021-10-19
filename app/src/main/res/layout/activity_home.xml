@@ -47,13 +47,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/booksRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_490sdp"
+                android:layout_height="@dimen/_510sdp"
+                android:layout_marginBottom="@dimen/_25sdp"
                 android:layout_below="@+id/toolbar"
                 android:layout_marginTop="@dimen/_5sdp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
-                android:layout_marginBottom="@dimen/_1sdp"
+
                 android:orientation="horizontal"
                 android:gravity="bottom"
                 android:layout_below="@+id/booksRecyclerView">
@@ -74,7 +75,7 @@
                     android:fontFamily="@font/spartan_bold"
                     android:textColor="@color/white"
                     android:textAlignment="center"
-                    android:textSize="@dimen/_18sdp"
+                    android:textSize="@dimen/_16sdp"
                     android:background="@color/purple_500"
                     android:layout_height="@dimen/_25sdp"/>
             </LinearLayout>

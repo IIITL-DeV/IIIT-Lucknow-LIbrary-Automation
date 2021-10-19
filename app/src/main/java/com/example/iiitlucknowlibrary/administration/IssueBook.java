@@ -22,7 +22,6 @@ import com.google.firebase.storage.FirebaseStorage;
 public class IssueBook extends AppCompatActivity {
     EditText issueBookID, issueStudentEnrollment,issueBookDate,returnBookDate;
     TextView issue;
-
     FirebaseDatabase firebaseDatabase;
     FirebaseStorage firebaseStorage;
 
@@ -34,9 +33,7 @@ public class IssueBook extends AppCompatActivity {
         issueStudentEnrollment=findViewById(R.id.issue_book_student_enrollment);
         issueBookDate=findViewById(R.id.issue_date);
         returnBookDate=findViewById(R.id.return_date);
-
         issue=findViewById(R.id.issue_book_button);
-
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
 
@@ -60,7 +57,7 @@ public class IssueBook extends AppCompatActivity {
                 }
                 else{
                     DatabaseReference databaseReference = firebaseDatabase.getReference().child("IssueBook").child(Enrollment);
-                    IssueBookModel issueBookModel=new IssueBookModel(issueID,IssueDate,ReturnDate,Enrollment);
+                    IssueBookModel issueBookModel=new IssueBookModel(issueID,IssueDate,ReturnDate);
                     //public IssueBookModel(String id, String issueDate, String returnDate)
                     databaseReference.setValue(issueBookModel).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

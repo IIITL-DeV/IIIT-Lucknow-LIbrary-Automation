@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IIITLucknowLibrary">
         <activity
-            android:name=".WishList"
+            android:name=".UserPortal.WishList"
             android:exported="true" />
         <activity
-            android:name=".MyBooks"
+            android:name=".UserPortal.MyBooks"
             android:exported="true" />
         <activity
             android:name=".administration.ReturnBook"

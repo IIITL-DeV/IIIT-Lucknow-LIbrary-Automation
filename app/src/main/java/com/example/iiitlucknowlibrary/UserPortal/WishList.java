@@ -1,8 +1,10 @@
-package com.example.iiitlucknowlibrary;
+package com.example.iiitlucknowlibrary.UserPortal;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.iiitlucknowlibrary.R;
 
 public class WishList extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.iiitlucknowlibrary;
+package com.example.iiitlucknowlibrary.UserPortal;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,12 +9,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.iiitlucknowlibrary.R;
 import com.example.iiitlucknowlibrary.administration.IssueBookModel;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHolder> {
 
@@ -32,10 +30,10 @@ public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHold
     }
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        IssueBookModel  issued_book = bookList.get(position);
-        holder.my_book_id.setText(issued_book.getId());
-        holder.my_issue_date.setText(issued_book.getIssueDate());
-        holder.my_return_date.setText(issued_book.getReturnDate());
+        final IssueBookModel  issued_book = bookList.get(position);
+        holder.my_book_id.setText("Id: " + issued_book.getId());
+        holder.my_issue_date.setText("Issue Date: " + issued_book.getIssueDate());
+        holder.my_return_date.setText("Return Date: " +issued_book.getReturnDate());
 
     }
     @Override
@@ -44,13 +42,13 @@ public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHold
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView my_book_id ,my_issue_date,my_return_date;
-        CircleImageView book_image;
+      //  CircleImageView book_image;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             my_book_id = itemView.findViewById(R.id.my_book_id);
             my_issue_date = itemView.findViewById(R.id.my_issue_date);
             my_return_date = itemView.findViewById(R.id.my_return_date);
-            book_image = itemView.findViewById(R.id.mybook_image);
+           // book_image = itemView.findViewById(R.id.mybook_image);
         }
     }
 
