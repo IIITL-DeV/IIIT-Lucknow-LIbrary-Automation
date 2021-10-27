@@ -15,13 +15,14 @@ import com.example.iiitlucknowlibrary.Authentication.Registration;
 import com.example.iiitlucknowlibrary.administration.AddBook;
 import com.example.iiitlucknowlibrary.administration.IssueBook;
 import com.example.iiitlucknowlibrary.administration.RemoveABook;
+import com.example.iiitlucknowlibrary.administration.ReturnBook;
 import com.example.iiitlucknowlibrary.administration.UpdateBook;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeAdministration extends AppCompatActivity {
     private FirebaseAuth mAuth;
     ImageView logout;
-    CardView add, issue, show, remove, update;
+    CardView add, issue, show, remove, update,returnBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +35,7 @@ public class HomeAdministration extends AppCompatActivity {
         show = findViewById(R.id.show_books);
         remove = findViewById(R.id.remove_book);
         update = findViewById(R.id.update_book);
+        returnBtn=findViewById(R.id.return_book);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,5 +84,13 @@ public class HomeAdministration extends AppCompatActivity {
                 startActivity(new Intent(HomeAdministration.this, UpdateBook.class));
             }
         });
+
+        returnBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeAdministration.this, ReturnBook.class));
+            }
+        });
+
     }
 }

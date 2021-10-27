@@ -56,7 +56,7 @@ public class IssueBook extends AppCompatActivity {
                     Toast.makeText(IssueBook.this, "Please enter a valid input", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    DatabaseReference databaseReference = firebaseDatabase.getReference().child("IssueBook").child(Enrollment);
+                    DatabaseReference databaseReference = firebaseDatabase.getReference().child("IssueBook").child(Enrollment).child(issueID);
                     IssueBookModel issueBookModel=new IssueBookModel(issueID,IssueDate,ReturnDate);
                     //public IssueBookModel(String id, String issueDate, String returnDate)
                     databaseReference.setValue(issueBookModel).addOnCompleteListener(new OnCompleteListener<Void>() {

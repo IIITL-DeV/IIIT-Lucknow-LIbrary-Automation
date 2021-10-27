@@ -31,7 +31,7 @@ public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final IssueBookModel  issued_book = bookList.get(position);
-        holder.my_book_id.setText("Id: " + issued_book.getId());
+        holder.my_book_id.setText("Id: " + issued_book.getIssueId());
         holder.my_issue_date.setText("Issue Date: " + issued_book.getIssueDate());
         holder.my_return_date.setText("Return Date: " +issued_book.getReturnDate());
 
