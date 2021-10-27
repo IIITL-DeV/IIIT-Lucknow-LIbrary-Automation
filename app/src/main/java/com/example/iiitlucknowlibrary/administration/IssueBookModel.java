@@ -1,24 +1,24 @@
 package com.example.iiitlucknowlibrary.administration;
 
 public class IssueBookModel {
-    String id;
     String issueDate;
     String returnDate;
-    String Enrollment;
+    String issueId;
     public IssueBookModel() {
     }
 
-    public IssueBookModel(String id, String issueDate, String returnDate ) {
-        this.id=id;
+    public IssueBookModel(String issueId,String issueDate, String returnDate ) {
+        this.issueId=issueId;
         this.issueDate = issueDate;
         this.returnDate = returnDate;
-        this.Enrollment=Enrollment;
     }
-    public String getId() {
-        return id;
+
+    public String getIssueId() {
+        return issueId;
     }
-    public void setId(String id) {
-        this.id = id;
+
+    public void setIssueId(String issueId) {
+        this.issueId = issueId;
     }
 
     public String getIssueDate() {
