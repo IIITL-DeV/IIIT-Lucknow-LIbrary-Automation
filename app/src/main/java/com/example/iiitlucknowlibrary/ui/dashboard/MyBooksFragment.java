@@ -57,27 +57,19 @@ public class MyBooksFragment extends Fragment {
          */
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
-        String uId = mAuth.getCurrentUser().getUid().toString();
-        String ss = "";
-        final String uss = "";
-        ss = mAuth.getCurrentUser().getUid().toString();
+        String ss = mAuth.getCurrentUser().getUid();
         DatabaseReference reference11 = FirebaseDatabase.getInstance().getReference("user").child(ss).child("enrolment");
 
-
-        //DatabaseReference database1 = FirebaseDatabase.getInstance().getReference("user").child("enrolment");
         RecyclerView recyclerView = binding.myBooksListRecyclerView;
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         ArrayList<IssueBookModel> book_list = new ArrayList<IssueBookModel>();
         MyBookAdapter myAdapter = new MyBookAdapter(getContext(),book_list);
         recyclerView.setAdapter(myAdapter);
-        TextView no_book = binding.noBooks;
 
         reference11.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //snapshot.getValue();
                 String us = snapshot.getValue().toString();
                 DatabaseReference database1 = FirebaseDatabase.getInstance().getReference("IssueBook").child(us);
                 database1.addValueEventListener(new ValueEventListener() {
@@ -102,8 +94,6 @@ public class MyBooksFragment extends Fragment {
 
             }
         });
-
-
 
         /*
                 End
