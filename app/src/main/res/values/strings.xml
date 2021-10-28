@@ -2,6 +2,6 @@
     <string name="app_name">IIIT Lucknow Library</string>
     <string name="title_activity_user_home">UserHome</string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_my_books">My Books</string>
+    <string name="title_wishlist">Wishlist</string>
 </resources>

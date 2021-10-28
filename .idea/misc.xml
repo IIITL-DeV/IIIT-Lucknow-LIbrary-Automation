@@ -29,6 +29,7 @@
         <entry key="app/src/main/res/layout/item_booklist_row.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_books_row.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_mybooks_row.xml" value="0.13269927536231885" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.19791666666666666" />
         <entry key="app/src/main/res/menu/sidemenu.xml" value="0.1890625" />
       </map>
     </option>

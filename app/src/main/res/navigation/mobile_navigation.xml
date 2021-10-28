@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.iiitlucknowlibrary.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:name="com.example.iiitlucknowlibrary.ui.dashboard.MyBooksFragment"
+        android:label="@string/title_my_books"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.iiitlucknowlibrary.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:name="com.example.iiitlucknowlibrary.ui.notifications.WishlistFragment"
+        android:label="@string/title_wishlist"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

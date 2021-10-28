@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.iiitlucknowlibrary.R;
 import com.example.iiitlucknowlibrary.UserPortal.MyBookAdapter;
 import com.example.iiitlucknowlibrary.administration.IssueBookModel;
 import com.example.iiitlucknowlibrary.databinding.FragmentDashboardBinding;
@@ -28,21 +27,21 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 
-public class DashboardFragment extends Fragment {
+public class MyBooksFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
+    private MyBooksViewModel myBooksViewModel;
     private FragmentDashboardBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        myBooksViewModel =
+                new ViewModelProvider(this).get(MyBooksViewModel.class);
 
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         //final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        myBooksViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 //textView.setText(s);
