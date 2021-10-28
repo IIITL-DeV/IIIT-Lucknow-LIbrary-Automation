@@ -7,6 +7,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,8 +16,12 @@ import android.widget.Toast;
 import com.example.iiitlucknowlibrary.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 public class ReturnBook extends AppCompatActivity {
     EditText returnBookID, returnStudentEnrollment;
@@ -50,19 +55,24 @@ public class ReturnBook extends AppCompatActivity {
                     Toast.makeText(ReturnBook.this, "Please enter a valid input", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    DatabaseReference databaseReference=firebaseDatabase.getReference().child("IssueBook").child(Enrollment);
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+                    Query applesQuery = ref.child("IssueBook").child(Enrollment).child(myReturnBookID);
 
-                    databaseReference.child(myReturnBookID).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                    applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            progressDialog.dismiss();
-                            if(task.isSuccessful()){
-                                startActivity(new Intent(ReturnBook.this, ReturnBook.class));
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
+                                appleSnapshot.getRef().removeValue();
+                                progressDialog.dismiss();
                                 Toast.makeText(ReturnBook.this, "Book Returned successfully", Toast.LENGTH_SHORT).show();
                             }
-                            else{
-                                Toast.makeText(ReturnBook.this, "Error in Book Return", Toast.LENGTH_SHORT).show();
-                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            progressDialog.dismiss();
+                            Log.e("RemoveABook", "onCancelled", databaseError.toException());
+                            Toast.makeText(ReturnBook.this, "Error in Book Return", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
