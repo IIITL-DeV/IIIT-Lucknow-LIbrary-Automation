@@ -1,6 +1,7 @@
 package com.example.iiitlucknowlibrary.ui.dashboard;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.iiitlucknowlibrary.Book;
 import com.example.iiitlucknowlibrary.UserPortal.MyBookAdapter;
 import com.example.iiitlucknowlibrary.administration.IssueBookModel;
 import com.example.iiitlucknowlibrary.databinding.FragmentDashboardBinding;
@@ -29,6 +31,7 @@ import java.util.ArrayList;
 
 public class MyBooksFragment extends Fragment {
 
+    private static final String TAG = "MyBookFragment";
     private MyBooksViewModel myBooksViewModel;
     private FragmentDashboardBinding binding;
 
@@ -54,54 +57,53 @@ public class MyBooksFragment extends Fragment {
          */
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        RecyclerView recyclerView;
-        FirebaseStorage firebaseStorage;
-        TextView no_book;
-
-        firebaseStorage = FirebaseStorage.getInstance();
+        FirebaseStorage firebaseStorage = FirebaseStorage.getInstance();
         String uId = mAuth.getCurrentUser().getUid().toString();
-        DatabaseReference database1 = FirebaseDatabase.getInstance().getReference("user").child(uId).child("enrolment");
+        String ss = "";
+        final String uss = "";
+        ss = mAuth.getCurrentUser().getUid().toString();
+        DatabaseReference reference11 = FirebaseDatabase.getInstance().getReference("user").child(ss).child("enrolment");
 
-        recyclerView = binding.myBooksListRecyclerView;
 
+        //DatabaseReference database1 = FirebaseDatabase.getInstance().getReference("user").child("enrolment");
+        RecyclerView recyclerView = binding.myBooksListRecyclerView;
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         ArrayList<IssueBookModel> book_list = new ArrayList<IssueBookModel>();
         MyBookAdapter myAdapter = new MyBookAdapter(getContext(),book_list);
         recyclerView.setAdapter(myAdapter);
-        no_book = binding.noBooks;
+        TextView no_book = binding.noBooks;
 
-        database1.addValueEventListener(new ValueEventListener() {
+        reference11.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()) {
-                    String s = snapshot.getValue().toString();
-                    if(s.isEmpty()){
-                        no_book.setText("NO BOOK TO SHOW :(");
-                    }else {
-                        DatabaseReference database2 = FirebaseDatabase.getInstance().getReference("IssueBook");
-                        database2.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                                    IssueBookModel issued_book = dataSnapshot.getValue(IssueBookModel.class);
-                                    book_list.add(issued_book);
-                                }
-                                myAdapter.notifyDataSetChanged();
-                            }
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
-
-                            }
-                        });
+                //snapshot.getValue();
+                String us = snapshot.getValue().toString();
+                DatabaseReference database1 = FirebaseDatabase.getInstance().getReference("IssueBook").child(us);
+                database1.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                        //Log.d(TAG, "onCreateView: "+snapshot1.getValue());
+                        for (DataSnapshot dataSnapshot : snapshot1.getChildren()) {
+                            IssueBookModel issued_book = dataSnapshot.getValue(IssueBookModel.class);
+                            book_list.add(issued_book);
+                        }
+                        myAdapter.notifyDataSetChanged();
                     }
-                }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
+
+
 
         /*
                 End

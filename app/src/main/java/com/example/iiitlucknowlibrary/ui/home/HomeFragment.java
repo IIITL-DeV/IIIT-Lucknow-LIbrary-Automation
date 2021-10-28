@@ -1,6 +1,8 @@
 package com.example.iiitlucknowlibrary.ui.home;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.iiitlucknowlibrary.Authentication.Login;
 import com.example.iiitlucknowlibrary.Book;
 import com.example.iiitlucknowlibrary.R;
 import com.example.iiitlucknowlibrary.UserPortal.BookAdapter;
@@ -94,8 +97,9 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                //startActivity(new Intent(HomeFragment.this, Registration.class));
-                //Toast.makeText(getContext(), "clicked"+getContext(), Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(getContext(), Login.class);
+                startActivity(i);
+                ((Activity) getActivity()).overridePendingTransition(0, 0);
             }
         });
 
