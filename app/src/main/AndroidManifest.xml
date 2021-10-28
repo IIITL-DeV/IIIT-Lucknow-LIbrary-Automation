@@ -12,6 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IIITLucknowLibrary">
         <activity
+            android:name=".UserHome"
+            android:exported="true"
+            android:label="@string/title_activity_user_home" />
+        <activity
             android:name=".UserPortal.WishList"
             android:exported="true" />
         <activity

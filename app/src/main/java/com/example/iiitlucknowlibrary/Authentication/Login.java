@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.iiitlucknowlibrary.UserHome;
 import com.example.iiitlucknowlibrary.UserPortal.Home;
 import com.example.iiitlucknowlibrary.R;
 import com.example.iiitlucknowlibrary.HomeAdministration;
@@ -72,7 +73,7 @@ public class Login extends AppCompatActivity {
                                 }
                                 else{
                                     Toast.makeText(Login.this, "Welcome to student page", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(Login.this, Home.class));
+                                    startActivity(new Intent(Login.this, UserHome.class));
                                 }
                             }
                             else{
