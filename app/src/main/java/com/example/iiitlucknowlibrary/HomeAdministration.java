@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class HomeAdministration extends AppCompatActivity {
     private FirebaseAuth mAuth;
     ImageView logout;
-    CardView add, issue, show, remove, update,returnBtn;
+    CardView add, issue, show, remove, update,returnBtn, details, history;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +36,8 @@ public class HomeAdministration extends AppCompatActivity {
         remove = findViewById(R.id.remove_book);
         update = findViewById(R.id.update_book);
         returnBtn=findViewById(R.id.return_book);
+        details = findViewById(R.id.detils);
+        history = findViewById(R.id.history);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +93,22 @@ public class HomeAdministration extends AppCompatActivity {
                 startActivity(new Intent(HomeAdministration.this, ReturnBook.class));
             }
         });
+
+        details.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeAdministration.this, IssuedBooksDetails.class));
+            }
+        });
+
+        history.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(HomeAdministration.this, History.class));
+            }
+        });
+
+
 
     }
 }

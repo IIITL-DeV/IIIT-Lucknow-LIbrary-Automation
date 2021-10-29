@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IIITLucknowLibrary">
         <activity
+            android:name=".IssuedBooksDetails"
+            android:exported="true" />
+        <activity
+            android:name=".History"
+            android:exported="true" />
+        <activity
             android:name=".UserHome"
             android:exported="true"
             android:label="@string/title_activity_user_home" />

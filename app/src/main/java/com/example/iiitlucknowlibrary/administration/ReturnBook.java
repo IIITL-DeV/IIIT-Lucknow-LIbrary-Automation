@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.iiitlucknowlibrary.Authentication.Login;
 import com.example.iiitlucknowlibrary.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -61,10 +62,24 @@ public class ReturnBook extends AppCompatActivity {
                     applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
-                                appleSnapshot.getRef().removeValue();
-                                progressDialog.dismiss();
-                                Toast.makeText(ReturnBook.this, "Book Returned successfully", Toast.LENGTH_SHORT).show();
+                            for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()){
+                                DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("History").child(Enrollment);
+
+                                reference1.setValue(dataSnapshot.getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        progressDialog.dismiss();
+                                        if(task.isSuccessful()){
+                                            appleSnapshot.getRef().removeValue();
+                                            progressDialog.dismiss();
+                                            Toast.makeText(ReturnBook.this, "Book Returned successfully", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            Toast.makeText(ReturnBook.this, "Error in Return Book", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+
                             }
                         }
 
