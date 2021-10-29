@@ -8,8 +8,10 @@ public class Book {
     String status;
     String imageUri;
     String category;
+
     public Book() {
     }
+
     public Book(String BookID, String name, String author, String category, String quantity, String status, String imageUri) {
         this.BookID = BookID;
         this.author = author;

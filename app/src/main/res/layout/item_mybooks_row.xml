@@ -8,7 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@drawable/book_details">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/mybook_image"
             android:layout_width="@dimen/_50sdp"
@@ -19,14 +20,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="#404040">
             <TextView
                 android:id="@+id/my_book_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
+                android:background="#404040"
                 android:text="Id"
-
                 android:textSize="@dimen/_15sdp" />
             <TextView
                 android:id="@+id/my_issue_date"
@@ -35,7 +37,8 @@
                 android:layout_gravity="bottom"
                 android:textColor="@color/green"
                 android:text="IssueDate"
-                android:textSize="@dimen/_14sdp" />
+                android:background="#404040"
+                android:textSize="@dimen/_12sdp" />
             <TextView
                 android:id="@+id/my_return_date"
                 android:layout_width="match_parent"
@@ -43,7 +46,8 @@
                 android:layout_gravity="bottom"
                 android:text="ReturnDate"
                 android:textColor="@color/green"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_12sdp"
+                android:background="#404040"/>
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

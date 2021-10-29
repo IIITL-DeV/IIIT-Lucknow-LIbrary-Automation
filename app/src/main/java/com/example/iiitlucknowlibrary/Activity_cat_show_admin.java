@@ -24,7 +24,7 @@ public class Activity_cat_show_admin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_cat_show_admin);
         RecyclerView recyclerView = findViewById(R.id.booksRecyclerView);
         database = FirebaseDatabase.getInstance().getReference("Books");
         recyclerView.setHasFixedSize(true);

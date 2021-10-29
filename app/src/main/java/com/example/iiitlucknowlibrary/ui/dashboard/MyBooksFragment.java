@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.iiitlucknowlibrary.Book;
 import com.example.iiitlucknowlibrary.UserPortal.MyBookAdapter;
 import com.example.iiitlucknowlibrary.administration.IssueBookModel;
-import com.example.iiitlucknowlibrary.databinding.FragmentDashboardBinding;
+import com.example.iiitlucknowlibrary.databinding.FragmentMyBooksBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,14 +33,14 @@ public class MyBooksFragment extends Fragment {
 
     private static final String TAG = "MyBookFragment";
     private MyBooksViewModel myBooksViewModel;
-    private FragmentDashboardBinding binding;
+    private FragmentMyBooksBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         myBooksViewModel =
                 new ViewModelProvider(this).get(MyBooksViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentMyBooksBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         //final TextView textView = binding.textDashboard;

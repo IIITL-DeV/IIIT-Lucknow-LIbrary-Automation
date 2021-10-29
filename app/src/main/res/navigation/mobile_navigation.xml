@@ -15,11 +15,11 @@
         android:id="@+id/navigation_dashboard"
         android:name="com.example.iiitlucknowlibrary.ui.dashboard.MyBooksFragment"
         android:label="@string/title_my_books"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_my_books" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.iiitlucknowlibrary.ui.notifications.WishlistFragment"
         android:label="@string/title_wishlist"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_wishlist" />
 </navigation>

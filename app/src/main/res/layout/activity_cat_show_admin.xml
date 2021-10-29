@@ -7,7 +7,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
-        android:background="@color/purple_500"
+        android:background="@color/purple_700"
         android:gravity="center"
         android:orientation="horizontal">
 

@@ -11,19 +11,19 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.iiitlucknowlibrary.databinding.FragmentNotificationsBinding;
+import com.example.iiitlucknowlibrary.databinding.FragmentWishlistBinding;
 
 public class WishlistFragment extends Fragment {
 
     private WishlistViewModel wishlistViewModel;
-    private FragmentNotificationsBinding binding;
+    private FragmentWishlistBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         wishlistViewModel =
                 new ViewModelProvider(this).get(WishlistViewModel.class);
 
-        binding = FragmentNotificationsBinding.inflate(inflater, container, false);
+        binding = FragmentWishlistBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         //final TextView textView = binding.textNotifications;
