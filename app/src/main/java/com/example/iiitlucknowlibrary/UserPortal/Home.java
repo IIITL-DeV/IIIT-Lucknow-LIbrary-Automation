@@ -2,12 +2,13 @@ package com.example.iiitlucknowlibrary.UserPortal;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.iiitlucknowlibrary.Authentication.Login;
@@ -23,18 +24,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 public class Home extends AppCompatActivity {
     ImageView logout;
     DatabaseReference database;
     FirebaseAuth mAuth;
     TextView wish_list,my_books;
+    private DrawerLayout drawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        drawerLayout  = (DrawerLayout)findViewById(R.id.drawer_layout);
         logout = findViewById(R.id.Logout);
-
         my_books = (TextView)findViewById(R.id.my_books);
         wish_list = (TextView)findViewById(R.id.wish_list);
         mAuth = FirebaseAuth.getInstance();
