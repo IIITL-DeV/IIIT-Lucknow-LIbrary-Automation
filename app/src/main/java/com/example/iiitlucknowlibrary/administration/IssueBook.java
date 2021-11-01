@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,8 +17,11 @@ import android.widget.Toast;
 import com.example.iiitlucknowlibrary.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
 public class IssueBook extends AppCompatActivity {
@@ -24,6 +29,8 @@ public class IssueBook extends AppCompatActivity {
     TextView issue;
     FirebaseDatabase firebaseDatabase;
     FirebaseStorage firebaseStorage;
+    boolean f = true, f1;
+    int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +51,9 @@ public class IssueBook extends AppCompatActivity {
         issue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+
+
                 progressDialog.show();
                 String issueID=issueBookID.getText().toString();
                 String Enrollment = issueStudentEnrollment.getText().toString();
@@ -56,7 +66,130 @@ public class IssueBook extends AppCompatActivity {
                     Toast.makeText(IssueBook.this, "Please enter a valid input", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    DatabaseReference databaseReference = firebaseDatabase.getReference().child("IssueBook").child(Enrollment).child(issueID);
+                    /*count = -1;
+                    DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Books").child(issueID);
+                    reference1.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()){
+                                f1 = true;
+                            }
+                            else f1 = false;
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                    if(f1==false){
+                        progressDialog.dismiss();
+                        Toast.makeText(IssueBook.this, "BookId doesn't exist.", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        count = -1;
+                        reference1.child("quantity").addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                count = Integer.parseInt(snapshot.getValue().toString());
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+                        if(count==-1){
+                            progressDialog.dismiss();
+                            Toast.makeText(IssueBook.this, "Getting Error.", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(count==0){
+                            progressDialog.dismiss();
+                            Toast.makeText(IssueBook.this, "Book is not available right now.", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
+                            DatabaseReference reference2 = firebaseDatabase.getReference().child("IssueBook").child(Enrollment).child(issueID);
+                            IssueBookModel issueBookModel=new IssueBookModel(issueID,IssueDate,ReturnDate,Enrollment);
+                            reference2.setValue(issueBookModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    progressDialog.dismiss();
+                                    if(task.isSuccessful()){
+                                        reference1.child("quantity").setValue(""+(count-1));
+                                        startActivity(new Intent(IssueBook.this, IssueBook.class));
+                                        Toast.makeText(IssueBook.this, "Book Issued successfully", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else{
+                                        Toast.makeText(IssueBook.this, "Error in Book Issue", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                        }
+                    }*/
+
+
+
+                    DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Books").child(issueID);
+                    reference1.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                            if(snapshot1.exists()){
+                                reference1.child("quantity").addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot2) {
+                                        int count = Integer.parseInt(snapshot2.getValue().toString());
+                                        if(count==0){
+                                            progressDialog.dismiss();
+                                            Toast.makeText(IssueBook.this, "Book is not available right now.", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            DatabaseReference reference2 = firebaseDatabase.getReference().child("IssueBook").child(Enrollment).child(issueID);
+                                            IssueBookModel issueBookModel=new IssueBookModel(issueID,IssueDate,ReturnDate,Enrollment);
+                                            reference2.setValue(issueBookModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    progressDialog.dismiss();
+                                                    if(task.isSuccessful()){
+                                                        //int a = count-1;
+
+                                                        reference1.child("quantity").setValue(""+(count-1));
+                                                        if(count==1){
+                                                            reference1.child("status").setValue("Not Available");
+                                                        }
+                                                        startActivity(new Intent(IssueBook.this, IssueBook.class));
+                                                        Toast.makeText(IssueBook.this, "Book Issued successfully", Toast.LENGTH_SHORT).show();
+                                                            //f = false;
+
+                                                    }
+                                                    else{
+                                                        Toast.makeText(IssueBook.this, "Error in Book Issue", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
+
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        Toast.makeText(IssueBook.this, "Error2: "+error, Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                            }
+                            else {
+                                progressDialog.dismiss();
+                                Toast.makeText(IssueBook.this, "Book doesn't exist.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(IssueBook.this, "Error1: "+error, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+
+                    /*DatabaseReference databaseReference = firebaseDatabase.getReference().child("IssueBook").child(Enrollment).child(issueID);
                     IssueBookModel issueBookModel=new IssueBookModel(issueID,IssueDate,ReturnDate,Enrollment);
                     //public IssueBookModel(String id, String issueDate, String returnDate, String Enrollment)
                     databaseReference.setValue(issueBookModel).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -64,6 +197,8 @@ public class IssueBook extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             progressDialog.dismiss();
                             if(task.isSuccessful()){
+
+
                                 startActivity(new Intent(IssueBook.this, IssueBook.class));
                                 Toast.makeText(IssueBook.this, "Book Issued successfully", Toast.LENGTH_SHORT).show();
                             }
@@ -71,7 +206,7 @@ public class IssueBook extends AppCompatActivity {
                                 Toast.makeText(IssueBook.this, "Error in Book Issue", Toast.LENGTH_SHORT).show();
                             }
                         }
-                    });
+                    });*/
                 }
             }
         });

@@ -51,7 +51,7 @@ public class History extends AppCompatActivity {
                     String s = issued_book.getIssueId();
                     s += ", ";
                     s += "Roll Number: ";
-                    s += us1;
+                    s += dataSnapshot.getKey();
                     issued_book.setIssueId(s);
 
                     book_list.add(issued_book);

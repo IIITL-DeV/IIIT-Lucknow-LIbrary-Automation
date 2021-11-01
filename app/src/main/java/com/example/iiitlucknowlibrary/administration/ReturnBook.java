@@ -28,6 +28,7 @@ public class ReturnBook extends AppCompatActivity {
     EditText returnBookID, returnStudentEnrollment;
     TextView returnBook;
     FirebaseDatabase firebaseDatabase;
+    int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,11 @@ public class ReturnBook extends AppCompatActivity {
         returnBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("Books").child("1001");
+                String temp = reference2.child("quantity").
+                Log.d("Return", "onClick: "+temp);*/
+
+
                 progressDialog.show();
 
                 String Enrollment = returnStudentEnrollment.getText().toString();
@@ -70,9 +76,25 @@ public class ReturnBook extends AppCompatActivity {
                                     public void onComplete(@NonNull Task<Void> task) {
                                         progressDialog.dismiss();
                                         if(task.isSuccessful()){
-                                            appleSnapshot.getRef().removeValue();
-                                            progressDialog.dismiss();
-                                            Toast.makeText(ReturnBook.this, "Book Returned successfully", Toast.LENGTH_SHORT).show();
+                                            DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("Books").child(myReturnBookID);
+                                            reference2.child("quantity").addListenerForSingleValueEvent(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                    count = Integer.parseInt(snapshot.getValue().toString());
+                                                    reference2.child("quantity").setValue(count+1);
+                                                    if(count==0){
+                                                        reference2.child("status").setValue("Available");
+                                                    }
+                                                    appleSnapshot.getRef().removeValue();
+                                                    progressDialog.dismiss();
+                                                    Toast.makeText(ReturnBook.this, "Book Returned successfully", Toast.LENGTH_SHORT).show();
+                                                }
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
+                                                    Toast.makeText(ReturnBook.this, "Getting error01", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+
                                         }
                                         else{
                                             Toast.makeText(ReturnBook.this, "Error in Return Book", Toast.LENGTH_SHORT).show();
@@ -91,6 +113,8 @@ public class ReturnBook extends AppCompatActivity {
                         }
                     });
                 }
+
+
 
             }
         });
