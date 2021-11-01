@@ -43,10 +43,11 @@ public class BookList extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot snapshot1 :  snapshot.getChildren()){
                     Book book  = snapshot1.getValue(Book.class);
-                    String s = book.getCategory();
-                    if(s.equalsIgnoreCase(string)) {
-                        book_list.add(book);
-                    }
+                        String s = book.getCategory();
+                        if (s.equalsIgnoreCase(string)) {
+                            book_list.add(book);
+                        }
+
                 }
                 adapter1.notifyDataSetChanged();
             }
@@ -55,5 +56,7 @@ public class BookList extends AppCompatActivity {
 
             }
         });
+
+
     }
 }

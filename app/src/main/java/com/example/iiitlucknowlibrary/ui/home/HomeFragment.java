@@ -71,8 +71,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Book book;
-                    book = dataSnapshot.getValue(Book.class);
+                    Book book = dataSnapshot.getValue(Book.class);
                     String s = book.getCategory();
                     ArrayList<Book> temp = new ArrayList<Book>();
                     if(book_map.containsKey(s)){
