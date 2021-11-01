@@ -81,7 +81,7 @@ public class ReturnBook extends AppCompatActivity {
                                                 @Override
                                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                     count = Integer.parseInt(snapshot.getValue().toString());
-                                                    reference2.child("quantity").setValue(count+1);
+                                                    reference2.child("quantity").setValue(""+count+1);
                                                     if(count==0){
                                                         reference2.child("status").setValue("Available");
                                                     }

@@ -1,5 +1,6 @@
 package com.example.iiitlucknowlibrary.administration;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
@@ -39,26 +40,45 @@ public class RemoveABook extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                progressDialog.show();
+
+                //progressDialog.show();
                 String BookID = BookId.getText().toString();
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                Query applesQuery = ref.child("Books").child(BookID);
-
-                applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                //Log.d("RemoveBOok", "onClick: "+BookID);
+                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Books").child(BookID);
+                reference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
-                            appleSnapshot.getRef().removeValue();
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if(snapshot.exists()){
+                            Query applesQuery = ref.child("Books").child(BookID);
+
+                            applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
+                                        appleSnapshot.getRef().removeValue();
+                                        progressDialog.dismiss();
+                                        Toast.makeText(RemoveABook.this, "Book is successfully Removed", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+                                    progressDialog.dismiss();
+                                    Log.e("RemoveABook", "onCancelled", databaseError.toException());
+                                    Toast.makeText(RemoveABook.this, "Error in removing book", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            //Toast.makeText(RemoveABook.this, "Book Exist", Toast.LENGTH_SHORT).show();
+                        }
+                        else{
                             progressDialog.dismiss();
-                            Toast.makeText(RemoveABook.this, "Book is successfully Removed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RemoveABook.this, "Book Id doesn't exist", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        progressDialog.dismiss();
-                        Log.e("RemoveABook", "onCancelled", databaseError.toException());
-                        Toast.makeText(RemoveABook.this, "Error in removing book", Toast.LENGTH_SHORT).show();
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Toast.makeText(RemoveABook.this, "Getting Error001", Toast.LENGTH_SHORT).show();
                     }
                 });
 

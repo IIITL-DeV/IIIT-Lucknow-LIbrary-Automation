@@ -15,8 +15,11 @@ import android.widget.Toast;
 import com.example.iiitlucknowlibrary.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 
@@ -46,7 +49,6 @@ public class UpdateBook extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressDialog.show();
-                progressDialog.show();
                 String BookID = updateBookID.getText().toString();
                 String Name = updateBookName.getText().toString();
                 String Category = updateBookCategory.getText().toString();
@@ -62,24 +64,44 @@ public class UpdateBook extends AppCompatActivity {
                 }
                 else{
                     DatabaseReference databaseReference = firebaseDatabase.getReference().child("Books").child(BookID);
-                    HashMap hashMap=new HashMap();
-                    hashMap.put("author",Author);
-                    hashMap.put("category",Category);
-                    hashMap.put("name",Name);
-                    hashMap.put("quantity",Quantity);
-                    databaseReference.updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                    databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
-                        public void onComplete(@NonNull Task task) {
-                            progressDialog.dismiss();
-                            if(task.isSuccessful()){
-                                startActivity(new Intent(UpdateBook.this, UpdateBook.class));
-                                Toast.makeText(UpdateBook.this, "Book updated successfully", Toast.LENGTH_SHORT).show();
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()){
+                                HashMap hashMap=new HashMap();
+                                hashMap.put("author",Author);
+                                hashMap.put("category",Category);
+                                hashMap.put("name",Name);
+                                hashMap.put("quantity",Quantity);
+                                databaseReference.updateChildren(hashMap).addOnCompleteListener(new OnCompleteListener() {
+                                    @Override
+                                    public void onComplete(@NonNull Task task) {
+                                        progressDialog.dismiss();
+                                        if(task.isSuccessful()){
+                                            startActivity(new Intent(UpdateBook.this, UpdateBook.class));
+                                            Toast.makeText(UpdateBook.this, "Book updated successfully", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            progressDialog.dismiss();
+                                            Toast.makeText(UpdateBook.this, "Error in updating Book details", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
                             }
                             else{
-                                Toast.makeText(UpdateBook.this, "Error in updating Book details", Toast.LENGTH_SHORT).show();
+                                progressDialog.dismiss();
+                                Toast.makeText(UpdateBook.this, "Book Id doesn't exist", Toast.LENGTH_SHORT).show();
                             }
                         }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            progressDialog.dismiss();
+                            Toast.makeText(UpdateBook.this, "Getting error", Toast.LENGTH_SHORT).show();
+                        }
                     });
+
+
                 }
             }
         });
