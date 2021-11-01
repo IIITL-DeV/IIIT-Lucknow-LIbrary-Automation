@@ -1,7 +1,13 @@
 package com.example.iiitlucknowlibrary.Authentication;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -36,89 +42,124 @@ public class Registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
-
-        txt_signin = findViewById(R.id.txt_signIn);
-        txt_registration = findViewById(R.id.txt_register);
-
-        reg_name = findViewById(R.id.reg_name);
-        reg_email = findViewById(R.id.reg_email);
-        reg_enrolment = findViewById(R.id.reg_enrolment);
-        reg_pass = findViewById(R.id.reg_pass);
-        reg_re_pass = findViewById(R.id.reg_re_pass);
-
-        mAuth = FirebaseAuth.getInstance();
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseStorage = FirebaseStorage.getInstance();
-
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-
-        progressDialog = new ProgressDialog(Registration.this);
-        progressDialog.setMessage("Please wait...");
-        progressDialog.setCancelable(false);
-
-        txt_signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Registration.this, Login.class));
-            }
-        });
-
-        txt_registration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progressDialog.show();
-                String name = reg_name.getText().toString();
-                String email = reg_email.getText().toString();
-                String enrolment = reg_enrolment.getText().toString();
-                String pass = reg_pass.getText().toString();
-                String confirm_pass = reg_re_pass.getText().toString();
-
-                if(TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(confirm_pass)){
-                    progressDialog.dismiss();
-                    Toast.makeText(Registration.this, "Please enter a valid input", Toast.LENGTH_SHORT).show();
-                }else if(!email.endsWith("@gmail.com")){
-                    progressDialog.dismiss();
-                    reg_email.setError("Invalid Email");
-                    Toast.makeText(Registration.this, "Invalid Email", Toast.LENGTH_SHORT).show();
-                }else if(!pass.equals(confirm_pass)){
-                    progressDialog.dismiss();
-                    reg_re_pass.setError("Password is not matching");
-                    Toast.makeText(Registration.this, "Password is matching", Toast.LENGTH_SHORT).show();
-                }else if(pass.length()<6){
-                    progressDialog.dismiss();
-                    reg_pass.setError("Invalid Password");
-                    Toast.makeText(Registration.this, "Invalid Password", Toast.LENGTH_SHORT).show();
-                }else{
-                    mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        if(!isNetworkAvailable()){
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setTitle("Internet Connection Alert")
+                    .setMessage("Please Check Your Internet Connection")
+                    .setPositiveButton("Close", new DialogInterface.OnClickListener() {
                         @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                DatabaseReference databaseReference = firebaseDatabase.getReference().child("user").child(mAuth.getUid());
-                                Users users = new Users(mAuth.getUid(), name, email, enrolment);
-                                databaseReference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull  Task<Void> task) {
-                                        if(task.isSuccessful()){
-                                            startActivity(new Intent(Registration.this, Login.class));
-                                            progressDialog.dismiss();
-                                            Toast.makeText(getApplicationContext(), "Your account is created successfully", Toast.LENGTH_SHORT).show();
-                                        }else{
-                                            progressDialog.dismiss();
-                                            Toast.makeText(Registration.this, "Error in creating user at final", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-
-                            }
-                            else{
-                                progressDialog.dismiss();
-                                Toast.makeText(Registration.this, "Error in creating user", Toast.LENGTH_SHORT).show();
-                            }
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            finish();
                         }
-                    });
+                    }).show();
+        }
+        else {
+            txt_signin = findViewById(R.id.txt_signIn);
+            txt_registration = findViewById(R.id.txt_register);
+
+            reg_name = findViewById(R.id.reg_name);
+            reg_email = findViewById(R.id.reg_email);
+            reg_enrolment = findViewById(R.id.reg_enrolment);
+            reg_pass = findViewById(R.id.reg_pass);
+            reg_re_pass = findViewById(R.id.reg_re_pass);
+
+            mAuth = FirebaseAuth.getInstance();
+            firebaseDatabase = FirebaseDatabase.getInstance();
+            firebaseStorage = FirebaseStorage.getInstance();
+
+            String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+            progressDialog = new ProgressDialog(Registration.this);
+            progressDialog.setMessage("Please wait...");
+            progressDialog.setCancelable(false);
+
+            txt_signin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Registration.this, Login.class));
+                }
+            });
+
+            txt_registration.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    progressDialog.show();
+                    String name = reg_name.getText().toString();
+                    String email = reg_email.getText().toString();
+                    String enrolment = reg_enrolment.getText().toString();
+                    String pass = reg_pass.getText().toString();
+                    String confirm_pass = reg_re_pass.getText().toString();
+
+                    if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(confirm_pass)) {
+                        progressDialog.dismiss();
+                        Toast.makeText(Registration.this, "Please enter a valid input", Toast.LENGTH_SHORT).show();
+                    } else if (!email.endsWith("@gmail.com")) {
+                        progressDialog.dismiss();
+                        reg_email.setError("Invalid Email");
+                        Toast.makeText(Registration.this, "Invalid Email", Toast.LENGTH_SHORT).show();
+                    } else if (!pass.equals(confirm_pass)) {
+                        progressDialog.dismiss();
+                        reg_re_pass.setError("Password is not matching");
+                        Toast.makeText(Registration.this, "Password is matching", Toast.LENGTH_SHORT).show();
+                    } else if (pass.length() < 6) {
+                        progressDialog.dismiss();
+                        reg_pass.setError("Invalid Password");
+                        Toast.makeText(Registration.this, "Invalid Password", Toast.LENGTH_SHORT).show();
+                    } else {
+                        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    DatabaseReference databaseReference = firebaseDatabase.getReference().child("user").child(mAuth.getUid());
+                                    Users users = new Users(mAuth.getUid(), name, email, enrolment);
+                                    databaseReference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                startActivity(new Intent(Registration.this, Login.class));
+                                                progressDialog.dismiss();
+                                                Toast.makeText(getApplicationContext(), "Your account is created successfully", Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                progressDialog.dismiss();
+                                                Toast.makeText(Registration.this, "Error in creating user at final", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+
+                                } else {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(Registration.this, "Error in creating user", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    }
+    public boolean isNetworkAvailable() {
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager != null) {
+            if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                NetworkCapabilities capabilities = connectivityManager.getNetworkCapabilities(connectivityManager.getActiveNetwork());
+                if (capabilities != null) {
+                    if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                        return true;
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+
+                        return true;
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+
+                        return true;
+                    }
                 }
             }
-        });
+        }
+
+        return false;
+
     }
 
 }
