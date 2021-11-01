@@ -34,13 +34,11 @@
             android:contentDescription="Logout Button" />
     </LinearLayout>
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/booksRecyclerView"
         android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/_40sdp"
         android:layout_height="wrap_content"/>
-    <!--android:layout_height="@dimen/_510sdp"
-    android:layout_marginBottom="@dimen/_25sdp"
-    android:layout_marginTop="@dimen/_5sdp"-->
+
 </RelativeLayout>

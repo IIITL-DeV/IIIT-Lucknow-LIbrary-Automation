@@ -90,9 +90,6 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
                                            public void onComplete(@NonNull Task<Void> task) {
                                                if(task.isSuccessful()){
                                                    progressDialog.dismiss();
-//                                                   Intent intent = new Intent(context, MyBooksFragment.class);
-//                                                   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                                   context.startActivity(intent);
                                                    Toast.makeText(context, "Added to WishList successfully", Toast.LENGTH_SHORT).show();
                                                }
                                                else{
