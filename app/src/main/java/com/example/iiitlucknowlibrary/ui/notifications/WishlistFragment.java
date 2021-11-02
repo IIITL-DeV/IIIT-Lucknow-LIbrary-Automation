@@ -15,9 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iiitlucknowlibrary.Book;
-import com.example.iiitlucknowlibrary.UserPortal.BookListAdapter;
-import com.example.iiitlucknowlibrary.UserPortal.MyBookAdapter;
-import com.example.iiitlucknowlibrary.administration.IssueBookModel;
+import com.example.iiitlucknowlibrary.WishListAdapter;
 import com.example.iiitlucknowlibrary.databinding.FragmentWishlistBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +23,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 
 public class WishlistFragment extends Fragment {
@@ -40,8 +37,6 @@ public class WishlistFragment extends Fragment {
 
         binding = FragmentWishlistBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
-        //final TextView textView = binding.textNotifications;
         wishlistViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
@@ -52,7 +47,7 @@ public class WishlistFragment extends Fragment {
         wishListRecyclerView.setHasFixedSize(true);
         wishListRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         ArrayList<Book> book_list = new ArrayList<Book>();
-        BookListAdapter myAdapter = new BookListAdapter(getContext(),book_list);
+        WishListAdapter myAdapter = new WishListAdapter(getContext(),book_list);
         wishListRecyclerView.setAdapter(myAdapter);
         FirebaseAuth auth = FirebaseAuth.getInstance();
         String userId = auth.getCurrentUser().getUid();

@@ -55,7 +55,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
     }
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-         Book book = bookList.get(position);
+        Book book = bookList.get(position);
         holder.quantity.setText("Quantity: "+  book.getQuantity() );
         holder.author_name.setText("Author Name: "+ book.getAuthor());
         holder.book_status.setText("Status: "+  book.getStatus() );
@@ -90,9 +90,6 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
                                            public void onComplete(@NonNull Task<Void> task) {
                                                if(task.isSuccessful()){
                                                    progressDialog.dismiss();
-//                                                   Intent intent = new Intent(context, MyBooksFragment.class);
-//                                                   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                                                   context.startActivity(intent);
                                                    Toast.makeText(context, "Added to WishList successfully", Toast.LENGTH_SHORT).show();
                                                }
                                                else{
