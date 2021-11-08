@@ -80,7 +80,9 @@ public class WishlistFragment extends Fragment {
 
             }
         });
+
         return root;
+
     }
 
     @Override
