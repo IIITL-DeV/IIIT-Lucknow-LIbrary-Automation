@@ -1,5 +1,6 @@
 package com.example.iiitlucknowlibrary;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -8,14 +9,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyViewHolder> {
     Context context;
+    WishListAdapter myAdapter;
     public ArrayList<Book> bookList;
     public WishListAdapter(Context context, ArrayList<Book> book_list) {
         this.context = context;
@@ -28,13 +42,31 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyVie
         return  new WishListAdapter.MyViewHolder(v);
     }
     @Override
-    public void onBindViewHolder(@NonNull WishListAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull WishListAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Book book = bookList.get(position);
         holder.quantity.setText("Quantity: "+  book.getQuantity() );
         holder.author_name.setText("Author Name: "+ book.getAuthor());
         holder.book_status.setText("Status: "+  book.getStatus() );
         holder.book_id.setText("ID: "+  book.getBookID());
         Picasso.get().load(book.getImageUri()).into(holder.book_category_image);
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                new AlertDialog.Builder(context)
+                        .setTitle("Remove from WishList")
+                        .setMessage("Are you sure?")
+                        .setPositiveButton("Remove", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                bookList.remove(position);
+                                notifyItemRemoved(position);
+                            }
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .show();
+                return true;
+            }
+        });
 
     }
     @Override
