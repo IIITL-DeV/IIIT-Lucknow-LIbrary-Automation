@@ -6,6 +6,7 @@
         <entry key="app/src/main/res/drawable-v24/edit_text_shape.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable-v24/signin_shape.xml" value="0.371875" />
+        <entry key="app/src/main/res/drawable/default_profile_image.xml" value="0.13333333333333333" />
         <entry key="app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable/shape_item.xml" value="0.18611111111111112" />
         <entry key="app/src/main/res/layout/activity_add_book.xml" value="0.3229166666666667" />
@@ -22,10 +23,11 @@
         <entry key="app/src/main/res/layout/activity_return_book.xml" value="0.2803442028985507" />
         <entry key="app/src/main/res/layout/activity_splashscreen.xml" value="0.16041666666666668" />
         <entry key="app/src/main/res/layout/activity_update_book.xml" value="0.30480072463768115" />
-        <entry key="app/src/main/res/layout/activity_user_home.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/activity_user_home.xml" value="0.16346153846153846" />
+        <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_wish_list.xml" value="0.1390625" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19322916666666667" />
-        <entry key="app/src/main/res/layout/fragment_my_books.xml" value="0.19322916666666667" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_my_books.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.17760416666666667" />
         <entry key="app/src/main/res/layout/fragment_wishlist.xml" value="0.1421875" />
         <entry key="app/src/main/res/layout/headerforsidemenu.xml" value="0.3161231884057971" />

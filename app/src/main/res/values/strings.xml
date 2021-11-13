@@ -4,4 +4,8 @@
     <string name="title_home">Home</string>
     <string name="title_my_books">My Books</string>
     <string name="title_wishlist">Wishlist</string>
+    <string name="navigation_open">Open Navigation drawer</string>
+    <string name="navigation_close">Close Navigation drawer</string>
+
+
 </resources>
