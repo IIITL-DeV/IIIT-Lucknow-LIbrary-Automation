@@ -1,44 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    tools:context=".UserHome">
+    <com.google.android.material.navigation.NavigationView
+        android:layout_width="wrap_content"
+        android:id="@+id/navigationView"
+        app:headerLayout="@layout/headerforsidemenu"
+        app:menu="@menu/sidemenu"
+        android:layout_gravity="start"
+        android:layout_height="match_parent"/>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
-
-    <LinearLayout
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
-        android:background="@color/purple_700"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_marginBottom="5dp"
+        tools:layout_centerHorizontal="true"
+        android:background="@color/purple_500"
+        app:titleTextColor="@color/white"
+        app:titleMarginStart="@dimen/_50sdp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:id="@+id/rl"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Books Categories"
+                android:id="@+id/tv1"
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Book Categories"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_18sdp" />
+                android:layout_centerVertical="true"
+                android:textSize="@dimen/_18sdp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"/>
 
-        <ImageView
-            android:id="@+id/Logout"
-            android:layout_width="@dimen/_22sdp"
-            android:layout_height="@dimen/_22sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:background="@drawable/logout1"
-            android:clipToOutline="true"
-            android:contentDescription="Logout Button" />
-    </LinearLayout>
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="40dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:background="@drawable/default_profile_image"
+                        android:layout_height="40dp"/>
+
+
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/booksRecyclerView"
-        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_marginBottom="@dimen/_40sdp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginBottom="@dimen/_40sdp" />
 
 </RelativeLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

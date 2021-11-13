@@ -5,13 +5,20 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -20,9 +27,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iiitlucknowlibrary.Authentication.Login;
 import com.example.iiitlucknowlibrary.Book;
+import com.example.iiitlucknowlibrary.HomeAdministration;
 import com.example.iiitlucknowlibrary.R;
+import com.example.iiitlucknowlibrary.UserHome;
 import com.example.iiitlucknowlibrary.UserPortal.BookAdapter;
+import com.example.iiitlucknowlibrary.UserProfile;
 import com.example.iiitlucknowlibrary.databinding.FragmentHomeBinding;
+import com.example.iiitlucknowlibrary.ui.notifications.WishlistFragment;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,10 +45,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
+    private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
+    private NavigationView navigationView;
+    private MenuItem profile , user_home, wish_list,logout,login;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,9 +70,15 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        drawerLayout = binding.drawerLayout;
+        toolbar = binding.toolbar;
+        navigationView = binding.navigationView;
 
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(getActivity(),drawerLayout,toolbar,R.string.navigation_open,R.string.navigation_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
 
-        ImageView logout = binding.Logout;
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final RecyclerView recyclerView = binding.booksRecyclerView;
         DatabaseReference database = FirebaseDatabase.getInstance().getReference("Books");
@@ -92,24 +114,35 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(getContext(), Login.class);
-                startActivity(i);
-                ((Activity) getActivity()).overridePendingTransition(0, 0);
-            }
-        });
-
-
-
         return root;
     }
-
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+        switch(id){
+            case R.id.profile:
+                startActivity(new Intent(getActivity() , UserProfile.class));
+                break;
+            case R.id.home_menu:
+                startActivity(new Intent(getActivity() , HomeFragment.class));
+                break;
+            case R.id.login:
+            case R.id.logout:
+                startActivity(new Intent(getActivity() , Login.class));
+                break;
+            case R.id.wish_list:
+                startActivity(new Intent(getActivity() , WishlistFragment.class));
+                break;
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
     }
+
+
 }
