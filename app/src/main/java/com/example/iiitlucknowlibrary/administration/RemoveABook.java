@@ -41,10 +41,9 @@ public class RemoveABook extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //progressDialog.show();
+                progressDialog.show();
                 String BookID = BookId.getText().toString();
                 DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                //Log.d("RemoveBOok", "onClick: "+BookID);
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Books").child(BookID);
                 reference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -68,7 +67,6 @@ public class RemoveABook extends AppCompatActivity {
                                     Toast.makeText(RemoveABook.this, "Error in removing book", Toast.LENGTH_SHORT).show();
                                 }
                             });
-                            //Toast.makeText(RemoveABook.this, "Book Exist", Toast.LENGTH_SHORT).show();
                         }
                         else{
                             progressDialog.dismiss();

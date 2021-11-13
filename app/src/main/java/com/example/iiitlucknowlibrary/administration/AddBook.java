@@ -130,7 +130,6 @@ public class AddBook extends AppCompatActivity {
                             else{
                                 DatabaseReference databaseReference = firebaseDatabase.getReference().child("Books").child(BookID);
                                 StorageReference storageReference = firebaseStorage.getReference().child("BookImages").child(Category).child(Name);
-                                //Book book = new Book(Name, Author, Quantity, "Available");
                                 if(imageUri!=null){
                                     storageReference.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                         @Override
@@ -189,84 +188,7 @@ public class AddBook extends AppCompatActivity {
                             Toast.makeText(AddBook.this, "Getting error01", Toast.LENGTH_SHORT).show();
                         }
                     });
-
-
-
-
-
-
-
-                    /*DatabaseReference databaseReference = firebaseDatabase.getReference().child("Books").child(BookID);
-                    StorageReference storageReference = firebaseStorage.getReference().child("BookImages").child(Category).child(Name);
-                    //Book book = new Book(Name, Author, Quantity, "Available");
-                    if(imageUri!=null){
-                        storageReference.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                                if(task.isSuccessful()){
-                                    storageReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                        @Override
-                                        public void onSuccess(Uri uri) {
-                                            image_uri = uri.toString();
-                                            Book book = new Book(BookID, Name, Author, Category, Quantity, "Available", image_uri);
-                                            databaseReference.setValue(book).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    progressDialog.dismiss();
-                                                    if(task.isSuccessful()){
-                                                        startActivity(new Intent(AddBook.this, AddBook.class));
-                                                        Toast.makeText(AddBook.this, "Book added successfully", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                    else{
-                                                        Toast.makeText(AddBook.this, "Error in adding Book details", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                }
-                                            });
-                                        }
-                                    });
-                                }
-                                else{
-                                    progressDialog.dismiss();
-                                    Toast.makeText(AddBook.this, "Errror in uploading images", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                    }
-                    else{
-                        image_uri = "https://firebasestorage.googleapis.com/v0/b/library-automation-9abd2.appspot.com/o/book.jpg?alt=media&token=c153d25f-22a6-48b7-b269-0948dd07ec74";
-                        Book book = new Book(BookID, Name, Author, Category, Quantity, "Available", image_uri);
-                        databaseReference.setValue(book).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                progressDialog.dismiss();
-                                if(task.isSuccessful()){
-                                    startActivity(new Intent(AddBook.this, AddBook.class));
-                                    Toast.makeText(AddBook.this, "Book added successfull", Toast.LENGTH_SHORT).show();
-                                }
-                                else{
-                                    Toast.makeText(AddBook.this, "Error in adding book details", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                    }*/
-                /*databaseReference.setValue(book).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        progressDialog.dismiss();
-                        if(task.isSuccessful()){
-                            startActivity(new Intent(AddBook.this, AddBook.class));
-                            Toast.makeText(AddBook.this, "Book added successfully", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            Toast.makeText(AddBook.this, "Eroor in adding book", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-                //StorageReference storageReference*/
                 }
-
-
-
             }
         });
     }
