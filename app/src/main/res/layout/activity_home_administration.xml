@@ -79,7 +79,7 @@
                         <ImageView
                             android:layout_width="@dimen/_50sdp"
                             android:layout_height="@dimen/_50sdp"
-                            android:background="@drawable/issue"
+                            android:background="@drawable/issue4"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_marginBottom="@dimen/_8sdp"
                             android:gravity="center"/>

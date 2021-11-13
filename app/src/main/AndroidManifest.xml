@@ -27,9 +27,6 @@
             android:exported="true"
             android:label="@string/title_activity_user_home" />
         <activity
-            android:name=".UserPortal.WishList"
-            android:exported="true" />
-        <activity
             android:name=".administration.ReturnBook"
             android:exported="true" />
         <activity

@@ -54,7 +54,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Android Developer"
+            android:text="Krishna Kumar Gurjar"
             android:textColor="@color/white"
             android:textSize="@dimen/_18sdp"
             android:gravity="center"

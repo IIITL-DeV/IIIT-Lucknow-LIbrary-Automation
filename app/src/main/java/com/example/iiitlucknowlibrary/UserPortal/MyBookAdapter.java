@@ -42,13 +42,11 @@ public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHold
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView my_book_id ,my_issue_date,my_return_date;
-      //  CircleImageView book_image;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             my_book_id = itemView.findViewById(R.id.my_book_id);
             my_issue_date = itemView.findViewById(R.id.my_issue_date);
             my_return_date = itemView.findViewById(R.id.my_return_date);
-           // book_image = itemView.findViewById(R.id.mybook_image);
         }
     }
 
