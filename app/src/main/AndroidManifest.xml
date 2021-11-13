@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.iiitlucknowlibrary">
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE">
-    </uses-permission>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE">
-    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/book"
@@ -14,10 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IIITLucknowLibrary">
         <activity
-            android:name=".IssuedBooksDetails"
+            android:name=".UserProfile"
             android:exported="true" />
         <activity
-            android:name=".History"
+            android:name=".administration.IssuedBooksDetails"
+            android:exported="true" />
+        <activity
+            android:name=".administration.History"
             android:exported="true" />
         <activity
             android:name=".UserHome"
@@ -27,16 +30,13 @@
             android:name=".UserPortal.WishList"
             android:exported="true" />
         <activity
-            android:name=".UserPortal.MyBooks"
-            android:exported="true" />
-        <activity
             android:name=".administration.ReturnBook"
             android:exported="true" />
         <activity
             android:name=".UserPortal.BookList"
             android:exported="true" />
         <activity
-            android:name=".Activity_cat_show_admin"
+            android:name=".administration.Activity_cat_show_admin"
             android:exported="true" />
         <activity
             android:name=".administration.UpdateBook"
@@ -54,7 +54,6 @@
             android:name=".HomeAdministration"
             android:exported="true" />
         <activity android:name=".Authentication.Registration" />
-        <activity android:name=".UserPortal.Home" />
         <activity android:name=".Authentication.Login" />
         <activity
             android:name=".SplashScreen"

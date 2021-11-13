@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
+        <item android:id="@+id/profile"
+            android:icon="@drawable/default_profile_image"
+            android:title="Profile">
+        </item>
         <item android:id="@+id/home_menu"
             android:icon="@drawable/ic_baseline_bungalow_24"
             android:title="Home">
@@ -15,7 +19,7 @@
         <item android:title="Authentication">
             <menu>
                 <item android:id="@+id/login"
-                    android:icon="@drawable/ic_baseline_bungalow_24"
+                    android:icon="@drawable/common_full_open_on_phone"
                     android:title="Login">
                 </item>
                 <item android:id="@+id/logout"
@@ -25,9 +29,6 @@
             </menu>
         </item>
     </group>
-        <item android:title="Share">
-
-        </item>
 
 
 </menu>

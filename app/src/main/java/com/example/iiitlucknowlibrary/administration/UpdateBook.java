@@ -100,8 +100,6 @@ public class UpdateBook extends AppCompatActivity {
                             Toast.makeText(UpdateBook.this, "Getting error", Toast.LENGTH_SHORT).show();
                         }
                     });
-
-
                 }
             }
         });

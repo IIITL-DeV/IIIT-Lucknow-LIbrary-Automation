@@ -47,11 +47,6 @@ public class ReturnBook extends AppCompatActivity {
         returnBook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("Books").child("1001");
-                String temp = reference2.child("quantity").
-                Log.d("Return", "onClick: "+temp);*/
-
-
                 progressDialog.show();
 
                 String Enrollment = returnStudentEnrollment.getText().toString();
@@ -81,7 +76,7 @@ public class ReturnBook extends AppCompatActivity {
                                                 @Override
                                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                                     count = Integer.parseInt(snapshot.getValue().toString());
-                                                    reference2.child("quantity").setValue(""+count+1);
+                                                    reference2.child("quantity").setValue(""+(count+1));
                                                     if(count==0){
                                                         reference2.child("status").setValue("Available");
                                                     }
@@ -101,10 +96,8 @@ public class ReturnBook extends AppCompatActivity {
                                         }
                                     }
                                 });
-
                             }
                         }
-
                         @Override
                         public void onCancelled(DatabaseError databaseError) {
                             progressDialog.dismiss();
@@ -113,11 +106,7 @@ public class ReturnBook extends AppCompatActivity {
                         }
                     });
                 }
-
-
-
             }
         });
-
     }
 }
