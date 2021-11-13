@@ -1,14 +1,12 @@
 package com.example.iiitlucknowlibrary;
 
-import static android.content.ContentValues.TAG;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +16,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.iiitlucknowlibrary.UserPortal.BookList;
-import com.example.iiitlucknowlibrary.UserPortal.WishList;
-import com.example.iiitlucknowlibrary.administration.RemoveABook;
-import com.example.iiitlucknowlibrary.ui.notifications.WishlistFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,7 +23,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
@@ -39,11 +32,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyViewHolder> {
     Context context;
     WishListAdapter myAdapter;
-    ArrayList<Book> bookList;
-    FirebaseDatabase firebaseDatabase;
-    FirebaseAuth auth = FirebaseAuth.getInstance();
-    String userId;
-
+    public ArrayList<Book> bookList;
     public WishListAdapter(Context context, ArrayList<Book> book_list) {
         this.context = context;
         this.bookList = book_list;
@@ -62,9 +51,6 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyVie
         holder.book_status.setText("Status: "+  book.getStatus() );
         holder.book_id.setText("ID: "+  book.getBookID());
         Picasso.get().load(book.getImageUri()).into(holder.book_category_image);
-        ProgressDialog progressDialog = new ProgressDialog(context);
-        progressDialog.setMessage("Please wait.....");
-        progressDialog.setCancelable(false);
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -74,59 +60,32 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyVie
                         .setMessage("Are you sure?")
                         .setPositiveButton("Remove", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
-                                progressDialog.show();
-                               // bookList.remove(position);
-                               // notifyItemRemoved(position);
-                               firebaseDatabase = FirebaseDatabase.getInstance();
-                               userId  = auth.getCurrentUser().getUid();
-                                DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("user").child(userId).child("enrolment");
-                                reference1.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                                          String rollNo = snapshot1.getValue().toString();
-                                          String bookId = book.getBookID();
-                                          DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("WishList").child(rollNo);
-                                          reference2.addListenerForSingleValueEvent(new ValueEventListener() {
-                                              @Override
-                                              public void onDataChange(@NonNull DataSnapshot snapshot2) {
-                                                  if(snapshot2.exists()) {
-                                                      Query applesQuery = FirebaseDatabase.getInstance().getReference().child("WishList").child(rollNo).child(bookId);
-                                                      applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                                                          @Override
-                                                          public void onDataChange(@NonNull DataSnapshot snapshot3) {
-                                                              for (DataSnapshot appleSnapshot: snapshot3.getChildren()) {
-                                                                  appleSnapshot.getRef().removeValue();
-                                                                  notifyItemRemoved(position);
-                                                                  progressDialog.dismiss();
-                                                                  Toast.makeText(context, "Book is successfully Removed", Toast.LENGTH_SHORT).show();
-                                                              }
-                                                          }
-
-                                                          @Override
-                                                          public void onCancelled(@NonNull DatabaseError error) {
-
-                                                          }
-                                                      });
-                                                  }
-                                              }
-
-                                              @Override
-                                              public void onCancelled(@NonNull DatabaseError error) {
-
-                                              }
-                                          });
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError error) {
-
-                                    }
-                                });
+                                bookList.remove(position);
+                                notifyItemRemoved(position);
                             }
                         })
                         .setNegativeButton("Cancel", null)
                         .show();
                 return true;
+            }
+        });
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(context)
+                        .setTitle("Open E-Book in Browser")
+                        .setMessage("Are you sure?")
+                        .setPositiveButton("open", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Uri uri=Uri.parse("https://drive.google.com/file/d/14xX01pnestk4zxG5X16FpMo4E00yTzjp/view?usp=sharing");
+                                Intent intent= new Intent(Intent.ACTION_VIEW,uri);
+                                context.startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton("cancel",null)
+                        .show();
             }
         });
 

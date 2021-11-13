@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -110,6 +111,25 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
                        .setNegativeButton("Cancel", null)
                        .show();
              return false;
+           }
+       });
+
+       holder.itemView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               new AlertDialog.Builder(context)
+                       .setTitle("Open E-Book in Browser")
+                       .setMessage("Are you sure?")
+                       .setPositiveButton("open", new DialogInterface.OnClickListener() {
+                           @Override
+                           public void onClick(DialogInterface dialog, int which) {
+                               Uri uri=Uri.parse("https://drive.google.com/file/d/14xX01pnestk4zxG5X16FpMo4E00yTzjp/view?usp=sharing");
+                               Intent intent= new Intent(Intent.ACTION_VIEW,uri);
+                               context.startActivity(intent);
+                           }
+                       })
+                       .setNegativeButton("cancel",null)
+                       .show();
            }
        });
     }
