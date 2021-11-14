@@ -1,18 +1,9 @@
 # IIIT-Lucknow-LIbrary-Automation
 This IIITL Library Automation App keeps the track of  all books present in the library and Fully automates the activities of  the library. By doing so we provides the features as follows.
- Administration Portal Features:
-  Add Book
-Remove Book
-Issue Book
-Show Book
-History
-Students Details
 
-User Portal Features:
-Side Menu
-Show Category wise Books
-WishList
-Users issued Books with issue and return date
+ Administration Portal Features: Add Book , Remove Book ,Issue Book , Show Book , History and Students Details
+ 
+User Portal Features: Side Menu , Show Category wise Books , WishList , Users issued Books with issue and return date.
 
 
 ## Authentication Section
