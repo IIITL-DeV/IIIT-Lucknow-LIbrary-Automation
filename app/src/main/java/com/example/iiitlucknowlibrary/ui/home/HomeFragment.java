@@ -45,15 +45,16 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class HomeFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
-    private MenuItem profile , user_home, wish_list,logout,login;
-
+    private CircleImageView image_view;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -69,16 +70,43 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
                 //textView.setText(s);
             }
         });
-
+         image_view = binding.imageView;
+        image_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),UserProfile.class));
+            }
+        });
         drawerLayout = binding.drawerLayout;
         toolbar = binding.toolbar;
         navigationView = binding.navigationView;
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(getActivity(),drawerLayout,toolbar,R.string.navigation_open,R.string.navigation_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
 
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch(id){
+                    case R.id.profile:
+                        startActivity(new Intent(getActivity() , UserProfile.class));
+                        break;
+                    case R.id.home_menu:
+                        startActivity(new Intent(getActivity() , HomeFragment.class));
+                        break;
+                    case R.id.login:
+                    case R.id.logout:
+                        startActivity(new Intent(getActivity() , Login.class));
+                        break;
+                    case R.id.wish_list:
+                        startActivity(new Intent(getActivity() , WishlistFragment.class));
+                        break;
+                }
+                drawerLayout.closeDrawer(GravityCompat.START);
+                return true;
+            }
+        });
         final FirebaseAuth mAuth = FirebaseAuth.getInstance();
         final RecyclerView recyclerView = binding.booksRecyclerView;
         DatabaseReference database = FirebaseDatabase.getInstance().getReference("Books");
@@ -115,28 +143,6 @@ public class HomeFragment extends Fragment implements NavigationView.OnNavigatio
         });
 
         return root;
-    }
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        switch(id){
-            case R.id.profile:
-                startActivity(new Intent(getActivity() , UserProfile.class));
-                break;
-            case R.id.home_menu:
-                startActivity(new Intent(getActivity() , HomeFragment.class));
-                break;
-            case R.id.login:
-            case R.id.logout:
-                startActivity(new Intent(getActivity() , Login.class));
-                break;
-            case R.id.wish_list:
-                startActivity(new Intent(getActivity() , WishlistFragment.class));
-                break;
-        }
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
     }
     @Override
     public void onDestroyView() {

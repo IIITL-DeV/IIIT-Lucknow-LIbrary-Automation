@@ -7,8 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
-    tools:context=".UserHome">
+    tools:context=".UserHome"
+    tools:openDrawer="start">
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:id="@+id/navigationView"
@@ -53,6 +53,7 @@
                     android:layout_width="40dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
+                    android:id="@+id/imageView"
                     android:layout_marginRight="@dimen/_5sdp"
                     android:background="@drawable/default_profile_image"
                     android:layout_height="40dp"/>

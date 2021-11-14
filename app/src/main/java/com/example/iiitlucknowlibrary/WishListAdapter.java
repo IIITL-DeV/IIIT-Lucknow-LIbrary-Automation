@@ -19,7 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iiitlucknowlibrary.UserPortal.BookList;
-import com.example.iiitlucknowlibrary.UserPortal.WishList;
+
 import com.example.iiitlucknowlibrary.administration.RemoveABook;
 import com.example.iiitlucknowlibrary.ui.notifications.WishlistFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -75,8 +75,8 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyVie
                         .setPositiveButton("Remove", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 progressDialog.show();
-                               // bookList.remove(position);
-                               // notifyItemRemoved(position);
+                                bookList.remove(position);
+                                notifyItemRemoved(position);
                                firebaseDatabase = FirebaseDatabase.getInstance();
                                userId  = auth.getCurrentUser().getUid();
                                 DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("user").child(userId).child("enrolment");
@@ -90,23 +90,28 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyVie
                                               @Override
                                               public void onDataChange(@NonNull DataSnapshot snapshot2) {
                                                   if(snapshot2.exists()) {
-                                                      Query applesQuery = FirebaseDatabase.getInstance().getReference().child("WishList").child(rollNo).child(bookId);
-                                                      applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                                                          @Override
-                                                          public void onDataChange(@NonNull DataSnapshot snapshot3) {
-                                                              for (DataSnapshot appleSnapshot: snapshot3.getChildren()) {
-                                                                  appleSnapshot.getRef().removeValue();
-                                                                  notifyItemRemoved(position);
-                                                                  progressDialog.dismiss();
-                                                                  Toast.makeText(context, "Book is successfully Removed", Toast.LENGTH_SHORT).show();
+                                                      if (bookId == null) {
+                                                          progressDialog.dismiss();
+                                                          Toast.makeText(context.getApplicationContext(), "Error in deletion", Toast.LENGTH_SHORT).show();
+                                                      } else {
+                                                          Query applesQuery = firebaseDatabase.getReference().child("WishList").child(rollNo).child(bookId);
+                                                          applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                                              @Override
+                                                              public void onDataChange(@NonNull DataSnapshot snapshot3) {
+                                                                  for (DataSnapshot appleSnapshot : snapshot3.getChildren()) {
+                                                                      appleSnapshot.getRef().removeValue();
+                                                                      notifyItemRemoved(position);
+                                                                      progressDialog.dismiss();
+                                                                      Toast.makeText(context, "Book is successfully Removed", Toast.LENGTH_SHORT).show();
+                                                                  }
                                                               }
-                                                          }
 
-                                                          @Override
-                                                          public void onCancelled(@NonNull DatabaseError error) {
+                                                              @Override
+                                                              public void onCancelled(@NonNull DatabaseError error) {
 
-                                                          }
-                                                      });
+                                                              }
+                                                          });
+                                                      }
                                                   }
                                               }
 
@@ -115,6 +120,7 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyVie
 
                                               }
                                           });
+
                                     }
 
                                     @Override
