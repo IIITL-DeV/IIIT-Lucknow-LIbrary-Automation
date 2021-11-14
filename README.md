@@ -14,6 +14,11 @@ User Portal Features :
  3. WishList
  4. Users issued Books with issue and return date
 
+## Contributors
+1. [Ayush Kushwaha](https://github.com/knight-r)
+2. [Krishna Kumar Gurjar](https://github.com/KRISHNA8824)
+3. [Manish Kumar](https://github.com/maku123)
+4. [Rohit Chaudhary]()
 
 ## Authentication Section
 
