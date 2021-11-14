@@ -13,6 +13,7 @@ User Portal Features :
  2. Show Category wise Books
  3. WishList
  4. Users issued Books with issue and return date
+ 5. User can read EBook
 
 ## Contributors
 1. [Ayush Kushwaha](https://github.com/knight-r)
