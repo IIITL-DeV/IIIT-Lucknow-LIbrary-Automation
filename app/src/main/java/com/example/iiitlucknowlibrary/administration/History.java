@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.iiitlucknowlibrary.R;
 import com.example.iiitlucknowlibrary.UserPortal.MyBookAdapter;
@@ -38,29 +39,23 @@ public class History extends AppCompatActivity {
         database1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                String us = snapshot1.getValue().toString();
-                String us1 = "";
-                int i;
-                for(i=1;i<us.length();i++){
-                    if(us.charAt(i)=='=') break;
-                    us1 += us.charAt(i);
-                }
-                for (DataSnapshot dataSnapshot : snapshot1.getChildren()) {
-                    Log.d("aaa2", "onCreateView: "+snapshot1.getValue());
-                    IssueBookModel issued_book = dataSnapshot.getValue(IssueBookModel.class);
-                    String s = issued_book.getIssueId();
-                    s += ", ";
-                    s += "Roll Number: ";
-                    s += dataSnapshot.getKey();
-                    issued_book.setIssueId(s);
-
-                    book_list.add(issued_book);
+                for (DataSnapshot dataSnapshot1 : snapshot1.getChildren()){
+                    Log.d("aaa2", "onCreateView: "+dataSnapshot1.getKey());
+                    for(DataSnapshot dataSnapshot2 : dataSnapshot1.getChildren()){
+                        IssueBookModel issued_book = dataSnapshot2.getValue(IssueBookModel.class);
+                        String s = issued_book.getIssueId();
+                        s += ", ";
+                        s += "Student Roll Number: ";
+                        s += dataSnapshot1.getKey();
+                        issued_book.setIssueId(s);
+                        book_list.add(issued_book);
+                    }
                 }
                 myAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(History.this, "Error occurred", Toast.LENGTH_SHORT).show();
             }
         });
 

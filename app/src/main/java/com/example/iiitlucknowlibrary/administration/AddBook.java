@@ -185,6 +185,7 @@ public class AddBook extends AppCompatActivity {
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
+                            progressDialog.dismiss();
                             Toast.makeText(AddBook.this, "Getting error01", Toast.LENGTH_SHORT).show();
                         }
                     });

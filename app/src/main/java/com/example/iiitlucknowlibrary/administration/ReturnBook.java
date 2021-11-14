@@ -60,11 +60,13 @@ public class ReturnBook extends AppCompatActivity {
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
                     Query applesQuery = ref.child("IssueBook").child(Enrollment).child(myReturnBookID);
 
+                    DatabaseReference reference0 = FirebaseDatabase.getInstance().getReference().child("IssueBook");
+
                     applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()){
-                                DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("History").child(Enrollment);
+                                DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("History").child(Enrollment).child(myReturnBookID);
 
                                 reference1.setValue(dataSnapshot.getValue()).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override

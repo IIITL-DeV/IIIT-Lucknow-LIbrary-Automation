@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.iiitlucknowlibrary.R;
 import com.example.iiitlucknowlibrary.UserPortal.MyBookAdapter;
@@ -54,7 +55,7 @@ public class IssuedBooksDetails extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(IssuedBooksDetails.this, "Error occurred", Toast.LENGTH_SHORT).show();
             }
         });
     }
