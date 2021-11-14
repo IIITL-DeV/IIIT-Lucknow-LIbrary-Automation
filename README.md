@@ -3,7 +3,7 @@ This IIITL Library Automation App keeps the track of  all books present in the l
 Administration Portal Features : 
  1. Add Book 
  2. Remove Book
- 3. Issue Book]
+ 3. Issue Book
  4. Show Book
  5. History
  6. Students Details
