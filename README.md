@@ -1,7 +1,7 @@
 # IIIT-Lucknow-LIbrary-Automation
 library management apk
 
-Authentication Section.....
+##Authentication Section
 
 <p float="middle">
 <img src="https://user-images.githubusercontent.com/54670079/141683113-a7995d08-bbb8-4a50-bdbd-63967b2efda9.jpg" width="250" />
@@ -11,7 +11,7 @@ Authentication Section.....
 
 
 
-Administration Section.....
+##Administration Section
 
 <p float="middle">
 <img src="https://user-images.githubusercontent.com/54670079/141683415-747d35a8-4e7a-4bea-8003-81f23f5d6e35.jpg" width="250" />
@@ -28,7 +28,7 @@ Administration Section.....
 </p>
 
 
-User Section.......
+##User Section
 
 <p float="middle">
 <img src="https://user-images.githubusercontent.com/54670079/141683566-c403e130-c71e-4abd-bdf2-374b94829741.jpg" width="250" />
