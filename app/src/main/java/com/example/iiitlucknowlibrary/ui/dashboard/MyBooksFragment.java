@@ -42,6 +42,8 @@ import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MyBooksFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final String TAG = "MyBookFragment";
@@ -50,6 +52,7 @@ public class MyBooksFragment extends Fragment implements NavigationView.OnNaviga
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
+    private CircleImageView image_view;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         myBooksViewModel =
@@ -70,7 +73,13 @@ public class MyBooksFragment extends Fragment implements NavigationView.OnNaviga
         /*
                 start
          */
-
+        image_view = binding.imageView;
+        image_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),UserProfile.class));
+            }
+        });
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         String ss = mAuth.getCurrentUser().getUid();
         DatabaseReference reference11 = FirebaseDatabase.getInstance().getReference("user").child(ss).child("enrolment");

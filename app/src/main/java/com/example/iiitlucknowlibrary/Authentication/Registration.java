@@ -34,8 +34,6 @@ public class Registration extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseDatabase firebaseDatabase;
     FirebaseStorage firebaseStorage;
-
-
     ProgressDialog progressDialog;
 
     @Override

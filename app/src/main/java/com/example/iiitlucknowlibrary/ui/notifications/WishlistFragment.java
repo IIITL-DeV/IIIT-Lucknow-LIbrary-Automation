@@ -36,13 +36,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
-public class WishlistFragment extends Fragment  implements NavigationView.OnNavigationItemSelectedListener{
+import de.hdodenhof.circleimageview.CircleImageView;
 
+public class WishlistFragment extends Fragment  {
     private WishlistViewModel wishlistViewModel;
     private FragmentWishlistBinding binding;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
+    private CircleImageView circleImageView;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         wishlistViewModel =
@@ -56,6 +58,7 @@ public class WishlistFragment extends Fragment  implements NavigationView.OnNavi
                 //textView.setText(s);
             }
         });
+
         RecyclerView wishListRecyclerView = binding.wishListRecyclerView;
         wishListRecyclerView.setHasFixedSize(true);
         wishListRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
@@ -72,7 +75,29 @@ public class WishlistFragment extends Fragment  implements NavigationView.OnNavi
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(getActivity(),drawerLayout,toolbar, R.string.navigation_open,R.string.navigation_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+       navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+           @Override
+           public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+               int id = item.getItemId();
+               switch(id){
+                   case R.id.profile:
+                       startActivity(new Intent(getActivity(), UserProfile.class));
+                       break;
+                   case R.id.home_menu:
+                       startActivity(new Intent(getActivity() , HomeFragment.class));
+                       break;
+                   case R.id.login:
+                   case R.id.logout:
+                       startActivity(new Intent(getActivity()  , Login.class));
+                       break;
+                   case R.id.wish_list:
+                       startActivity(new Intent(getActivity(), WishlistFragment.class));
+                       break;
+               }
+               drawerLayout.closeDrawer(GravityCompat.START);
+               return true;
+           }
+       });
         database1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -102,29 +127,16 @@ public class WishlistFragment extends Fragment  implements NavigationView.OnNavi
             }
         });
 
+        circleImageView = binding.imageView;
+        circleImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),UserProfile.class));
+            }
+        });
+
         return root;
 
-    }
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-        switch(id){
-            case R.id.profile:
-                startActivity(new Intent(getActivity(), UserProfile.class));
-                break;
-            case R.id.home_menu:
-                startActivity(new Intent(getActivity() , HomeFragment.class));
-                break;
-            case R.id.login:
-            case R.id.logout:
-                startActivity(new Intent(getActivity()  , Login.class));
-                break;
-            case R.id.wish_list:
-                startActivity(new Intent(getActivity(), WishlistFragment.class));
-                break;
-        }
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
     }
 
     @Override
