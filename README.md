@@ -18,7 +18,7 @@ User Portal Features :
 1. [Ayush Kushwaha](https://github.com/knight-r)
 2. [Krishna Kumar Gurjar](https://github.com/KRISHNA8824)
 3. [Manish Kumar](https://github.com/maku123)
-4. [Rohit Chaudhary]()
+4. [Rohit Chaudhary](https://github.com/Rohitchoudhary12)
 
 ## Authentication Section
 
