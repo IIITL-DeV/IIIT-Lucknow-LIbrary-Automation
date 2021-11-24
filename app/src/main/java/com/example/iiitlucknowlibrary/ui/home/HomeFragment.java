@@ -83,7 +83,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v){
                 progressDialog.show();
-
+                FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getActivity(),Login.class));
                 Toast.makeText(getActivity(), "Logged out successfully", Toast.LENGTH_SHORT).show();
             }
