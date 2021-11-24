@@ -43,7 +43,6 @@ public class IssueBook extends AppCompatActivity {
         issue=findViewById(R.id.issue_book_button);
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
-
         ProgressDialog progressDialog = new ProgressDialog(IssueBook.this);
         progressDialog.setMessage("Please wait.....");
         progressDialog.setCancelable(false);
@@ -51,7 +50,6 @@ public class IssueBook extends AppCompatActivity {
         issue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
 
                 progressDialog.show();
