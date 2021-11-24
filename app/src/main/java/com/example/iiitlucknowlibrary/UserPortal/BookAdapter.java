@@ -45,18 +45,9 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
         holder.book_category_name.setText(book.getCategory());
         String s = book.getCategory();
         ArrayList<Book> temp = book_map.get(s);
-        String status= "Status: ";
-        SpannableStringBuilder builder;
-        builder = new SpannableStringBuilder();
-
-        SpannableString statusSpannable= new SpannableString(status);
-        statusSpannable.setSpan(new ForegroundColorSpan(Color.WHITE), 0, 7, 0);
-        builder.append(statusSpannable);
+        String status = "Status: ";
         if(temp.size() == 0) {
             String red = " No book available";
-            SpannableString redSpannable= new SpannableString(red);
-            redSpannable.setSpan(new ForegroundColorSpan(Color.RED), 0, red.length(), 0);
-            builder.append(redSpannable);
             holder.book_quantity.setText(status + red);
         }
         else if(temp.size() == 1) {

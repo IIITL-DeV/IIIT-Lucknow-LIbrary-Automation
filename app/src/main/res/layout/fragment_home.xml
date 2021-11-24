@@ -29,7 +29,7 @@
         android:layout_height="@dimen/_40sdp"
         android:layout_marginBottom="5dp"
         tools:layout_centerHorizontal="true"
-        android:background="@color/purple_500"
+        android:background="@color/purple_700"
         app:titleTextColor="@color/white"
         app:titleMarginStart="@dimen/_50sdp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >

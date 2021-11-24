@@ -11,8 +11,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iiitlucknowlibrary.R;
 import com.example.iiitlucknowlibrary.administration.IssueBookModel;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHolder> {
 
@@ -34,6 +37,7 @@ public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHold
         holder.my_book_id.setText("Id: " + issued_book.getIssueId());
         holder.my_issue_date.setText("Issue Date: " + issued_book.getIssueDate());
         holder.my_return_date.setText("Return Date: " +issued_book.getReturnDate());
+       // Picasso.get().load(issued_book.getImageUri()).into(holder.mybook_image);
 
     }
     @Override
@@ -42,11 +46,13 @@ public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHold
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView my_book_id ,my_issue_date,my_return_date;
+        CircleImageView mybook_image;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             my_book_id = itemView.findViewById(R.id.my_book_id);
             my_issue_date = itemView.findViewById(R.id.my_issue_date);
             my_return_date = itemView.findViewById(R.id.my_return_date);
+            mybook_image = itemView.findViewById(R.id.mybook_image);
         }
     }
 
