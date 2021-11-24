@@ -34,6 +34,9 @@ import com.example.iiitlucknowlibrary.UserPortal.BookAdapter;
 import com.example.iiitlucknowlibrary.UserProfile;
 import com.example.iiitlucknowlibrary.databinding.FragmentHomeBinding;
 import com.example.iiitlucknowlibrary.ui.notifications.WishlistFragment;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -55,6 +58,7 @@ public class HomeFragment extends Fragment {
     private Toolbar toolbar;
     private NavigationView navigationView;
     private CircleImageView image_view;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -74,7 +78,14 @@ public class HomeFragment extends Fragment {
         image_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),UserProfile.class));
+                FirebaseAuth.getInstance().signOut();
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken("297181861064-7ahb7gh8b3tacknplv05ak57avgte8oa.apps.googleusercontent.com")
+                        .requestEmail()
+                        .build();
+                GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
+                mGoogleSignInClient.signOut();
+                startActivity(new Intent(getActivity(), Login.class));
             }
         });
         drawerLayout = binding.drawerLayout;

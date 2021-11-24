@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.iiitlucknowlibrary.Book;
 import com.example.iiitlucknowlibrary.R;
@@ -47,13 +48,12 @@ public class BookList extends AppCompatActivity {
                         if (s.equalsIgnoreCase(string)) {
                             book_list.add(book);
                         }
-
                 }
                 adapter1.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(BookList.this, "error "+error+" occurred", Toast.LENGTH_SHORT).show();
             }
         });
 

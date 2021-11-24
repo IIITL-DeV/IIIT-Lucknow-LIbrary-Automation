@@ -23,15 +23,8 @@
             android:gravity="center"
             android:text="History"
             android:textColor="@color/white"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="@dimen/_16sdp" />
     </LinearLayout>
-    <TextView
-        android:id="@+id/no_books"
-        android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_340sdp"
-        android:layout_height="wrap_content"/>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/myBooksListRecyclerView"
         android:layout_width="match_parent"

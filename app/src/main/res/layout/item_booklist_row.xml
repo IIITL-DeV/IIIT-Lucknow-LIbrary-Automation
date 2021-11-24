@@ -37,7 +37,7 @@
                 android:text="Name"
                 android:background="#404040"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_13sdp" />
             <TextView
                 android:id="@+id/book_id"
                 android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                 android:text="Data not available"
                 android:textColor="@color/white"
                 android:background="#404040"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_13sdp" />
             <TextView
                 android:id="@+id/book_status"
                 android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                 android:text="Data not available"
                 android:textColor="@color/white"
                 android:background="#404040"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_13sdp" />
             <TextView
                 android:id="@+id/quantity"
                 android:layout_width="match_parent"
@@ -62,7 +62,7 @@
                 android:layout_gravity="bottom"
                 android:textColor="@color/white"
                 android:background="#404040"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_13sdp" />
 
         </LinearLayout>
     </LinearLayout>

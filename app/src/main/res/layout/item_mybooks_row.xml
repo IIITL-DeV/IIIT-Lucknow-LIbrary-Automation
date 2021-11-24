@@ -12,9 +12,9 @@
         android:background="@drawable/book_details">
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/mybook_image"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
-            android:background="@drawable/book"
+            android:layout_width="@dimen/_42sdp"
+            android:layout_height="@dimen/_42sdp"
+            android:src="@drawable/book"
             android:layout_margin="@dimen/_10sdp" />
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                 android:textColor="@color/white"
                 android:background="#404040"
                 android:text="Id"
-                android:textSize="@dimen/_15sdp" />
+                android:textSize="@dimen/_14sdp" />
             <TextView
                 android:id="@+id/my_issue_date"
                 android:layout_width="match_parent"
@@ -38,7 +38,9 @@
                 android:textColor="@color/green"
                 android:text="IssueDate"
                 android:background="#404040"
-                android:textSize="@dimen/_12sdp" />
+                android:textSize="@dimen/_12sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_15sdp"/>
             <TextView
                 android:id="@+id/my_return_date"
                 android:layout_width="match_parent"
@@ -48,6 +50,7 @@
                 android:textColor="@color/green"
                 android:textSize="@dimen/_12sdp"
                 android:background="#404040"/>
+
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserPortal.Home" android:orientation="vertical">
+    tools:context=".UserPortal.BookList" android:orientation="vertical">
     <LinearLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
             android:gravity="center"
             android:text="BookList"
             android:textColor="@color/white"
-            android:textSize="@dimen/_18sdp" />
+            android:textSize="@dimen/_17sdp" />
     </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/bookslistRecyclerView"

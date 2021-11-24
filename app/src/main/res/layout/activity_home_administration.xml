@@ -17,7 +17,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Administration Home Page"
-                android:textSize="@dimen/_15sdp"
+                android:textSize="@dimen/_16sdp"
                 android:layout_weight="1"
                 android:textColor="@color/white"
                 android:gravity="center"

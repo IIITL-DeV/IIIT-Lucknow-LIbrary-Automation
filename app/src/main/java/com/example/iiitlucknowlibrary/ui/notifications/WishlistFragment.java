@@ -27,6 +27,9 @@ import com.example.iiitlucknowlibrary.UserProfile;
 import com.example.iiitlucknowlibrary.WishListAdapter;
 import com.example.iiitlucknowlibrary.databinding.FragmentWishlistBinding;
 import com.example.iiitlucknowlibrary.ui.home.HomeFragment;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -131,7 +134,15 @@ public class WishlistFragment extends Fragment  {
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),UserProfile.class));
+                FirebaseAuth.getInstance().signOut();
+                FirebaseAuth.getInstance().signOut();
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken("297181861064-7ahb7gh8b3tacknplv05ak57avgte8oa.apps.googleusercontent.com")
+                        .requestEmail()
+                        .build();
+                GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
+                mGoogleSignInClient.signOut();
+                startActivity(new Intent(getActivity(), Login.class));
             }
         });
 
