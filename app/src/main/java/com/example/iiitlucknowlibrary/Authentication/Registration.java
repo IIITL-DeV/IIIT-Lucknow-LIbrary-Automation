@@ -23,8 +23,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 
 public class Registration extends AppCompatActivity {
@@ -92,7 +96,7 @@ public class Registration extends AppCompatActivity {
                     if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(pass) || TextUtils.isEmpty(confirm_pass)) {
                         progressDialog.dismiss();
                         Toast.makeText(Registration.this, "Please enter a valid input", Toast.LENGTH_SHORT).show();
-                    } else if (!email.endsWith("@gmail.com")) {
+                    } else if (!email.endsWith("@iiitl.ac.in")) {
                         progressDialog.dismiss();
                         reg_email.setError("Invalid Email");
                         Toast.makeText(Registration.this, "Invalid Email", Toast.LENGTH_SHORT).show();
@@ -105,29 +109,65 @@ public class Registration extends AppCompatActivity {
                         reg_pass.setError("Invalid Password");
                         Toast.makeText(Registration.this, "Invalid Password", Toast.LENGTH_SHORT).show();
                     } else {
-                        mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        mAuth.fetchSignInMethodsForEmail(email).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
                             @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    DatabaseReference databaseReference = firebaseDatabase.getReference().child("user").child(mAuth.getUid());
-                                    Users users = new Users(mAuth.getUid(), name, email, enrolment);
-                                    databaseReference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                                if(task.getResult().getSignInMethods().isEmpty()){
+                                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Registered Enrolment").child(enrolment);
+                                    reference.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                startActivity(new Intent(Registration.this, Login.class));
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            if(snapshot.exists()){
                                                 progressDialog.dismiss();
-                                                Toast.makeText(getApplicationContext(), "Your account is created successfully", Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                progressDialog.dismiss();
-                                                Toast.makeText(Registration.this, "Error in creating user at final", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(Registration.this, "An account already exists with this email.", Toast.LENGTH_SHORT).show();
+                                            }
+                                            else{
+                                                mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                                        if (task.isSuccessful()) {
+                                                            DatabaseReference databaseReference = firebaseDatabase.getReference().child("user").child(mAuth.getUid());
+                                                            Users users = new Users(mAuth.getUid(), name, email, enrolment);
+                                                            databaseReference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                @Override
+                                                                public void onComplete(@NonNull Task<Void> task) {
+                                                                    if (task.isSuccessful()) {
+                                                                        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("Registered Enrolment").child(enrolment);
+                                                                        reference1.setValue(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                                            @Override
+                                                                            public void onComplete(@NonNull Task<Void> task) {
+                                                                                startActivity(new Intent(Registration.this, Login.class));
+                                                                                progressDialog.dismiss();
+                                                                                Toast.makeText(getApplicationContext(), "Your account is created successfully", Toast.LENGTH_SHORT).show();
+                                                                            }
+                                                                        });
+
+                                                                    } else {
+                                                                        progressDialog.dismiss();
+                                                                        Toast.makeText(Registration.this, "Error in creating user at final", Toast.LENGTH_SHORT).show();
+                                                                    }
+                                                                }
+                                                            });
+
+                                                        } else {
+                                                            progressDialog.dismiss();
+                                                            Toast.makeText(Registration.this, "Error in creating user", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                });
                                             }
                                         }
-                                    });
 
-                                } else {
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            progressDialog.dismiss();
+                                            Toast.makeText(Registration.this, "Error: "+error+" occurred", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                }
+                                else{
                                     progressDialog.dismiss();
-                                    Toast.makeText(Registration.this, "Error in creating user", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Registration.this, "An account already exists with this email.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

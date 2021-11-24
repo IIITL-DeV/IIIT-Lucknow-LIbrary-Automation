@@ -18,6 +18,9 @@ import com.example.iiitlucknowlibrary.administration.IssuedBooksDetails;
 import com.example.iiitlucknowlibrary.administration.RemoveABook;
 import com.example.iiitlucknowlibrary.administration.ReturnBook;
 import com.example.iiitlucknowlibrary.administration.UpdateBook;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeAdministration extends AppCompatActivity {
@@ -44,6 +47,13 @@ public class HomeAdministration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
+                FirebaseAuth.getInstance().signOut();
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken("297181861064-7ahb7gh8b3tacknplv05ak57avgte8oa.apps.googleusercontent.com")
+                        .requestEmail()
+                        .build();
+                GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(HomeAdministration.this, gso);
+                mGoogleSignInClient.signOut();
                 startActivity(new Intent(HomeAdministration.this, Login.class));
             }
         });

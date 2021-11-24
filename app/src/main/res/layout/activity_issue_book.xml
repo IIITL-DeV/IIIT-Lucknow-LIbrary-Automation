@@ -17,7 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="IIITL Library"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_16sdp"
             android:layout_weight="1"
             android:textColor="@color/white"
             android:gravity="start"
@@ -27,7 +27,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:orientation="vertical">
@@ -36,22 +36,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
             android:fontFamily="@font/spartan_bold"
             android:gravity="center"
             android:text="Issue a Book"
-            android:textSize="@dimen/_18sdp"
+            android:textSize="@dimen/_16sdp"
             android:textStyle="bold" />
-
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/issue_book_image"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_marginBottom="@dimen/_15sdp"
-            android:src="@drawable/book"
-            app:civ_border_color="#FFFFFF"
-            app:civ_border_width="2dp" />
-
 
         <EditText
             android:id="@+id/issue_book_id"
@@ -61,10 +51,11 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/edit_text_shape"
             android:fontFamily="@font/spartan_regular"
             android:hint="Book ID"
+            android:textSize="@dimen/_13sdp"
             android:padding="@dimen/_10sdp" />
 
         <EditText
@@ -75,10 +66,11 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/edit_text_shape"
             android:fontFamily="@font/spartan_regular"
             android:hint="Enrollment No"
+            android:textSize="@dimen/_13sdp"
             android:padding="@dimen/_10sdp" />
 
         <EditText
@@ -89,10 +81,11 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/edit_text_shape"
             android:fontFamily="@font/spartan_regular"
             android:hint="Issue Date"
+            android:textSize="@dimen/_13sdp"
             android:inputType="date"
             android:padding="@dimen/_10sdp" />
 
@@ -108,6 +101,7 @@
             android:background="@drawable/edit_text_shape"
             android:fontFamily="@font/spartan_regular"
             android:hint="Return Date"
+            android:textSize="@dimen/_13sdp"
             android:inputType="date"
             android:padding="@dimen/_10sdp" />
 
@@ -124,7 +118,7 @@
             android:padding="@dimen/_6sdp"
             android:text="Issue"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20sdp" />
+            android:textSize="@dimen/_16sdp" />
 
 
     </LinearLayout>

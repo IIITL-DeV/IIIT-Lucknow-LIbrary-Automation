@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="IIITL Library"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_16sdp"
             android:gravity="center"
             android:textColor="@color/white"
             android:layout_marginStart="@dimen/_10sdp"/>
@@ -36,11 +36,11 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
             android:fontFamily="@font/spartan_bold"
             android:gravity="center"
             android:text="Remove a book"
-            android:textSize="@dimen/_18sdp"
+            android:textSize="@dimen/_16sdp"
             android:textStyle="bold" />
 
         <EditText
@@ -55,6 +55,7 @@
             android:background="@drawable/edit_text_shape"
             android:fontFamily="@font/spartan_regular"
             android:hint="Book ID"
+            android:textSize="@dimen/_13sdp"
             android:padding="@dimen/_10sdp"
             android:autofillHints="yes"
             android:inputType="textAutoComplete" />
@@ -72,7 +73,7 @@
             android:padding="@dimen/_6sdp"
             android:text="Remove"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20sdp" />
+            android:textSize="@dimen/_16sdp" />
     </LinearLayout>
 
 </RelativeLayout>

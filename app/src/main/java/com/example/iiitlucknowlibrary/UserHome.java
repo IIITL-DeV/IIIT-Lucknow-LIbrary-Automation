@@ -32,7 +32,7 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
-   // private MenuItem profile , user_home, wish_list,logout,login;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

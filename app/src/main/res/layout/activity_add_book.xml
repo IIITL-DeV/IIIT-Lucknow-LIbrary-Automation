@@ -18,7 +18,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="IIITL Library"
-            android:textSize="@dimen/_15sdp"
+            android:textSize="@dimen/_16sdp"
             android:layout_weight="1"
             android:textColor="@color/white"
             android:gravity="start"
@@ -38,18 +38,18 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_25sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:fontFamily="@font/spartan_bold"
             android:gravity="center"
             android:text="Add book details"
-            android:textSize="@dimen/_18sdp"
+            android:textSize="@dimen/_16sdp"
             android:textStyle="bold" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/book_image"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:layout_marginBottom="@dimen/_15sdp"
+            android:layout_width="@dimen/_58sdp"
+            android:layout_height="@dimen/_58sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
             android:src="@drawable/addphoto1"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2dp" />
@@ -62,10 +62,11 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/edit_text_shape"
             android:fontFamily="@font/spartan_regular"
             android:hint="Book ID"
+            android:textSize="@dimen/_13sdp"
             android:padding="@dimen/_10sdp"
             android:autofillHints="yes"
             android:inputType="textAutoComplete" />
@@ -79,10 +80,11 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/edit_text_shape"
             android:fontFamily="@font/spartan_regular"
             android:hint="Book Name"
+            android:textSize="@dimen/_13sdp"
             android:padding="@dimen/_10sdp"
             android:autofillHints="yes"
             android:inputType="textAutoComplete" />
@@ -95,10 +97,11 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/edit_text_shape"
             android:fontFamily="@font/spartan_regular"
             android:hint="Book Category"
+            android:textSize="@dimen/_13sdp"
             android:inputType="textAutoComplete"
             android:padding="@dimen/_10sdp"
             android:autofillHints="yes" />
@@ -111,10 +114,11 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/edit_text_shape"
             android:fontFamily="@font/spartan_regular"
             android:hint="Author"
+            android:textSize="@dimen/_13sdp"
             android:inputType="textPersonName|textCapWords"
             android:padding="@dimen/_10sdp"
             android:autofillHints="yes" />
@@ -127,11 +131,28 @@
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
             android:background="@drawable/edit_text_shape"
             android:fontFamily="@font/spartan_regular"
             android:hint="Quantity"
+            android:textSize="@dimen/_13sdp"
             android:inputType="numberDecimal"
+            android:padding="@dimen/_10sdp"
+            android:autofillHints="yes" />
+        <EditText
+            android:id="@+id/book_drive_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Book soft copy link (optional)"
+            android:textSize="@dimen/_13sdp"
+            android:inputType="textPersonName|textCapWords"
             android:padding="@dimen/_10sdp"
             android:autofillHints="yes" />
 
@@ -148,7 +169,7 @@
             android:padding="@dimen/_6sdp"
             android:text="Add"
             android:textColor="@color/white"
-            android:textSize="@dimen/_20sdp" />
+            android:textSize="@dimen/_16sdp" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -31,7 +31,7 @@ import com.google.firebase.storage.UploadTask;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AddBook extends AppCompatActivity {
-    EditText addBookID, addBookName, addBookCategory, addBookAuthor, addBookQuantity;
+    EditText addBookID, addBookName, addBookCategory, addBookAuthor, addBookQuantity, bookUrl;
     TextView add;
     FirebaseDatabase firebaseDatabase;
     FirebaseStorage firebaseStorage;
@@ -51,6 +51,8 @@ public class AddBook extends AppCompatActivity {
         addBookQuantity = findViewById(R.id.add_book_quantity);
         book_image = findViewById(R.id.book_image);
         add = findViewById(R.id.txt_add);
+        bookUrl = findViewById(R.id.book_drive_link);
+
 
         firebaseDatabase = FirebaseDatabase.getInstance();
         firebaseStorage = FirebaseStorage.getInstance();
@@ -78,6 +80,10 @@ public class AddBook extends AppCompatActivity {
                 String Category = addBookCategory.getText().toString();
                 String Author = addBookAuthor.getText().toString();
                 String Quantity = addBookQuantity.getText().toString();
+                String BookUrl;
+
+                if(bookUrl.getText().toString().equals("")) BookUrl = "Null";
+                else BookUrl = bookUrl.getText().toString();
                 if(TextUtils.isEmpty(BookID) || TextUtils.isEmpty(Name) || TextUtils.isEmpty(Category) || TextUtils.isEmpty(Author) || TextUtils.isEmpty(Quantity)){
                     progressDialog.dismiss();
                     Toast.makeText(AddBook.this, "Please enter a valid input", Toast.LENGTH_SHORT).show();
@@ -139,7 +145,7 @@ public class AddBook extends AppCompatActivity {
                                                     @Override
                                                     public void onSuccess(Uri uri) {
                                                         image_uri = uri.toString();
-                                                        Book book = new Book(BookID, Name, Author, Category, Quantity, "Available", image_uri);
+                                                        Book book = new Book(BookID, Name, Author, Category, Quantity, "Available", image_uri, BookUrl);
                                                         databaseReference.setValue(book).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                             @Override
                                                             public void onComplete(@NonNull Task<Void> task) {
@@ -165,7 +171,7 @@ public class AddBook extends AppCompatActivity {
                                 }
                                 else{
                                     image_uri = "https://firebasestorage.googleapis.com/v0/b/library-automation-9abd2.appspot.com/o/book.jpg?alt=media&token=c153d25f-22a6-48b7-b269-0948dd07ec74";
-                                    Book book = new Book(BookID, Name, Author, Category, Quantity, "Available", image_uri);
+                                    Book book = new Book(BookID, Name, Author, Category, Quantity, "Available", image_uri, BookUrl);
                                     databaseReference.setValue(book).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {

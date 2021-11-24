@@ -65,7 +65,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Please wait.....");
         progressDialog.setCancelable(false);
-       holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
            @Override
            public boolean onLongClick(View v) {
 
@@ -85,7 +85,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
                                        String roll_no = snapshot.getValue().toString();
                                        DatabaseReference database2 = firebaseDatabase.getReference().child("WishList").child(roll_no).child(book.getBookID());
-                                       Book book1 = new Book(book.getBookID(), book.getName(), book.getAuthor(), book.getCategory(), book.getQuantity(), "Available", book.getImageUri());
+                                       Book book1 = new Book(book.getBookID(), book.getName(), book.getAuthor(), book.getCategory(), book.getQuantity(), "Available", book.getImageUri(), book.getBookUrl());
                                        database2.setValue(book1).addOnCompleteListener(new OnCompleteListener<Void>() {
                                            @Override
                                            public void onComplete(@NonNull Task<Void> task) {
@@ -112,7 +112,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
                        .show();
              return false;
            }
-       });
+        });
 
        holder.itemView.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -123,9 +123,16 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
                        .setPositiveButton("open", new DialogInterface.OnClickListener() {
                            @Override
                            public void onClick(DialogInterface dialog, int which) {
-                               Uri uri=Uri.parse("https://drive.google.com/file/d/14xX01pnestk4zxG5X16FpMo4E00yTzjp/view?usp=sharing");
-                               Intent intent= new Intent(Intent.ACTION_VIEW,uri);
-                               context.startActivity(intent);
+                               if(book.getBookUrl().equals("Null")){
+                                   Toast.makeText(context, "Soft copy of this book is not available right now.", Toast.LENGTH_SHORT).show();
+
+                               }
+                               else{
+                                   Uri uri=Uri.parse(book.getBookUrl());
+                                   //https://drive.google.com/file/d/14xX01pnestk4zxG5X16FpMo4E00yTzjp/view?usp=sharing
+                                   Intent intent= new Intent(Intent.ACTION_VIEW,uri);
+                                   context.startActivity(intent);
+                               }
                            }
                        })
                        .setNegativeButton("cancel",null)
