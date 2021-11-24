@@ -2,6 +2,7 @@ package com.example.iiitlucknowlibrary.ui.home;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -32,6 +33,7 @@ import com.example.iiitlucknowlibrary.R;
 import com.example.iiitlucknowlibrary.UserHome;
 import com.example.iiitlucknowlibrary.UserPortal.BookAdapter;
 import com.example.iiitlucknowlibrary.UserProfile;
+import com.example.iiitlucknowlibrary.administration.IssueBook;
 import com.example.iiitlucknowlibrary.databinding.FragmentHomeBinding;
 import com.example.iiitlucknowlibrary.ui.notifications.WishlistFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -55,6 +57,8 @@ public class HomeFragment extends Fragment {
     private Toolbar toolbar;
     private NavigationView navigationView;
     private CircleImageView image_view;
+    FirebaseAuth auth;
+    FirebaseDatabase database;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         homeViewModel =
@@ -62,19 +66,26 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        ProgressDialog progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setMessage("Please wait.....");
+        progressDialog.setCancelable(false);
 
-        //final TextView textView = binding.textHome;
         homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 //textView.setText(s);
             }
         });
-         image_view = binding.imageView;
+        auth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        image_view = binding.imageView;
         image_view.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(),UserProfile.class));
+            public void onClick(View v){
+                progressDialog.show();
+
+                startActivity(new Intent(getActivity(),Login.class));
+                Toast.makeText(getActivity(), "Logged out successfully", Toast.LENGTH_SHORT).show();
             }
         });
         drawerLayout = binding.drawerLayout;

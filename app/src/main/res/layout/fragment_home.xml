@@ -54,7 +54,7 @@
                         android:layout_centerVertical="true"
                         android:layout_alignParentEnd="true"
                         android:layout_marginRight="@dimen/_5sdp"
-                        android:background="@drawable/default_profile_image"
+                        android:background="@drawable/logout1"
                         android:layout_height="40dp"/>
 
 
