@@ -12,11 +12,9 @@
         <entry key="app/src/main/res/layout/activity_addd_book.xml" value="0.3229166666666667" />
         <entry key="app/src/main/res/layout/activity_book_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_cat_show_admin.xml" value="0.23233695652173914" />
-        <entry key="app/src/main/res/layout/activity_history.xml" value="0.17299898682877407" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_home_administration.xml" value="0.3134057971014493" />
         <entry key="app/src/main/res/layout/activity_issue_book.xml" value="0.3016304347826087" />
-        <entry key="app/src/main/res/layout/activity_issued_books_details.xml" value="0.17299898682877407" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3134057971014493" />
         <entry key="app/src/main/res/layout/activity_my_books.xml" value="0.13179347826086957" />
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.3134057971014493" />
@@ -27,15 +25,15 @@
         <entry key="app/src/main/res/layout/activity_user_home.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/activity_user_profile.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_wish_list.xml" value="0.1390625" />
-        <entry key="app/src/main/res/layout/custompopup.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.19322916666666667" />
         <entry key="app/src/main/res/layout/fragment_my_books.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_notifications.xml" value="0.17760416666666667" />
         <entry key="app/src/main/res/layout/fragment_wishlist.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/headerforsidemenu.xml" value="0.3161231884057971" />
-        <entry key="app/src/main/res/layout/item_booklist_row.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/headerforsidemenu.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/item_booklist_row.xml" value="0.1" />
         <entry key="app/src/main/res/layout/item_books_row.xml" value="0.15" />
         <entry key="app/src/main/res/layout/item_mybooks_row.xml" value="0.13269927536231885" />
+        <entry key="app/src/main/res/layout/popup_add_book.xml" value="0.2957427536231884" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.109375" />
         <entry key="app/src/main/res/menu/sidemenu.xml" value="0.1890625" />
       </map>

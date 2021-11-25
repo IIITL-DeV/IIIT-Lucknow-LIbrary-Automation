@@ -1,17 +1,12 @@
 package com.example.iiitlucknowlibrary.ui.home;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -27,11 +22,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iiitlucknowlibrary.Authentication.Login;
 import com.example.iiitlucknowlibrary.Book;
-import com.example.iiitlucknowlibrary.HomeAdministration;
 import com.example.iiitlucknowlibrary.R;
-import com.example.iiitlucknowlibrary.UserHome;
 import com.example.iiitlucknowlibrary.UserPortal.BookAdapter;
-import com.example.iiitlucknowlibrary.UserProfile;
+import com.example.iiitlucknowlibrary.UserPortal.UserProfile;
 import com.example.iiitlucknowlibrary.databinding.FragmentHomeBinding;
 import com.example.iiitlucknowlibrary.ui.notifications.WishlistFragment;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;

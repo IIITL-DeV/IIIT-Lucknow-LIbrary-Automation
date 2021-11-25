@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import com.example.iiitlucknowlibrary.UserPortal.UserHome;
+
 public class SplashScreen extends AppCompatActivity {
 
     /** Duration of wait **/

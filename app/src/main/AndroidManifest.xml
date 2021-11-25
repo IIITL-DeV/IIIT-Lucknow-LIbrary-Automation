@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IIITLucknowLibrary">
         <activity
-            android:name=".UserProfile"
+            android:name=".UserPortal.UserProfile"
             android:exported="true" />
         <activity
             android:name=".administration.IssuedBooksDetails"
@@ -23,12 +23,9 @@
             android:name=".administration.History"
             android:exported="true" />
         <activity
-            android:name=".UserHome"
+            android:name=".UserPortal.UserHome"
             android:exported="true"
             android:label="@string/title_activity_user_home" />
-        <activity
-            android:name=".administration.ReturnBook"
-            android:exported="true" />
         <activity
             android:name=".UserPortal.BookList"
             android:exported="true" />
@@ -36,19 +33,7 @@
             android:name=".administration.Activity_cat_show_admin"
             android:exported="true" />
         <activity
-            android:name=".administration.UpdateBook"
-            android:exported="true" />
-        <activity
-            android:name=".administration.RemoveABook"
-            android:exported="true" />
-        <activity
-            android:name=".administration.IssueBook"
-            android:exported="true" />
-        <activity
-            android:name=".administration.AddBook"
-            android:exported="true" />
-        <activity
-            android:name=".HomeAdministration"
+            android:name=".administration.HomeAdministration"
             android:exported="true" />
         <activity android:name=".Authentication.Registration" />
         <activity android:name=".Authentication.Login" />

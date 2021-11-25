@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,10 +17,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iiitlucknowlibrary.Book;
 import com.example.iiitlucknowlibrary.R;
-import com.example.iiitlucknowlibrary.administration.IssueBook;
-import com.example.iiitlucknowlibrary.administration.IssueBookModel;
-import com.example.iiitlucknowlibrary.ui.dashboard.MyBooksFragment;
-import com.example.iiitlucknowlibrary.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +29,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyViewHolder> {
@@ -89,12 +83,25 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
                                        database2.setValue(book1).addOnCompleteListener(new OnCompleteListener<Void>() {
                                            @Override
                                            public void onComplete(@NonNull Task<Void> task) {
-                                               if(task.isSuccessful()){
-                                                   progressDialog.dismiss();
-                                                   Toast.makeText(context, "Added to WishList successfully", Toast.LENGTH_SHORT).show();
+                                               boolean found =false;
+                                               String id = book.getBookID();
+                                               for(int ii=0;ii < bookList.size();ii++){
+                                                   Book this_book = bookList.get(ii);
+                                                   if(id.equals(this_book.getBookID())){
+                                                       found = true;
+                                                       break;
+                                                   }
                                                }
-                                               else{
-                                                   Toast.makeText(context, "Error in adding to WishList", Toast.LENGTH_SHORT).show();
+                                               if(!found) {
+                                                   if (task.isSuccessful()) {
+                                                       progressDialog.dismiss();
+                                                       Toast.makeText(context, "Added to WishList successfully", Toast.LENGTH_SHORT).show();
+                                                   } else {
+                                                       Toast.makeText(context, "Error in adding to WishList", Toast.LENGTH_SHORT).show();
+                                                   }
+                                               }else{
+                                                   progressDialog.dismiss();
+                                                   Toast.makeText(context, "This book is already in WishList!", Toast.LENGTH_SHORT).show();
                                                }
                                            }
                                        });

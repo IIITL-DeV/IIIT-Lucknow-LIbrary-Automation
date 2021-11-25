@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_200sdp"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:fontFamily="@font/spartan_bold"
+            android:gravity="center"
+            android:text="Update Book"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/update_book_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Book ID"
+            android:textSize="@dimen/_13sdp"
+            android:padding="@dimen/_10sdp"
+            android:autofillHints="yes"
+            android:inputType="textAutoComplete" />
+
+
+        <EditText
+            android:id="@+id/update_book_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Book Name"
+            android:textSize="@dimen/_13sdp"
+            android:padding="@dimen/_10sdp"
+            android:autofillHints="yes"
+            android:inputType="textAutoComplete" />
+
+        <EditText
+            android:id="@+id/update_book_category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Book Category"
+            android:textSize="@dimen/_13sdp"
+            android:inputType="textAutoComplete"
+            android:padding="@dimen/_10sdp"
+            android:autofillHints="yes" />
+
+        <EditText
+            android:id="@+id/update_book_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Author"
+            android:textSize="@dimen/_13sdp"
+            android:inputType="textPersonName|textCapWords"
+            android:padding="@dimen/_10sdp"
+            android:autofillHints="yes" />
+
+        <EditText
+            android:id="@+id/update_book_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/edit_text_shape"
+            android:fontFamily="@font/spartan_regular"
+            android:hint="Quantity"
+            android:textSize="@dimen/_13sdp"
+            android:inputType="numberDecimal"
+            android:padding="@dimen/_10sdp"
+            android:autofillHints="yes" />
+
+        <TextView
+            android:id="@+id/txt_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:background="@drawable/signin_shape"
+            android:gravity="center"
+            android:padding="@dimen/_6sdp"
+            android:text="Update"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+
+    </LinearLayout>
+
+</LinearLayout>

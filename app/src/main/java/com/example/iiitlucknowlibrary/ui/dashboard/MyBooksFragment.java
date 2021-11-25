@@ -2,12 +2,10 @@ package com.example.iiitlucknowlibrary.ui.dashboard;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,18 +20,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.iiitlucknowlibrary.Authentication.Login;
-import com.example.iiitlucknowlibrary.Book;
 import com.example.iiitlucknowlibrary.R;
-import com.example.iiitlucknowlibrary.UserHome;
 import com.example.iiitlucknowlibrary.UserPortal.MyBookAdapter;
-import com.example.iiitlucknowlibrary.UserProfile;
+import com.example.iiitlucknowlibrary.UserPortal.UserProfile;
 import com.example.iiitlucknowlibrary.administration.IssueBookModel;
 import com.example.iiitlucknowlibrary.databinding.FragmentMyBooksBinding;
 import com.example.iiitlucknowlibrary.ui.home.HomeFragment;
 import com.example.iiitlucknowlibrary.ui.notifications.WishlistFragment;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -41,7 +34,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 
