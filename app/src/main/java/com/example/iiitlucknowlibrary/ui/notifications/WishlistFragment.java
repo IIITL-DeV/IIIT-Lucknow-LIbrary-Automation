@@ -27,6 +27,9 @@ import com.example.iiitlucknowlibrary.UserProfile;
 import com.example.iiitlucknowlibrary.WishListAdapter;
 import com.example.iiitlucknowlibrary.databinding.FragmentWishlistBinding;
 import com.example.iiitlucknowlibrary.ui.home.HomeFragment;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -101,24 +104,26 @@ public class WishlistFragment extends Fragment  {
         database1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String roll_no = snapshot.getValue().toString();
-                DatabaseReference database2 = FirebaseDatabase.getInstance().getReference("WishList").child(roll_no);
-                database2.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                            for(DataSnapshot dataSnapshot : snapshot1.getChildren()){
-                                Book book = dataSnapshot.getValue(Book.class);
-                                book_list.add(book);
+                if(snapshot.hasChildren()){
+                    String roll_no = snapshot.getValue().toString();
+                    DatabaseReference database2 = FirebaseDatabase.getInstance().getReference("WishList").child(roll_no);
+                    database2.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                            if(snapshot1.hasChildren()){
+                                for(DataSnapshot dataSnapshot : snapshot1.getChildren()){
+                                    Book book = dataSnapshot.getValue(Book.class);
+                                    book_list.add(book);
+                                }
+                                myAdapter.notifyDataSetChanged();
                             }
-                            myAdapter.notifyDataSetChanged();
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
+                        }
+                    });
+                }
             }
 
             @Override
@@ -131,7 +136,15 @@ public class WishlistFragment extends Fragment  {
         circleImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),UserProfile.class));
+                FirebaseAuth.getInstance().signOut();
+                FirebaseAuth.getInstance().signOut();
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken("297181861064-7ahb7gh8b3tacknplv05ak57avgte8oa.apps.googleusercontent.com")
+                        .requestEmail()
+                        .build();
+                GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
+                mGoogleSignInClient.signOut();
+                startActivity(new Intent(getActivity(), Login.class));
             }
         });
 

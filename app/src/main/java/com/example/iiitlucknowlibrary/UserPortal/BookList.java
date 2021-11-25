@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.iiitlucknowlibrary.Book;
 import com.example.iiitlucknowlibrary.R;
@@ -41,19 +42,20 @@ public class BookList extends AppCompatActivity {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot snapshot1 :  snapshot.getChildren()){
-                    Book book  = snapshot1.getValue(Book.class);
+                if(snapshot.hasChildren()){
+                    for(DataSnapshot snapshot1 :  snapshot.getChildren()){
+                        Book book  = snapshot1.getValue(Book.class);
                         String s = book.getCategory();
                         if (s.equalsIgnoreCase(string)) {
                             book_list.add(book);
                         }
-
+                    }
+                    adapter1.notifyDataSetChanged();
                 }
-                adapter1.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(BookList.this, "error "+error+" occurred", Toast.LENGTH_SHORT).show();
             }
         });
 

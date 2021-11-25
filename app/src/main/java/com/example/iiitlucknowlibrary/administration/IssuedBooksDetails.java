@@ -39,19 +39,21 @@ public class IssuedBooksDetails extends AppCompatActivity {
         database1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                for (DataSnapshot dataSnapshot1 : snapshot1.getChildren()){
-                    Log.d("aaa2", "onCreateView: "+dataSnapshot1.getKey());
-                    for(DataSnapshot dataSnapshot2 : dataSnapshot1.getChildren()){
-                        IssueBookModel issued_book = dataSnapshot2.getValue(IssueBookModel.class);
-                        String s = issued_book.getIssueId();
-                        s += ", ";
-                        s += "Student Roll Number: ";
-                        s += dataSnapshot1.getKey();
-                        issued_book.setIssueId(s);
-                        book_list.add(issued_book);
+                if(snapshot1.hasChildren()){
+                    for (DataSnapshot dataSnapshot1 : snapshot1.getChildren()){
+                        Log.d("aaa2", "onCreateView: "+dataSnapshot1.getKey());
+                        for(DataSnapshot dataSnapshot2 : dataSnapshot1.getChildren()){
+                            IssueBookModel issued_book = dataSnapshot2.getValue(IssueBookModel.class);
+                            String s = issued_book.getIssueId();
+                            s += ", ";
+                            s += "Student Roll Number: ";
+                            s += dataSnapshot1.getKey();
+                            issued_book.setIssueId(s);
+                            book_list.add(issued_book);
+                        }
                     }
+                    myAdapter.notifyDataSetChanged();
                 }
-                myAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
