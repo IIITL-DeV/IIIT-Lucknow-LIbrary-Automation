@@ -183,10 +183,9 @@ public class Login extends AppCompatActivity {
                             ShowPopup(account.getIdToken(), account.getDisplayName());
                         }
                         else{
-                            firebaseAuthWithGoogle(account.getIdToken());
-                            //progressDialog.dismiss();
-                            //mGoogleSignInClient.signOut();
-                            //Toast.makeText(Login.this, "An account already exists with this email.", Toast.LENGTH_SHORT).show();
+                            progressDialog.dismiss();
+                            mGoogleSignInClient.signOut();
+                            Toast.makeText(Login.this, "An account already exists with this email.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
