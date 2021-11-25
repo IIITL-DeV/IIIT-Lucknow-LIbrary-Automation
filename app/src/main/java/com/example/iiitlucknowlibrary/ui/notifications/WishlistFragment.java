@@ -104,7 +104,7 @@ public class WishlistFragment extends Fragment  {
         database1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChildren()){
+                //if(snapshot.hasChildren()){
                     String roll_no = snapshot.getValue().toString();
                     DatabaseReference database2 = FirebaseDatabase.getInstance().getReference("WishList").child(roll_no);
                     database2.addValueEventListener(new ValueEventListener() {
@@ -123,7 +123,7 @@ public class WishlistFragment extends Fragment  {
 
                         }
                     });
-                }
+                //}
             }
 
             @Override
