@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.iiitlucknowlibrary.ui.notifications.WishlistFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -89,6 +90,7 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyVie
                                                                   appleSnapshot.getRef().removeValue();
                                                                   notifyItemRemoved(position);
                                                                   progressDialog.dismiss();
+                                                                  context.startActivity(new Intent(context, WishlistFragment.class));
                                                                   Toast.makeText(context, "Book is successfully Removed", Toast.LENGTH_SHORT).show();
                                                               }
                                                           }

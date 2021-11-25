@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="180dp"
-    android:orientation="vertical"
-    android:background="#3F51B5"
-    android:gravity="center"
-    android:padding="20dp">
+    android:background="#3F51B5">
     <ImageView
-        android:layout_width="90dp"
-        android:layout_height="80dp"
-        android:src="@drawable/book"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="IIIT Lucknow Library"
-        android:textSize="25dp"
-        android:textColor="#fff"/>
+        android:id="@+id/IIIL_book"
+        android:layout_width="@dimen/_100sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/book"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_height="@dimen/_90sdp"/>
 
-
-
-</LinearLayout>
+</RelativeLayout>
