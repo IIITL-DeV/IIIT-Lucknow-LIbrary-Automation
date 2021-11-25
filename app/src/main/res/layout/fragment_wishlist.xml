@@ -56,7 +56,7 @@
                     android:layout_alignParentEnd="true"
                     android:id="@+id/imageView"
                     android:layout_marginRight="@dimen/_5sdp"
-                    android:background="@drawable/logout1"
+                    android:background="@drawable/default_profile_image"
                     android:layout_height="28dp"/>
 
 
