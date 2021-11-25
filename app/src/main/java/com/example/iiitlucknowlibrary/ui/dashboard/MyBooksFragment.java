@@ -104,8 +104,8 @@ public class MyBooksFragment extends Fragment implements NavigationView.OnNaviga
         navigationView.setNavigationItemSelectedListener(this);
         reference11.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.hasChildren()){
+            public void onDataChange(@NonNull DataSnapshot snapshot){
+                //if(snapshot.hasChildren()){
                     String us = snapshot.getValue().toString();
                     DatabaseReference database1 = FirebaseDatabase.getInstance().getReference("IssueBook").child(us);
                     database1.addValueEventListener(new ValueEventListener() {
@@ -125,7 +125,7 @@ public class MyBooksFragment extends Fragment implements NavigationView.OnNaviga
 
                         }
                     });
-                }
+                //}
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
