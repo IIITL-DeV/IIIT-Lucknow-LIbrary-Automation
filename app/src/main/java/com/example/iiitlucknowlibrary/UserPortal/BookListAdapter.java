@@ -89,12 +89,25 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
                                        database2.setValue(book1).addOnCompleteListener(new OnCompleteListener<Void>() {
                                            @Override
                                            public void onComplete(@NonNull Task<Void> task) {
-                                               if(task.isSuccessful()){
-                                                   progressDialog.dismiss();
-                                                   Toast.makeText(context, "Added to WishList successfully", Toast.LENGTH_SHORT).show();
+                                               boolean found =false;
+                                               String id = book.getBookID();
+                                               for(int ii=0;ii < bookList.size();ii++){
+                                                   Book this_book = bookList.get(ii);
+                                                   if(id.equals(this_book.getBookID())){
+                                                       found = true;
+                                                       break;
+                                                   }
                                                }
-                                               else{
-                                                   Toast.makeText(context, "Error in adding to WishList", Toast.LENGTH_SHORT).show();
+                                               if(!found) {
+                                                   if (task.isSuccessful()) {
+                                                       progressDialog.dismiss();
+                                                       Toast.makeText(context, "Added to WishList successfully", Toast.LENGTH_SHORT).show();
+                                                   } else {
+                                                       Toast.makeText(context, "Error in adding to WishList", Toast.LENGTH_SHORT).show();
+                                                   }
+                                               }else{
+
+                                                   Toast.makeText(context, "This book is already in WishList!", Toast.LENGTH_SHORT).show();
                                                }
                                            }
                                        });
