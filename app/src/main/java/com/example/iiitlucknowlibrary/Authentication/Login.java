@@ -81,7 +81,7 @@ public class Login extends AppCompatActivity {
                 if(TextUtils.isEmpty(Email) || TextUtils.isEmpty(Pass)){
                     progressDialog.dismiss();
                     Toast.makeText(Login.this, "Enter valid data", Toast.LENGTH_SHORT).show();
-                }else if(!Email.endsWith("@gmail.com")){
+                }else if(!((Email.endsWith("@iiitl.ac.in")) || Email.equals("admin@gmail.com"))){
                     progressDialog.dismiss();
                     email.setError("Invalid Email");
                     Toast.makeText(Login.this, "Invalid Email", Toast.LENGTH_SHORT).show();
@@ -120,19 +120,8 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 progressDialog.show();
-                //ShowPopup();
-                //Log.d("checking", "........checkpoint1: ");...................................................................
                 fun();
                 signIn();
-                //mAuth.signOut();
-                //mGoogleSignInClient.signOut();
-                /*mAuth.fetchSignInMethodsForEmail(email.getText().toString()).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-                        Toast.makeText(Login.this, email.getText().toString()+"  -"+task.getResult().getSignInMethods().isEmpty(), Toast.LENGTH_SHORT).show();
-                    }
-                });*/
-
 
             }
         });
@@ -170,23 +159,23 @@ public class Login extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
 
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {//CymcG8j5ZtQX0uka4yRUVpwvuIh1
+            try {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = task.getResult(ApiException.class);
                 Log.d("...........", "firebaseAuthWithGoogle:" + account.getEmail());
                 FirebaseAuth.getInstance().fetchSignInMethodsForEmail(account.getEmail()).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
                     @Override
                     public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+
                         //Toast.makeText(Login.this, ""+task.getResult().getSignInMethods(), Toast.LENGTH_SHORT).show();
                         if(task.getResult().getSignInMethods().isEmpty()){
+                            Log.d("...........", "firebaseAuthWithGoogle:" + account.getEmail()+" no");
                             progressDialog.dismiss();
                             ShowPopup(account.getIdToken(), account.getDisplayName());
                         }
                         else{
-                            firebaseAuthWithGoogle(account.getIdToken());
-                            //progressDialog.dismiss();
-                            //mGoogleSignInClient.signOut();
-                            //Toast.makeText(Login.this, "An account already exists with this email.", Toast.LENGTH_SHORT).show();
+                            Log.d("...........", "firebaseAuthWithGoogle:" + account.getEmail()+" yes");
+                            firebaseAuthWithGoogle(account.getIdToken(), "1");
                         }
                     }
                 });
@@ -197,36 +186,41 @@ public class Login extends AppCompatActivity {
             }
         }
     }
-    private void firebaseAuthWithGoogle(String idToken) {
+    private void firebaseAuthWithGoogle(String idToken, String status) {
         AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("user").child(mAuth.getUid());
-                            Users users = new Users(mAuth.getUid(), name, mAuth.getCurrentUser().getEmail(), enrolment);
-                            databaseReference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("Registered Enrolment").child(enrolment);
-                                        reference1.setValue(mAuth.getCurrentUser().getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                startActivity(new Intent(Login.this, UserHome.class));
-                                                progressDialog.dismiss();
-                                                Toast.makeText(getApplicationContext(), "Your account is created successfully", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-
-                                    } else {
-                                        progressDialog.dismiss();
-                                        Toast.makeText(Login.this, "Error in creating user at final", Toast.LENGTH_SHORT).show();
+                            if(status=="1"){
+                                progressDialog.dismiss();
+                                startActivity(new Intent(Login.this, UserHome.class));
+                                Toast.makeText(getApplicationContext(), "You are successfully signed in.", Toast.LENGTH_SHORT).show();
+                            }
+                            else{
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("user").child(mAuth.getUid());
+                                Users users = new Users(mAuth.getUid(), name, mAuth.getCurrentUser().getEmail(), enrolment);
+                                databaseReference.setValue(users).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference().child("Registered Enrolment").child(enrolment);
+                                            reference1.setValue(mAuth.getCurrentUser().getEmail()).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    progressDialog.dismiss();
+                                                    startActivity(new Intent(Login.this, UserHome.class));
+                                                    Toast.makeText(getApplicationContext(), "Your account is created successfully", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                        } else {
+                                            progressDialog.dismiss();
+                                            Toast.makeText(Login.this, "Error in creating user at final", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
-                                }
-                            });
-
+                                });
+                            }
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("MainActivity", "signInWithCredential:failure", task.getException());
@@ -234,6 +228,7 @@ public class Login extends AppCompatActivity {
                     }
                 });
     }
+
 
 
     public void ShowPopup(String idToken, String userName) {
@@ -266,7 +261,7 @@ public class Login extends AppCompatActivity {
                             }
                             else{
                                 myDialog.dismiss();
-                                firebaseAuthWithGoogle(idToken);
+                                firebaseAuthWithGoogle(idToken, "2");
                             }
                         }
 

@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,7 +31,7 @@ public class UserProfile extends AppCompatActivity {
         roll = (TextView)findViewById(R.id.user_rollTV);
         email = (TextView)findViewById(R.id.user_emailTV);
         name = (TextView)findViewById(R.id.user_nameTV);
-
+        Log.d("dkfaklfd", "onCreate: "+reference1.getKey());
         reference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
