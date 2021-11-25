@@ -104,24 +104,26 @@ public class WishlistFragment extends Fragment  {
         database1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String roll_no = snapshot.getValue().toString();
-                DatabaseReference database2 = FirebaseDatabase.getInstance().getReference("WishList").child(roll_no);
-                database2.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                            for(DataSnapshot dataSnapshot : snapshot1.getChildren()){
-                                Book book = dataSnapshot.getValue(Book.class);
-                                book_list.add(book);
+                if(snapshot.hasChildren()){
+                    String roll_no = snapshot.getValue().toString();
+                    DatabaseReference database2 = FirebaseDatabase.getInstance().getReference("WishList").child(roll_no);
+                    database2.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                            if(snapshot1.hasChildren()){
+                                for(DataSnapshot dataSnapshot : snapshot1.getChildren()){
+                                    Book book = dataSnapshot.getValue(Book.class);
+                                    book_list.add(book);
+                                }
+                                myAdapter.notifyDataSetChanged();
                             }
-                            myAdapter.notifyDataSetChanged();
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-
+                        }
+                    });
+                }
             }
 
             @Override

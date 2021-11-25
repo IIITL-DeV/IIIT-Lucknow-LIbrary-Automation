@@ -42,14 +42,16 @@ public class BookList extends AppCompatActivity {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot snapshot1 :  snapshot.getChildren()){
-                    Book book  = snapshot1.getValue(Book.class);
+                if(snapshot.hasChildren()){
+                    for(DataSnapshot snapshot1 :  snapshot.getChildren()){
+                        Book book  = snapshot1.getValue(Book.class);
                         String s = book.getCategory();
                         if (s.equalsIgnoreCase(string)) {
                             book_list.add(book);
                         }
+                    }
+                    adapter1.notifyDataSetChanged();
                 }
-                adapter1.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

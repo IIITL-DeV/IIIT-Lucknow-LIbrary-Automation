@@ -131,22 +131,24 @@ public class HomeFragment extends Fragment {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Book book = dataSnapshot.getValue(Book.class);
-                    String s = book.getCategory();
-                    ArrayList<Book> temp = new ArrayList<Book>();
-                    if(book_map.containsKey(s)){
-                        temp = book_map.get(s);
-                        temp.add(book);
-                        book_map.put(s,temp);
-                    }else {
-                        temp.add(book);
-                        list.add(book);
-                        book_map.put(s, temp);
-                        temp=null;
+                if(snapshot.hasChildren()){
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        Book book = dataSnapshot.getValue(Book.class);
+                        String s = book.getCategory();
+                        ArrayList<Book> temp = new ArrayList<Book>();
+                        if(book_map.containsKey(s)){
+                            temp = book_map.get(s);
+                            temp.add(book);
+                            book_map.put(s,temp);
+                        }else {
+                            temp.add(book);
+                            list.add(book);
+                            book_map.put(s, temp);
+                            temp=null;
+                        }
                     }
+                    adapter.notifyDataSetChanged();
                 }
-                adapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

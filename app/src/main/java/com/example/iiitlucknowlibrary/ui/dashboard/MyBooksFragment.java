@@ -113,24 +113,27 @@ public class MyBooksFragment extends Fragment implements NavigationView.OnNaviga
         reference11.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String us = snapshot.getValue().toString();
-                DatabaseReference database1 = FirebaseDatabase.getInstance().getReference("IssueBook").child(us);
-                database1.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot1) {
-                        //Log.d(TAG, "onCreateView: "+snapshot1.getValue());
-                        for (DataSnapshot dataSnapshot : snapshot1.getChildren()) {
-                            IssueBookModel issued_book = dataSnapshot.getValue(IssueBookModel.class);
-                            book_list.add(issued_book);
+                if(snapshot.hasChildren()){
+                    String us = snapshot.getValue().toString();
+                    DatabaseReference database1 = FirebaseDatabase.getInstance().getReference("IssueBook").child(us);
+                    database1.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot1) {
+                            //Log.d(TAG, "onCreateView: "+snapshot1.getValue());
+                            if(snapshot1.hasChildren()){
+                                for (DataSnapshot dataSnapshot : snapshot1.getChildren()) {
+                                    IssueBookModel issued_book = dataSnapshot.getValue(IssueBookModel.class);
+                                    book_list.add(issued_book);
+                                }
+                                myAdapter.notifyDataSetChanged();
+                            }
                         }
-                        myAdapter.notifyDataSetChanged();
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
-                    }
-                });
-
+                        }
+                    });
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
