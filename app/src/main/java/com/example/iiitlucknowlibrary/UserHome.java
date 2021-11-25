@@ -39,7 +39,7 @@ public class UserHome extends AppCompatActivity implements NavigationView.OnNavi
 
         mAuth = FirebaseAuth.getInstance();
         if(mAuth.getCurrentUser()==null){
-            startActivity(new Intent(UserHome.this, Registration.class));
+            startActivity(new Intent(UserHome.this, Login.class));
         }
         else if(mAuth.getCurrentUser().getEmail().equals("admin@gmail.com")){
             startActivity(new Intent(UserHome.this, HomeAdministration.class));
