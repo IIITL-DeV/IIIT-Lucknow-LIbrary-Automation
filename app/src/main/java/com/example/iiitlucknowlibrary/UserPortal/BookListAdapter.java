@@ -106,7 +106,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
                                                        Toast.makeText(context, "Error in adding to WishList", Toast.LENGTH_SHORT).show();
                                                    }
                                                }else{
-
+                                                   progressDialog.dismiss();
                                                    Toast.makeText(context, "This book is already in WishList!", Toast.LENGTH_SHORT).show();
                                                }
                                            }
