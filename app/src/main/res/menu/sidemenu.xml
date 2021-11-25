@@ -10,7 +10,7 @@
             android:title="Home">
         </item>
         <item android:id="@+id/wish_list"
-            android:icon="@drawable/ic_baseline_checklist_24"
+            android:icon="@android:drawable/btn_star_big_off"
             android:title="Wishlist">
         </item>
     </group>
