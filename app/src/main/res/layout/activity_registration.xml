@@ -45,7 +45,7 @@
             android:id="@+id/reg_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email Address"
+            android:hint="Institutional Email Id"
             android:textSize="@dimen/_12sdp"
             android:fontFamily="@font/spartan_regular"
             android:background="@drawable/edit_text_shape"

@@ -81,15 +81,7 @@ public class MyBooksFragment extends Fragment implements NavigationView.OnNaviga
         image_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                FirebaseAuth.getInstance().signOut();
-                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                        .requestIdToken("297181861064-7ahb7gh8b3tacknplv05ak57avgte8oa.apps.googleusercontent.com")
-                        .requestEmail()
-                        .build();
-                GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(getActivity(), gso);
-                mGoogleSignInClient.signOut();
-                startActivity(new Intent(getActivity(), Login.class));
+                startActivity(new Intent(getActivity(), UserProfile.class));
             }
         });
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
