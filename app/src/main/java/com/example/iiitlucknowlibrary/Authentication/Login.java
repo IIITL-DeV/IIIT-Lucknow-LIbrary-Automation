@@ -105,7 +105,7 @@ public class Login extends AppCompatActivity {
                             }
                             else{
                                 progressDialog.dismiss();
-                                Toast.makeText(Login.this, "Error to login", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, "Error to login10", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -134,7 +134,7 @@ public class Login extends AppCompatActivity {
 
     private void fun() {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("297181861064-7ahb7gh8b3tacknplv05ak57avgte8oa.apps.googleusercontent.com")
+                .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
 
