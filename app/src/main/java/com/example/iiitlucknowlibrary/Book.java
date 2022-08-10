@@ -74,7 +74,6 @@ public class Book {
     public void setCategory(String category) {
         this.category = category;
     }
-
     public void setImageUri(String imageUri) {
         this.imageUri = imageUri;
     }

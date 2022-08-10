@@ -1,19 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
-
+        android:id="@+id/nav_categories"
+        android:title="Categories"
+        android:icon="@drawable/ic_categories" />
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_my_books" />
-
+        android:id="@+id/nav_mybooks"
+        android:title="MyBooks"
+        android:icon="@drawable/ic_mybooks" />
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@android:drawable/btn_star_big_off"
-        android:title="@string/title_wishlist" />
+        android:id="@+id/nav_wishlist"
+        android:title="Wishlist"
+        android:icon="@drawable/ic_wishlist" />
 
 </menu>

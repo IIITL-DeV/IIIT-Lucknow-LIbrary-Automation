@@ -6,33 +6,27 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:fitsSystemWindows="false"
     tools:context=".UserPortal.UserHome"
     tools:openDrawer="start">
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:id="@+id/navigationView"
         app:headerLayout="@layout/headerforsidemenu"
-        app:menu="@menu/sidemenu"
+        app:menu="@menu/side_menu"
         android:layout_gravity="start"
+        tools:context=".UserPortal.UserHome"
         android:layout_height="match_parent"/>
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.notifications.WishlistFragment">
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            android:minHeight="?attr/actionBarSize"
+            android:layout_height="@dimen/_40sdp"
             android:layout_marginBottom="5dp"
             tools:layout_centerHorizontal="true"
-            android:background="@color/purple_700"
+            android:background="@color/purple_500"
             app:titleTextColor="@color/white"
             app:titleMarginStart="@dimen/_50sdp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
@@ -52,28 +46,34 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="28dp"
+                    android:id="@+id/profile_imageView"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
-                    android:id="@+id/imageView"
                     android:layout_marginRight="@dimen/_5sdp"
-                    android:background="@drawable/default_profile_image"
+                    android:background="@drawable/ic_account"
                     android:layout_height="28dp"/>
 
 
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="@dimen/_25sdp"
-        android:layout_marginTop="@dimen/_340sdp"
-        android:layout_height="wrap_content"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/wishListRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="@dimen/_5sdp" />
-</RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/wishlistRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginBottom="@dimen/_40sdp" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/purple_500"
+            app:itemIconTint="@drawable/serlector"
+            app:itemTextColor="@drawable/serlector"
+            app:menu="@menu/bottom_nav_menu" />
+    </RelativeLayout>
+
+
 </androidx.drawerlayout.widget.DrawerLayout>
