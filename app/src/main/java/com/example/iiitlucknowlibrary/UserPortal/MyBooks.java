@@ -57,7 +57,9 @@ public class MyBooks extends AppCompatActivity {
         if(mAuth.getCurrentUser()==null){
             startActivity(new Intent(getApplicationContext(), Login.class));
         }
-
+        else if(Objects.equals(mAuth.getCurrentUser().getEmail(), "admin@gmail.com")){
+            startActivity(new Intent(getApplicationContext(), HomeAdministration.class));
+        }
         final RecyclerView recyclerView =findViewById(R.id.myBooksRecyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));

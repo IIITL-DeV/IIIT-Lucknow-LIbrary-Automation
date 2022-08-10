@@ -20,6 +20,7 @@ import com.example.iiitlucknowlibrary.Authentication.Login;
 import com.example.iiitlucknowlibrary.Book;
 import com.example.iiitlucknowlibrary.R;
 import com.example.iiitlucknowlibrary.WishListAdapter;
+import com.example.iiitlucknowlibrary.administration.HomeAdministration;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -34,6 +35,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -48,18 +50,21 @@ public class WishList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wish_list);
-        mAuth = FirebaseAuth.getInstance();
-        if(mAuth.getCurrentUser()==null){
-            startActivity(new Intent(getApplicationContext(), Login.class));
-        }
         final RecyclerView wishListRecyclerView = findViewById(R.id.wishlistRecyclerView);
         wishListRecyclerView.setHasFixedSize(true);
         wishListRecyclerView.setLayoutManager(new GridLayoutManager(getApplicationContext(),2));
         ArrayList<Book> book_list = new ArrayList<Book>();
         WishListAdapter myAdapter = new WishListAdapter(getApplicationContext(),book_list);
         wishListRecyclerView.setAdapter(myAdapter);
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        String userId = auth.getCurrentUser().getUid();
+        mAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        if(mAuth.getCurrentUser()==null){
+            startActivity(new Intent(getApplicationContext(), Login.class));
+        }
+        else if(Objects.equals(mAuth.getCurrentUser().getEmail(), "admin@gmail.com")){
+            startActivity(new Intent(getApplicationContext(), HomeAdministration.class));
+        }
+        String userId = mAuth.getCurrentUser().getUid();
         DatabaseReference database1 = FirebaseDatabase.getInstance().getReference("user").child(userId).child("enrolment");
 
         database1.addValueEventListener(new ValueEventListener() {
