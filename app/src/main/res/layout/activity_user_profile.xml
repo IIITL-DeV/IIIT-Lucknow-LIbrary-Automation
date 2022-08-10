@@ -6,21 +6,30 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".UserPortal.UserProfile">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:background="@color/purple_200"
-        android:orientation="vertical"
-        android:id="@+id/upper_layout"
-        android:layout_height="@dimen/_180sdp">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="@dimen/_180sdp"
-            android:id="@+id/profileImage"
-            android:background="@drawable/default_profile_image"
-            android:layout_gravity="center_horizontal"
-            android:layout_height="@dimen/_180sdp"/>
-    </LinearLayout>
      <RelativeLayout
          android:layout_width="match_parent"
+         android:layout_height="@dimen/_180sdp">
+         <ImageView
+             android:layout_width="match_parent"
+             android:id="@+id/coverImage"
+             android:background="@drawable/developers_image"
+             android:layout_height="match_parent">
+
+         </ImageView>
+         <de.hdodenhof.circleimageview.CircleImageView
+             android:id="@+id/add_profile_image"
+             android:layout_width="@dimen/_58sdp"
+             android:layout_height="@dimen/_58sdp"
+             android:layout_marginTop="@dimen/_115sdp"
+             android:layout_marginStart="@dimen/_130sdp"
+             android:src="@drawable/addphoto1"
+             app:civ_border_color="#FF000000"
+             app:civ_border_width="2dp" />
+     </RelativeLayout>
+
+     <RelativeLayout
+         android:layout_width="match_parent"
+         android:id="@+id/Rl1"
          android:layout_gravity="center_horizontal"
          android:layout_marginLeft="@dimen/_20sdp"
          android:layout_height="match_parent">

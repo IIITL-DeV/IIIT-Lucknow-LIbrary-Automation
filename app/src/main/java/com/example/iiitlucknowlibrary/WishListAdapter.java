@@ -1,14 +1,11 @@
 package com.example.iiitlucknowlibrary;
 
-import static android.content.ContentValues.TAG;
-
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.iiitlucknowlibrary.ui.notifications.WishlistFragment;
+import com.example.iiitlucknowlibrary.UserPortal.WishList;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -90,7 +87,7 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyVie
                                                                   appleSnapshot.getRef().removeValue();
                                                                   notifyItemRemoved(position);
                                                                   progressDialog.dismiss();
-                                                                  context.startActivity(new Intent(context, WishlistFragment.class));
+                                                                  context.startActivity(new Intent(context, WishList.class));
                                                                   Toast.makeText(context, "Book is successfully Removed", Toast.LENGTH_SHORT).show();
                                                               }
                                                           }

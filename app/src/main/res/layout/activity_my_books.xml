@@ -6,23 +6,20 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:fitsSystemWindows="false"
     tools:context=".UserPortal.UserHome"
     tools:openDrawer="start">
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:id="@+id/navigationView"
         app:headerLayout="@layout/headerforsidemenu"
-        app:menu="@menu/sidemenu"
+        app:menu="@menu/side_menu"
         android:layout_gravity="start"
+        tools:context=".UserPortal.UserHome"
         android:layout_height="match_parent"/>
-
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.home.HomeFragment">
+        android:layout_height="match_parent">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -39,7 +36,7 @@
                 android:layout_height="match_parent">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:text="Books Categories"
+                    android:text="My Books"
                     android:id="@+id/tv1"
 
                     android:layout_centerVertical="true"
@@ -50,11 +47,11 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="28dp"
-                    android:id="@+id/imageView"
+                    android:id="@+id/profile_imageView"
                     android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="@dimen/_5sdp"
-                    android:background="@drawable/logout1"
+                    android:background="@drawable/ic_account"
                     android:layout_height="28dp"/>
 
 
@@ -62,12 +59,22 @@
         </androidx.appcompat.widget.Toolbar>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/booksRecyclerView"
+            android:id="@+id/myBooksRecyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/toolbar"
             android:layout_marginBottom="@dimen/_40sdp" />
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/purple_500"
+            app:itemIconTint="@drawable/serlector"
+            app:itemTextColor="@drawable/serlector"
+            app:menu="@menu/bottom_nav_menu" />
     </RelativeLayout>
+
 
 </androidx.drawerlayout.widget.DrawerLayout>
