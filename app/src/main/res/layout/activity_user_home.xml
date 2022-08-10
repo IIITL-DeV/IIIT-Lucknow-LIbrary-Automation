@@ -6,55 +6,75 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start"
-    tools:context=".UserPortal.UserHome">
+    android:fitsSystemWindows="false"
+    tools:context=".UserPortal.UserHome"
+    tools:openDrawer="start">
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"
         android:id="@+id/navigationView"
         app:headerLayout="@layout/headerforsidemenu"
-        app:menu="@menu/sidemenu"
+        app:menu="@menu/side_menu"
         android:layout_gravity="start"
+        tools:context=".UserPortal.UserHome"
         android:layout_height="match_parent"/>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    android:id="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/_40sdp"
-    android:layout_marginBottom="5dp"
-    tools:layout_centerHorizontal="true"
-    android:background="@color/purple_500"
-    app:title="WishList"
-    app:titleTextColor="@color/white"
-    app:titleMarginStart="@dimen/_50sdp"
-    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginBottom="5dp"
+                tools:layout_centerHorizontal="true"
+                android:background="@color/purple_500"
+                app:titleTextColor="@color/white"
+                app:titleMarginStart="@dimen/_50sdp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/rl"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="Books Categories"
+                        android:id="@+id/tv1"
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="?android:attr/windowBackground"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+                        android:layout_centerVertical="true"
+                        android:textSize="@dimen/_18sdp"
+                        android:textStyle="bold"
+                        android:textColor="@color/white"
+                        android:layout_height="wrap_content"/>
 
-    <fragment
-        android:id="@+id/nav_host_fragment_activity_user_home"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@id/nav_view"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/mobile_navigation" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="28dp"
+                        android:id="@+id/profile_imageView"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:background="@drawable/ic_account"
+                        android:layout_height="28dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoriesRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginBottom="@dimen/_40sdp" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_navigator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                app:itemBackground="@color/purple_500"
+                app:itemIconTint="@drawable/serlector"
+                app:itemTextColor="@drawable/serlector"
+                app:menu="@menu/bottom_nav_menu" />
+        </RelativeLayout>
+
+
 </androidx.drawerlayout.widget.DrawerLayout>

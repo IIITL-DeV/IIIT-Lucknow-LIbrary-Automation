@@ -21,24 +21,27 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class BookList extends AppCompatActivity {
-     TextView txt;
+    TextView txt;
     DatabaseReference database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_list);
+
          Intent intent = getIntent();
          txt = (TextView)findViewById(R.id.bookList);
          String string = intent.getStringExtra("categoryName");
          txt.setText( string + " Books");
+
         RecyclerView recyclerView1 = findViewById(R.id.bookslistRecyclerView);
         database = FirebaseDatabase.getInstance().getReference("Books");
         recyclerView1.setHasFixedSize(true);
-        recyclerView1.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView1.setLayoutManager(new GridLayoutManager(this,1));
 
         ArrayList<Book> book_list = new ArrayList<Book>();
-        BookListAdapter adapter1 = new BookListAdapter(this,book_list);
-        recyclerView1.setAdapter(adapter1);
+        BookListAdapter adapter = new BookListAdapter(this,book_list);
+        recyclerView1.setAdapter(adapter);
+
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -50,7 +53,7 @@ public class BookList extends AppCompatActivity {
                             book_list.add(book);
                         }
                     }
-                    adapter1.notifyDataSetChanged();
+                    adapter.notifyDataSetChanged();
                 }
             }
             @Override
@@ -58,7 +61,6 @@ public class BookList extends AppCompatActivity {
                 Toast.makeText(BookList.this, "error "+error+" occurred", Toast.LENGTH_SHORT).show();
             }
         });
-
 
     }
 }

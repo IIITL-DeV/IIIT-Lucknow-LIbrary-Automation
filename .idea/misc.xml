@@ -3,6 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable-v24/edit_text_shape.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable/book_details.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable/default_profile_image.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable/ic_account.xml" value="0.1455" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable/ic_baseline_bungalow_24.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable/ic_baseline_checklist_24.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable/ic_categories.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable/ic_mybooks.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable/serlector.xml" value="0.1435" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/drawable/shape_item.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/layout/activity_account.xml" value="0.17572463768115942" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/layout/activity_home_administration.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/layout/activity_my_books.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/layout/activity_registration.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/layout/activity_user_home.xml" value="0.18" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/layout/activity_user_profile.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/layout/activity_wish_list.xml" value="0.17074275362318841" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/layout/app_bar.xml" value="0.1" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/layout/headerforsidemenu.xml" value="0.2" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/layout/popup_add_book.xml" value="0.2" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
+        <entry key="..\:/Users/Ayush/AndroidStudioProjects/IIIT-Lucknow-LIbrary-Automation/app/src/main/res/menu/side_menu.xml" value="0.2" />
         <entry key="app/src/main/res/drawable-v24/edit_text_shape.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.209375" />
         <entry key="app/src/main/res/drawable-v24/signin_shape.xml" value="0.371875" />
@@ -34,7 +61,9 @@
         <entry key="app/src/main/res/layout/item_books_row.xml" value="0.15" />
         <entry key="app/src/main/res/layout/item_mybooks_row.xml" value="0.13269927536231885" />
         <entry key="app/src/main/res/layout/popup_add_book.xml" value="0.2957427536231884" />
+        <entry key="app/src/main/res/layout/popup_issue_book.xml" value="0.2708333333333333" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.109375" />
+        <entry key="app/src/main/res/menu/side_menu.xml" value="0.32135416666666666" />
         <entry key="app/src/main/res/menu/sidemenu.xml" value="0.1890625" />
       </map>
     </option>

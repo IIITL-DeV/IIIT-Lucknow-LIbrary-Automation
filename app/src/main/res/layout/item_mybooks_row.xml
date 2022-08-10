@@ -9,21 +9,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
         android:background="@drawable/book_details">
+
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/mybook_image"
+            android:id="@+id/bookImage"
             android:layout_width="@dimen/_42sdp"
             android:layout_height="@dimen/_42sdp"
             android:src="@drawable/book"
             android:layout_margin="@dimen/_10sdp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="vertical"
-            android:background="#404040">
+            android:orientation="vertical">
+
             <TextView
-                android:id="@+id/my_book_id"
+                android:id="@+id/bookName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:background="#404040"
+                android:text="Id"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/bookId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -31,7 +48,7 @@
                 android:text="Id"
                 android:textSize="@dimen/_14sdp" />
             <TextView
-                android:id="@+id/my_issue_date"
+                android:id="@+id/issueDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -42,7 +59,7 @@
                 android:layout_marginRight="@dimen/_15sdp"
                 android:layout_marginEnd="@dimen/_15sdp"/>
             <TextView
-                android:id="@+id/my_return_date"
+                android:id="@+id/returnDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -52,6 +69,8 @@
                 android:background="#404040"/>
 
         </LinearLayout>
+
     </LinearLayout>
+
 </RelativeLayout>
 

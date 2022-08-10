@@ -49,7 +49,6 @@ public class Login extends AppCompatActivity {
     private static final int RC_SIGN_IN = 106;
     GoogleSignInClient mGoogleSignInClient;
     Dialog myDialog;
-    boolean f = false;
     String name, enrolment;
 
 

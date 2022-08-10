@@ -23,16 +23,19 @@ public class UserProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_profile);
+
         database = FirebaseDatabase.getInstance();
         auth = FirebaseAuth.getInstance();
         String uId = auth.getCurrentUser().getUid();
+
         DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("user").child(uId).child("enrolment");
         DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference("user").child(uId).child("email");
         DatabaseReference reference3 = FirebaseDatabase.getInstance().getReference("user").child(uId).child("name");
+
         roll = (TextView)findViewById(R.id.user_rollTV);
         email = (TextView)findViewById(R.id.user_emailTV);
         name = (TextView)findViewById(R.id.user_nameTV);
-        Log.d("dkfaklfd", "onCreate: "+reference1.getKey());
+
         reference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -45,6 +48,7 @@ public class UserProfile extends AppCompatActivity {
 
             }
         });
+
         reference2.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -57,6 +61,7 @@ public class UserProfile extends AppCompatActivity {
 
             }
         });
+
         reference3.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

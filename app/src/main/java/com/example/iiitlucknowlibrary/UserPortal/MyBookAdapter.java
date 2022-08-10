@@ -9,8 +9,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.iiitlucknowlibrary.Book;
 import com.example.iiitlucknowlibrary.R;
 import com.example.iiitlucknowlibrary.administration.IssueBookModel;
+import com.google.android.material.transition.Hold;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -34,10 +41,28 @@ public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final IssueBookModel  issued_book = bookList.get(position);
-        holder.my_book_id.setText("Id: " + issued_book.getIssueId());
-        holder.my_issue_date.setText("Issue Date: " + issued_book.getIssueDate());
-        holder.my_return_date.setText("Return Date: " +issued_book.getReturnDate());
-       // Picasso.get().load(issued_book.getImageUri()).into(holder.mybook_image);
+        String bookId = issued_book.getIssueId();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Books").child(bookId);
+
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                 Book book  = dataSnapshot.getValue(Book.class);
+
+                holder.bookName.setText("Name: " + book.getName());
+                Picasso.get().load(book.getImageUri()).into(holder.bookImage);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+//                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+        holder.bookId.setText("Id: " + issued_book.getIssueId());
+        holder.issueDate.setText("Issue Date: " + issued_book.getIssueDate());
+        holder.returnDate.setText("Return Date: " +issued_book.getReturnDate());
+//        Picasso.get().load(issued_book.getImageUri()).into(holder.bookImage);
 
     }
     @Override
@@ -45,14 +70,15 @@ public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHold
         return bookList.size();
     }
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView my_book_id ,my_issue_date,my_return_date;
-        CircleImageView mybook_image;
+        TextView bookName, bookId, issueDate, returnDate;
+        CircleImageView bookImage;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            my_book_id = itemView.findViewById(R.id.my_book_id);
-            my_issue_date = itemView.findViewById(R.id.my_issue_date);
-            my_return_date = itemView.findViewById(R.id.my_return_date);
-            mybook_image = itemView.findViewById(R.id.mybook_image);
+            bookName = itemView.findViewById(R.id.bookName);
+            bookId = itemView.findViewById(R.id.bookId);
+            issueDate = itemView.findViewById(R.id.issueDate);
+            returnDate = itemView.findViewById(R.id.returnDate);
+            bookImage = itemView.findViewById(R.id.bookImage);
         }
     }
 

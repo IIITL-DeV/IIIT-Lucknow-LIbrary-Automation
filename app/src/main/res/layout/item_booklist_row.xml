@@ -2,69 +2,66 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_margin="@dimen/_1sdp"
-    android:background="@drawable/book_details"
+    android:layout_margin="@dimen/_5sdp"
+    android:background="@drawable/shape_item"
     android:layout_height="wrap_content">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="@dimen/_5sdp">
-
-        <!--android:background="#434343"
-        android:background="@drawable/shape_item"
-        -->
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:background="@drawable/book_details">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/book_category_image"
-            android:layout_width="@dimen/_50sdp"
-            android:layout_height="@dimen/_50sdp"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
             android:layout_gravity="center"
-            android:layout_margin="@dimen/_10sdp" />
+            android:layout_margin="@dimen/_10sdp"
+            android:src="@drawable/book"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:orientation="vertical"
-            android:background="#404040">
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/author_name"
+                android:id="@+id/bookName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
                 android:text="Name"
-                android:background="#404040"
-                android:textColor="@color/white"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_14sdp" />
             <TextView
-                android:id="@+id/book_id"
+                android:id="@+id/authorName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Data not available"
                 android:textColor="@color/white"
-                android:background="#404040"
-                android:textSize="@dimen/_13sdp" />
+                android:text="Name"
+                android:textSize="@dimen/_14sdp" />
             <TextView
-                android:id="@+id/book_status"
+                android:id="@+id/bookId"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Data not available"
                 android:textColor="@color/white"
-                android:background="#404040"
-                android:textSize="@dimen/_13sdp" />
+                android:text="Name"
+                android:textSize="@dimen/_14sdp" />
             <TextView
                 android:id="@+id/quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No data available ):"
                 android:layout_gravity="bottom"
-                android:textColor="@color/white"
-                android:background="#404040"
-                android:textSize="@dimen/_13sdp" />
+                android:textColor="@color/green"
+                android:textSize="@dimen/_12sdp" />
 
         </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
 
+    </LinearLayout>
+
+</RelativeLayout>
