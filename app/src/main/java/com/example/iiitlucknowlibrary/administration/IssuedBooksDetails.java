@@ -46,7 +46,7 @@ public class IssuedBooksDetails extends AppCompatActivity {
                             IssueBookModel issued_book = dataSnapshot2.getValue(IssueBookModel.class);
                             String s = issued_book.getIssueId();
                             s += ", ";
-                            s += "Student Roll Number: ";
+                            s += "SId: ";
                             s += dataSnapshot1.getKey();
                             issued_book.setIssueId(s);
                             book_list.add(issued_book);

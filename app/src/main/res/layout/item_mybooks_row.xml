@@ -22,6 +22,7 @@
             android:layout_width="@dimen/_42sdp"
             android:layout_height="@dimen/_42sdp"
             android:src="@drawable/book"
+            android:layout_gravity="center"
             android:layout_margin="@dimen/_10sdp" />
 
         <LinearLayout
