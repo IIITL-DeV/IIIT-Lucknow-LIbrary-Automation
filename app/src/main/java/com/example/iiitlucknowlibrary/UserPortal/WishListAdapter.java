@@ -49,7 +49,7 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyVie
     @Override
     public void onBindViewHolder(@NonNull WishListAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Book book = bookList.get(position);
-        holder.authorName.setText("Name: "+ book.getName());
+        holder.bookName.setText("Name: "+ book.getName());
         holder.authorName.setText("Author: "+  book.getAuthor());
         holder.bookId.setText("BookId: " + book.getBookID());
         holder.quantity.setText("Quantity: "+  book.getQuantity());
@@ -58,6 +58,7 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyVie
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Please wait.....");
         progressDialog.setCancelable(false);
+
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -132,7 +133,7 @@ public class WishListAdapter  extends RecyclerView.Adapter<WishListAdapter.MyVie
         CircleImageView book_category_image;
         public MyViewHolder(@NonNull View itemView ) {
             super(itemView);
-            bookName = itemView.findViewById(R.id.book_category_name);
+            bookName = itemView.findViewById(R.id.bookName);
             authorName = itemView.findViewById(R.id.authorName);
             bookId = itemView.findViewById(R.id.bookId);
             quantity = itemView.findViewById(R.id.quantity);

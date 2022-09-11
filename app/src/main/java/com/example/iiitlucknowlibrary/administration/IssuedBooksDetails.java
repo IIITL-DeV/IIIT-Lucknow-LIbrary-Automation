@@ -33,7 +33,7 @@ public class IssuedBooksDetails extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         ArrayList<IssueBookModel> book_list = new ArrayList<IssueBookModel>();
-        MyBookAdapter myAdapter = new MyBookAdapter(this,book_list);
+        MyBookAdapterForAdmin myAdapter = new MyBookAdapterForAdmin(this,book_list);
         recyclerView.setAdapter(myAdapter);
         DatabaseReference database1 = FirebaseDatabase.getInstance().getReference("IssueBook");
         database1.addValueEventListener(new ValueEventListener() {
@@ -45,8 +45,8 @@ public class IssuedBooksDetails extends AppCompatActivity {
                         for(DataSnapshot dataSnapshot2 : dataSnapshot1.getChildren()){
                             IssueBookModel issued_book = dataSnapshot2.getValue(IssueBookModel.class);
                             String s = issued_book.getIssueId();
-                            s += ", ";
-                            s += "SId: ";
+                            s += ",";
+                            s += "Student Id: ";
                             s += dataSnapshot1.getKey();
                             issued_book.setIssueId(s);
                             book_list.add(issued_book);

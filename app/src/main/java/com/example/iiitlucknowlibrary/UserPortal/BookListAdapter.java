@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.iiitlucknowlibrary.Authentication.Users;
 import com.example.iiitlucknowlibrary.Book;
 import com.example.iiitlucknowlibrary.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,6 +37,7 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
     FirebaseDatabase firebaseDatabase;
     FirebaseStorage firebaseStorage;
     FirebaseAuth mAuth;
+    String UserEmail, UserUid;
     public BookListAdapter(Context context, ArrayList<Book> book_list) {
         this.context = context;
         this.bookList = book_list;
@@ -59,93 +62,124 @@ public class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.MyView
         ProgressDialog progressDialog = new ProgressDialog(context);
         progressDialog.setMessage("Please wait.....");
         progressDialog.setCancelable(false);
-        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-           @Override
-           public boolean onLongClick(View v) {
+        UserEmail = FirebaseAuth.getInstance().getUid();
 
-               new AlertDialog.Builder(context)
-                       .setTitle("Add to WishList")
-                       .setMessage("Are you sure to add?")
-                       .setPositiveButton("Add", new DialogInterface.OnClickListener() {
-                           public void onClick(DialogInterface dialog, int which) {
-                               progressDialog.show();
-                               firebaseDatabase = FirebaseDatabase.getInstance();
-                               firebaseStorage = FirebaseStorage.getInstance();
-                               mAuth = FirebaseAuth.getInstance();
-                               String us = mAuth.getCurrentUser().getUid();
-                               DatabaseReference database1 = firebaseDatabase.getReference("user").child(us).child("enrolment");
-                               database1.addValueEventListener(new ValueEventListener() {
-                                   @Override
-                                   public void onDataChange(@NonNull DataSnapshot snapshot) {
-                                       String roll_no = snapshot.getValue().toString();
-                                       DatabaseReference database2 = firebaseDatabase.getReference().child("WishList").child(roll_no).child(book.getBookID());
-                                       Book book1 = new Book(book.getBookID(), book.getName(), book.getAuthor(), book.getCategory(), book.getQuantity(), "Available", book.getImageUri(), book.getBookUrl());
-                                       database2.setValue(book1).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                           @Override
-                                           public void onComplete(@NonNull Task<Void> task) {
-                                               boolean found =false;
-                                               String id = book.getBookID();
-                                               for(int ii=0;ii < bookList.size();ii++){
-                                                   Book this_book = bookList.get(ii);
-                                                   if(id.equals(this_book.getBookID())){
-                                                       found = true;
-                                                       break;
-                                                   }
-                                               }
-                                               if(!found) {
-                                                   if (task.isSuccessful()) {
-                                                       progressDialog.dismiss();
-                                                       Toast.makeText(context, "Added to WishList successfully", Toast.LENGTH_SHORT).show();
-                                                   } else {
-                                                       Toast.makeText(context, "Error in adding to WishList", Toast.LENGTH_SHORT).show();
-                                                   }
-                                               }else{
-                                                   progressDialog.dismiss();
-                                                   Toast.makeText(context, "This book is already in WishList!", Toast.LENGTH_SHORT).show();
-                                               }
-                                           }
-                                       });
-                                   }
+        DatabaseReference reference33 = FirebaseDatabase.getInstance().getReference().child("user");
+//        reference33.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            void onDataChange(DataSnapshot snapshot) {
+//                if (snapshot.hasChild("name")) {
+//                    // run some code
+//                }
+//            }
+//        });
 
-                                   @Override
-                                   public void onCancelled(@NonNull DatabaseError error) {
 
-                                   }
-                               });
+        reference33.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.hasChild(FirebaseAuth.getInstance().getUid())){
+                    holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                        @Override
+                        public boolean onLongClick(View v) {
 
-                           }
-                       })
-                       .setNegativeButton("Cancel", null)
-                       .show();
-             return false;
-           }
+                            new AlertDialog.Builder(context)
+                                    .setTitle("Add to WishList")
+                                    .setMessage("Are you sure to add?")
+                                    .setPositiveButton("Add", new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            progressDialog.show();
+                                            firebaseDatabase = FirebaseDatabase.getInstance();
+                                            firebaseStorage = FirebaseStorage.getInstance();
+                                            mAuth = FirebaseAuth.getInstance();
+                                            String us = mAuth.getCurrentUser().getUid();
+                                            DatabaseReference database1 = firebaseDatabase.getReference("user").child(us).child("enrolment");
+                                            database1.addValueEventListener(new ValueEventListener() {
+                                                @Override
+                                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                    String roll_no = snapshot.getValue().toString();
+                                                    DatabaseReference database2 = firebaseDatabase.getReference().child("WishList").child(roll_no).child(book.getBookID());
+                                                    Book book1 = new Book(book.getBookID(), book.getName(), book.getAuthor(), book.getCategory(), book.getQuantity(), "Available", book.getImageUri(), book.getBookUrl());
+                                                    database2.setValue(book1).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            boolean found =false;
+                                                            String id = book.getBookID();
+                                                            for(int ii=0;ii < bookList.size();ii++){
+                                                                Book this_book = bookList.get(ii);
+                                                                if(id.equals(this_book.getBookID())){
+                                                                    found = true;
+                                                                    break;
+                                                                }
+                                                            }
+                                                            if(!found) {
+                                                                if (task.isSuccessful()) {
+                                                                    progressDialog.dismiss();
+                                                                    Toast.makeText(context, "Added to WishList successfully", Toast.LENGTH_SHORT).show();
+                                                                } else {
+                                                                    Toast.makeText(context, "Error in adding to WishList", Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            }else{
+                                                                progressDialog.dismiss();
+                                                                Toast.makeText(context, "This book is already in WishList!", Toast.LENGTH_SHORT).show();
+                                                            }
+                                                        }
+                                                    });
+                                                }
+
+                                                @Override
+                                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                                }
+                                            });
+
+                                        }
+                                    })
+                                    .setNegativeButton("Cancel", null)
+                                    .show();
+                            return false;
+                        }
+                    });
+
+                    holder.itemView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            new AlertDialog.Builder(context)
+                                    .setTitle("Open E-Book in Browser")
+                                    .setMessage("Are you sure?")
+                                    .setPositiveButton("open", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            if(book.getBookUrl().equals("Null")){
+                                                Toast.makeText(context, "Soft copy of this book is not available right now.", Toast.LENGTH_SHORT).show();
+
+                                            }
+                                            else{
+                                                Uri uri=Uri.parse(book.getBookUrl());
+                                                //https://drive.google.com/file/d/14xX01pnestk4zxG5X16FpMo4E00yTzjp/view?usp=sharing
+                                                Intent intent= new Intent(Intent.ACTION_VIEW,uri);
+                                                context.startActivity(intent);
+                                            }
+                                        }
+                                    })
+                                    .setNegativeButton("cancel",null)
+                                    .show();
+                        }
+                    });
+                }
+                else{
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+//                System.out.println("The read failed: " + databaseError.getCode());
+            }
         });
 
-       holder.itemView.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               new AlertDialog.Builder(context)
-                       .setTitle("Open E-Book in Browser")
-                       .setMessage("Are you sure?")
-                       .setPositiveButton("open", new DialogInterface.OnClickListener() {
-                           @Override
-                           public void onClick(DialogInterface dialog, int which) {
-                               if(book.getBookUrl().equals("Null")){
-                                   Toast.makeText(context, "Soft copy of this book is not available right now.", Toast.LENGTH_SHORT).show();
 
-                               }
-                               else{
-                                   Uri uri=Uri.parse(book.getBookUrl());
-                                   //https://drive.google.com/file/d/14xX01pnestk4zxG5X16FpMo4E00yTzjp/view?usp=sharing
-                                   Intent intent= new Intent(Intent.ACTION_VIEW,uri);
-                                   context.startActivity(intent);
-                               }
-                           }
-                       })
-                       .setNegativeButton("cancel",null)
-                       .show();
-           }
-       });
+
     }
     @Override
     public int getItemCount() {

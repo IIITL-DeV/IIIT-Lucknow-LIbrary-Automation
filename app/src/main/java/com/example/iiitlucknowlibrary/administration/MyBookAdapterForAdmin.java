@@ -1,4 +1,4 @@
-package com.example.iiitlucknowlibrary.UserPortal;
+package com.example.iiitlucknowlibrary.administration;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,12 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.iiitlucknowlibrary.Authentication.Users;
 import com.example.iiitlucknowlibrary.Book;
 import com.example.iiitlucknowlibrary.R;
-import com.example.iiitlucknowlibrary.administration.IssueBookModel;
-import com.google.android.material.transition.Hold;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,13 +22,13 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHolder> {
+public class MyBookAdapterForAdmin extends RecyclerView.Adapter<MyBookAdapterForAdmin.MyViewHolder> {
 
     Context context;
     ArrayList<IssueBookModel> bookList;
     String UserEnrolment;
     String tmp;
-    public MyBookAdapter(Context context, ArrayList<IssueBookModel> book_list) {
+    public MyBookAdapterForAdmin(Context context, ArrayList<IssueBookModel> book_list) {
         this.context = context;
         this.bookList = book_list;
     }
@@ -57,6 +53,7 @@ public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHold
             EnNumber += bId.charAt(i++);
         }
 
+        tmp = EnNumber;
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Books").child(bookId);
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -64,7 +61,7 @@ public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHold
             public void onDataChange(DataSnapshot dataSnapshot) {
                  Book book  = dataSnapshot.getValue(Book.class);
 
-                holder.bookName.setText("Name: " + book.getName());
+                holder.bookName.setText(tmp + "\nBook Name: " + book.getName());
                 Picasso.get().load(book.getImageUri()).into(holder.bookImage);
             }
 
@@ -74,7 +71,7 @@ public class MyBookAdapter extends RecyclerView.Adapter<MyBookAdapter.MyViewHold
             }
         });
 
-        holder.bookId.setText("Id: " + bookId);
+        holder.bookId.setText("Book Id: " + bookId);
         holder.issueDate.setText("Issue Date: " + issued_book.getIssueDate());
         holder.returnDate.setText("Return Date: " +issued_book.getReturnDate());
 //        Picasso.get().load(issued_book.getImageUri()).into(holder.bookImage);
