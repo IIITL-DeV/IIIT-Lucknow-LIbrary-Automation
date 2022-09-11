@@ -29,22 +29,23 @@ User Portal Features :
 </p>
 
 
-
 ## Administration Section
 
 <p float="middle">
-<img src="https://user-images.githubusercontent.com/54670079/189548458-093082a4-80f4-4381-9bc3-1b97397d0569.jpg" />
+ <img src="https://user-images.githubusercontent.com/54670079/189548458-093082a4-80f4-4381-9bc3-1b97397d0569.jpg" />
+ <img src="https://user-images.githubusercontent.com/54670079/189548614-d5646a26-b24d-4754-a8f2-426afb1677c8.jpg" width="250" />
+ <img src="https://user-images.githubusercontent.com/54670079/189548896-50b060e4-fbc5-409e-9eb1-76d040a26022.jpg" width="250" />
+ <img src="https://user-images.githubusercontent.com/54670079/189548746-19564bea-947c-41d0-b014-8e650afe95de.jpg" width="250" />
+ <img src="https://user-images.githubusercontent.com/54670079/189549171-932ee64f-365d-4505-abb3-279f21c227c8.jpg" width="250" />
 </p>
 
 
 ## User Section
 
 <p float="middle">
-<img src="https://user-images.githubusercontent.com/54670079/141683566-c403e130-c71e-4abd-bdf2-374b94829741.jpg" width="250" />
-<img src="https://user-images.githubusercontent.com/54670079/141684889-cb46342f-ff96-42c2-a649-b17963a405bf.jpg" width="250" />
-<img src="https://user-images.githubusercontent.com/54670079/141684893-7532dd9e-a076-4578-b966-718e8d7072b5.jpg" width="250" />
-<img src="https://user-images.githubusercontent.com/54670079/141683592-7cca04cd-4679-4669-bd70-c3f6e263a5ea.jpg" width="250" />
-<img src="https://user-images.githubusercontent.com/54670079/141683619-89f2ab30-7486-44ab-a629-7616630e9eeb.jpg" width="250" />
-<img src="https://user-images.githubusercontent.com/54670079/141683624-198a8283-79d7-44cf-8736-fa39a0ece111.jpg" width="250" />
-<img src="https://user-images.githubusercontent.com/54670079/141683616-99effa77-fc08-40cc-8fc1-2977f2bcfecc.jpg" width="250" />
+<img src="https://user-images.githubusercontent.com/54670079/189548955-f17b0768-20e1-4d62-831f-3a373928c10d.jpg" width="250" />
+<img src="https://user-images.githubusercontent.com/54670079/189548976-a54cb104-6907-4dfb-8d4b-e9a0f9fa1821.jpg" width="250" />
+<img src="https://user-images.githubusercontent.com/54670079/189549034-dcbfc5de-5761-46e8-86a5-4e201516410e.jpg" width="250" />
+<img src="https://user-images.githubusercontent.com/54670079/189549069-6e702a5c-0f90-4f9d-ba76-fe93bcd3306d.jpg" width="250" />
+<img src="https://user-images.githubusercontent.com/54670079/189549072-77a44a82-68d0-4294-bce3-6c5c936576a6.jpg" width="250" />
 </p>
