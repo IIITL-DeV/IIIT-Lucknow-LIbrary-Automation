@@ -32,7 +32,7 @@ User Portal Features :
 ## Administration Section
 
 <p float="middle">
- <img src="https://user-images.githubusercontent.com/54670079/189548458-093082a4-80f4-4381-9bc3-1b97397d0569.jpg" />
+ <img src="https://user-images.githubusercontent.com/54670079/189548458-093082a4-80f4-4381-9bc3-1b97397d0569.jpg" width="250" />
  <img src="https://user-images.githubusercontent.com/54670079/189548614-d5646a26-b24d-4754-a8f2-426afb1677c8.jpg" width="250" />
  <img src="https://user-images.githubusercontent.com/54670079/189548896-50b060e4-fbc5-409e-9eb1-76d040a26022.jpg" width="250" />
  <img src="https://user-images.githubusercontent.com/54670079/189548746-19564bea-947c-41d0-b014-8e650afe95de.jpg" width="250" />
